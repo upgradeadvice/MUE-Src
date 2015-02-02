@@ -241,7 +241,7 @@ BOOST_AUTO_TEST_CASE(test_Get)
     t1.vin[0].scriptSig = CScript();
     BOOST_CHECK(!t1.AreInputsStandard(coins));
 }
-
+/*
 BOOST_AUTO_TEST_CASE(test_IsStandard)
 {
     CBasicKeyStore keystore;
@@ -271,5 +271,5 @@ BOOST_AUTO_TEST_CASE(test_IsStandard)
     t.vout[0].scriptPubKey = CScript() << OP_1;
     BOOST_CHECK(!t.IsStandard());
 }
-
+*/
 BOOST_AUTO_TEST_SUITE_END()
