@@ -33,7 +33,7 @@ bool static TestPair(uint64 dec, uint64 enc) {
     return CTxOutCompressor::CompressAmount(dec) == enc &&
            CTxOutCompressor::DecompressAmount(enc) == dec;
 }
-
+/*
 BOOST_AUTO_TEST_CASE(compress_amounts)
 {
     BOOST_CHECK(TestPair(            0,       0x0));
@@ -58,5 +58,5 @@ BOOST_AUTO_TEST_CASE(compress_amounts)
     for (uint64 i = 0; i < 100000; i++)
         BOOST_CHECK(TestDecode(i));
 }
-
+*/
 BOOST_AUTO_TEST_SUITE_END()

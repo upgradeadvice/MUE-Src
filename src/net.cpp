@@ -1196,9 +1196,6 @@ static const char *strMainNetDNSSeed[][2] = {
 	{"103.19.252.82", "103.19.252.82"},
 	{"178.62.247.76", "178.62.247.76"},
 	{"104.131.66.88", "104.131.66.88"},
-    {"seed1.coinlab.info", "seed1.coinworks.info"},
-    {"seed3.coinlab.info", "seed3.coinworks.info"},
-    {"mueseed.coinlab.info", "mueseed.coinworks.info"},
     {NULL, NULL}
 };
 

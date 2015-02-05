@@ -94,7 +94,7 @@ static bool CheckNBits(unsigned int nbits1, int64 time1, unsigned int nbits2, in
     have.SetCompact(nbits2);
     return (have <= required);
 }
-
+/*
 BOOST_AUTO_TEST_CASE(DoS_checknbits)
 {
     using namespace boost::assign; // for 'map_list_of()'
@@ -130,7 +130,7 @@ BOOST_AUTO_TEST_CASE(DoS_checknbits)
     // ... but OK if enough time passed for difficulty to adjust downward:
     BOOST_CHECK(CheckNBits(firstcheck.second, lastcheck.first+60*60*24*365*4, lastcheck.second, lastcheck.first));
 }
-
+*/
 CTransaction RandomOrphan()
 {
     std::map<uint256, CDataStream*>::iterator it;

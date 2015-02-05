@@ -1,0 +1,34 @@
+src/*.exe
+src/monetaryunit
+src/monetaryunitd
+src/test_monetaryunit
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.monetaryunit
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+monetaryunit-qt
+Monetaryunit-Qt.app
+
+# Unit-tests
+Makefile.test
+monetaryunit-qt_test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+!src/leveldb*/Makefile
