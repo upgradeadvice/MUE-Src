@@ -4,7 +4,7 @@
 MiningPage::MiningPage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MiningPage)
-{ 
+{
     ui->setupUi(this);
     minerSet = false;
     setFixedSize(400, 450);
@@ -51,21 +51,21 @@ void MiningPage::setModel(ClientModel *modelIn)
 {
     if(minerSet)
         return;
-    
+
     minerSet = true;
-    
+
     this->model = modelIn;
-    
+
 
     loadSettings();
 
-    
+
     bool pool = model->getMiningType() == ClientModel::PoolMining;
-    
+
     ui->threadsBox->setValue(model->getMiningThreads());
-    
+
     ui->typeBox->setCurrentIndex(pool ? 1 : 0);
-    
+
 //    if (model->getMiningStarted())
 //        startPressed();
 }
@@ -73,7 +73,7 @@ void MiningPage::setModel(ClientModel *modelIn)
 void MiningPage::startPressed()
 {
     initThreads = ui->threadsBox->value();
-    
+
     if (minerActive == false)
     {
 
@@ -135,12 +135,12 @@ void MiningPage::startPoolMining()
     if (!QFile::exists(program))
         program = "minerd";
 
-    
+
 
     if (ui->debugCheckBox->isChecked())
         ui->list->addItem(args.join(" ").prepend(" ").prepend(program));
 
-    
+
 
     ui->mineSpeedLabel->setText("Speed: N/A");
     ui->shareCount->setText("Accepted: 0 - Rejected: 0");
@@ -149,65 +149,65 @@ void MiningPage::startPoolMining()
 
     readTimer->start(500);
 
-    
+
 }
 
 void MiningPage::stopPoolMining()
 {
-    
+
 
     ui->mineSpeedLabel->setText("");
     minerProcess->kill();
     readTimer->stop();
 
-    
+
 }
 
 void MiningPage::saveSettings()
-{    
-    
+{
+
     model->setMiningDebug(ui->debugCheckBox->isChecked());
-    
+
     model->setMiningScanTime(ui->scantimeBox->value());
-    
+
     model->setMiningServer(ui->serverLine->text());
-    
+
     model->setMiningPort(ui->portLine->text());
-    
+
     model->setMiningUsername(ui->usernameLine->text());
-    
+
     model->setMiningPassword(ui->passwordLine->text());
 }
 
 void MiningPage::loadSettings()
 {
-    
 
-    
+
+
     ui->debugCheckBox->setChecked(model->getMiningDebug());
-    
+
     ui->scantimeBox->setValue(model->getMiningScanTime());
-    
+
    // ui->serverLine->setText(model->getMiningServer());
 	ui->serverLine->setText("178.62.67.113");
-    
+
    // ui->portLine->setText(model->getMiningPort());
 	ui->portLine->setText("3032");
-    
+
     ui->usernameLine->setText(model->getMiningUsername());
-    
+
    // ui->passwordLine->setText(model->getMiningPassword());
 	ui->passwordLine->setText("anything");
-    
 
-    
+
+
 }
 
 void MiningPage::readProcessOutput()
 {
     QByteArray output;
 
-    
+
 
     minerProcess->reset();
 
@@ -271,17 +271,17 @@ void MiningPage::readProcessOutput()
 
 void MiningPage::minerError(QProcess::ProcessError error)
 {
-    
+
 
     if (error == QProcess::FailedToStart)
     {
-        reportToList("Miner failed to start. Make sure you have the minerd executable and libraries in the same directory as MaxCoin-Qt.", ERROR, NULL);
+        reportToList("Miner failed to start. Make sure you have the minerd executable and libraries in the same directory as monetaryunit-qt.", ERROR, NULL);
     }
 }
 
 void MiningPage::minerFinished()
 {
-    
+
 
     if (getMiningType() == ClientModel::SoloMining)
         reportToList("Solo mining stopped.", ERROR, NULL);
@@ -292,7 +292,7 @@ void MiningPage::minerFinished()
     resetMiningButton();
     model->setMining(getMiningType(), false, initThreads, 0);
 
-    
+
 }
 
 void MiningPage::minerStarted()
@@ -306,19 +306,19 @@ void MiningPage::minerStarted()
             reportToList("Miner started. You might not see any output for a few minutes.", STARTED, NULL);
         }
     }
-    
-    
+
+
 
     minerActive = true;
     resetMiningButton();
     model->setMining(getMiningType(), true, initThreads, 0);
 
-    
+
 }
 
 void MiningPage::updateSpeed()
 {
-    
+
 
     double totalSpeed=0;
     int totalThreads=0;
@@ -331,7 +331,7 @@ void MiningPage::updateSpeed()
         totalThreads++;
     }
 
-    
+
 
     // If all threads haven't reported the hash speed yet, make an assumption
     if (totalThreads != initThreads)
@@ -348,7 +348,7 @@ void MiningPage::updateSpeed()
     QString roundAcceptedString = QString("%1").arg(roundAcceptedShares);
     QString roundRejectedString = QString("%1").arg(roundRejectedShares);
 
-    
+
 
     if (totalThreads == initThreads)
         ui->mineSpeedLabel->setText(QString("Speed: %1 khash/sec - %2 thread(s)").arg(speedString, threadsString));
@@ -361,7 +361,7 @@ void MiningPage::updateSpeed()
 
     model->setMining(getMiningType(), true, initThreads, totalSpeed*1000);
 
-    
+
 }
 
 void MiningPage::reportToList(QString msg, int type, QString time)
@@ -402,13 +402,13 @@ void MiningPage::reportToList(QString msg, int type, QString time)
     ui->list->addItem(message);
     ui->list->scrollToBottom();
 
-    
+
 }
 
 // Function for fetching the time
 QString MiningPage::getTime(QString time)
 {
-    
+
 
     if (time.contains("["))
     {
@@ -417,7 +417,7 @@ QString MiningPage::getTime(QString time)
         time.remove("]");
         time.remove(0,11);
 
-        
+
         return time;
     }
     else
@@ -446,22 +446,22 @@ void MiningPage::enablePoolMiningControls(bool enable)
 
 ClientModel::MiningType MiningPage::getMiningType()
 {
-    
+
 
     if (ui->typeBox->currentIndex() == 0)  // Pool Mining
     {
-        
+
 
         return ClientModel::PoolMining;
     }
     else if (ui->typeBox->currentIndex() == 1)  // Solo Mining
     {
-        
+
 
         return ClientModel::SoloMining;
     }
 
-    
+
 
     return ClientModel::PoolMining;
 }
@@ -480,14 +480,14 @@ void MiningPage::typeChanged(int index)
 
 void MiningPage::debugToggled(bool checked)
 {
-    
+
 
     model->setMiningDebug(checked);
 }
 
 void MiningPage::resetMiningButton()
 {
-    
+
 
     ui->startButton->setText(minerActive ? "Stop Mining" : "Start Mining");
     enableMiningControls(!minerActive);
