@@ -102,7 +102,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create application menu bar
     createMenuBar();
 
-    // Create the toolbars	
+    // Create the toolbars
     createToolBars();
 
     // Create the tray icon (or setup the dock icon)
@@ -161,7 +161,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
 
-   
+
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
@@ -193,7 +193,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     rpcConsole = new RPCConsole(this);
     connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(show()));
-	
+
 
     // Clicking on "Verify Message" in the address book sends you to the verify message tab
     connect(addressBookPage, SIGNAL(verifyMessage(QString)), this, SLOT(gotoVerifyMessageTab(QString)));
@@ -252,14 +252,14 @@ void BitcoinGUI::createActions()
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     addressBookAction->setProperty("objectName","addressBookAction");
     tabGroup->addAction(addressBookAction);
-	
+
 	miningAction = new QAction(tr("&Mining"), this);
     miningAction->setToolTip(tr("Configure mining"));
 	miningAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     miningAction->setCheckable(true);
 	miningAction->setProperty("objectName","miningAction");
     tabGroup->addAction(miningAction);
-	
+
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
 	connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
@@ -382,7 +382,7 @@ void BitcoinGUI::createToolBars()
     _addButtonInToolbar(addressBookAction,toolbar);
 	_addButtonInToolbar(miningAction,toolbar);
     _addButtonInToolbar(exportAction,toolbar);
-	
+
 
     addToolBar(Qt::LeftToolBarArea,toolbar);
 
@@ -424,10 +424,10 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 
         setNumBlocks(clientModel->getNumBlocks(), clientModel->getNumBlocksOfPeers());
         connect(clientModel, SIGNAL(numBlocksChanged(int,int)), this, SLOT(setNumBlocks(int,int)));
-		
+
 		setMining(false, 0);
         connect(clientModel, SIGNAL(miningChanged(bool,int)), this, SLOT(setMining(bool,int)));
-		
+
         // Report errors from network/worker thread
         connect(clientModel, SIGNAL(error(QString,QString,bool)), this, SLOT(error(QString,QString,bool)));
 
@@ -788,7 +788,7 @@ void BitcoinGUI::gotoHistoryPage()
 
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-    connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(exportClicked()));
+    connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(on_exportButton_clicked()));
 }
 
 void BitcoinGUI::gotoAddressBookPage()
@@ -798,7 +798,7 @@ void BitcoinGUI::gotoAddressBookPage()
 
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-    connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(exportClicked()));
+    connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(on_exportButton_clicked()));
 }
 
 void BitcoinGUI::gotoReceiveCoinsPage()
@@ -808,7 +808,7 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-    connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(exportClicked()));
+    connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(on_exportButton_clicked()));
 }
 
 void BitcoinGUI::gotoSendCoinsPage()
@@ -992,6 +992,11 @@ void BitcoinGUI::toggleHidden()
     showNormalIfMinimized(true);
 }
 
+void BitcoinGUI::detectShutdown()
+{
+    if (ShutdownRequested())
+        QMetaObject::invokeMethod(QCoreApplication::instance(), "quit", Qt::QueuedConnection);
+}
 
 void BitcoinGUI::applyTheme(QString name)
 {

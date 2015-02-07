@@ -139,6 +139,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->bitcoinAtStartup, OptionsModel::StartAtStartup);
 
     /* Network */
+    mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
     mapper->addMapping(ui->mapPortUpnp, OptionsModel::MapPortUPnP);
 
     mapper->addMapping(ui->connectSocks, OptionsModel::ProxyUse);

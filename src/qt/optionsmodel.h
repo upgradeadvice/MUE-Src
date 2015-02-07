@@ -23,6 +23,7 @@ public:
         MinimizeOnClose,   // bool
         ProxyUse,          // bool
         ProxyIP,           // QString
+        CoinControlFeatures, // bool
         ProxyPort,         // int
         ProxySocksVersion, // int
         Fee,               // qint64
@@ -51,6 +52,7 @@ public:
     int getDisplayUnit() { return nDisplayUnit; }
     bool getDisplayAddresses() { return bDisplayAddresses; }
     QString getLanguage() { return language; }
+    bool getCoinControlFeatures();
 
 private:
     int nDisplayUnit;
@@ -60,9 +62,12 @@ private:
     QString language;
     bool bMiningEnabled;
     int nMiningIntensity;
+    bool fCoinControlFeatures;
 
 signals:
     void displayUnitChanged(int unit);
+    void transactionFeeChanged(qint64);
+    void coinControlFeaturesChanged(bool);
 };
 
 #endif // OPTIONSMODEL_H

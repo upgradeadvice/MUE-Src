@@ -267,7 +267,7 @@ void TransactionView::changedAmount(const QString &amount)
     }
 }
 
-void TransactionView::exportClicked()
+void TransactionView::on_exportButton_clicked()
 {
     // CSV is currently the only supported format
     QString filename = GUIUtil::getSaveFileName(

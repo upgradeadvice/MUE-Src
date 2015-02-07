@@ -53,7 +53,7 @@ WalletView::WalletView(QWidget *parent, BitcoinGUI *_gui):
     addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
 
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
-	
+
 	miningPage = new MiningPage(gui);
 
     sendCoinsPage = new SendCoinsDialog(gui);
@@ -81,7 +81,7 @@ WalletView::WalletView(QWidget *parent, BitcoinGUI *_gui):
     // Clicking on "Sign Message" in the receive coins page opens the sign message tab in the Sign/Verify Message dialog
     connect(receiveCoinsPage, SIGNAL(signMessage(QString)), this, SLOT(gotoSignMessageTab(QString)));
     // Clicking on "Export" allows to export the transaction list
-    connect(exportButton, SIGNAL(clicked()), transactionView, SLOT(exportClicked()));
+    connect(exportButton, SIGNAL(clicked()), transactionView, SLOT(on_exportButton_clicked()));
 
     gotoOverviewPage();
 }
