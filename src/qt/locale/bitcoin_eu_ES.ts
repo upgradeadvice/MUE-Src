@@ -1398,7 +1398,7 @@ Address: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
+        <source>The address to send the payment to (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1439,8 +1439,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Sartu Bitocin helbide bat (adb.: Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix) </translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Sartu Bitocin helbide bat (adb.: 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U) </translation>
     </message>
 </context>
 <context>
@@ -1462,7 +1462,7 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
+        <source>The address to sign the message with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1535,7 +1535,7 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
+        <source>The address the message was signed with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1556,8 +1556,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Sartu Bitocin helbide bat (adb.: Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix) </translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Sartu Bitocin helbide bat (adb.: 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U) </translation>
     </message>
     <message>
         <location line="-2"/>

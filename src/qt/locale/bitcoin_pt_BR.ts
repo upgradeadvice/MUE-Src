@@ -1406,8 +1406,8 @@ Endereço: %4</translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>O endereço para onde enviar o pagamento (ex. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to send the payment to (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>O endereço para onde enviar o pagamento (ex. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1447,8 +1447,8 @@ Endereço: %4</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Digite um endereço Monetaryunit (exemplo: Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Digite um endereço Monetaryunit (exemplo: 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
 </context>
 <context>
@@ -1470,8 +1470,8 @@ Endereço: %4</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Endereço a ser usado para assinar a mensagem (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to sign the message with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Endereço a ser usado para assinar a mensagem (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1543,8 +1543,8 @@ Endereço: %4</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>O endereço usado para assinar a mensagem (ex. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address the message was signed with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>O endereço usado para assinar a mensagem (ex. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1564,8 +1564,8 @@ Endereço: %4</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Digite um endereço Monetaryunit (exemplo: Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Digite um endereço Monetaryunit (exemplo: 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="-2"/>

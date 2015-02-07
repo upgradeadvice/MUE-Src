@@ -1406,8 +1406,8 @@ Inscriptio: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Inscriptio cui mittere pensitationem (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to send the payment to (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Inscriptio cui mittere pensitationem (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1447,8 +1447,8 @@ Inscriptio: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Insero inscriptionem Monetaryunit (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Insero inscriptionem Monetaryunit (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
 </context>
 <context>
@@ -1470,8 +1470,8 @@ Inscriptio: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Inscriptio qua signare nuntium (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to sign the message with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Inscriptio qua signare nuntium (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1543,8 +1543,8 @@ Inscriptio: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Inscriptio qua nuntius signatus est (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address the message was signed with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Inscriptio qua nuntius signatus est (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1564,8 +1564,8 @@ Inscriptio: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Insere inscriptionem Monetaryunit (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Insere inscriptionem Monetaryunit (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="-2"/>

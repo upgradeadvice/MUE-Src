@@ -214,7 +214,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+3"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Αυτη η ενεργεία χρειάζεται τον κωδικό του πορτοφολιού  για να ξεκλειδώσει το πορτοφόλι.</translation>
+        <translation>Αυτη η ενεργε��α χρειάζεται τον κωδικό του πορτοφολιού  για να ξεκλειδώσει το πορτοφόλι.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1410,8 +1410,8 @@ Address: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Διεύθυνση αποστολής της πληρωμής  (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to send the payment to (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Διεύθυνση αποστολής της πληρωμής  (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1451,8 +1451,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
 </context>
 <context>
@@ -1474,8 +1474,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to sign the message with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1543,12 +1543,12 @@ Address: %4
     <message>
         <location line="+6"/>
         <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Πληκτρολογήστε την υπογραφή διεύθυνσης, μήνυμα (βεβαιωθείτε ότι έχετε αντιγράψει τις αλλαγές γραμμής, κενά, tabs, κ.λπ. ακριβώς) και την υπογραφή παρακάτω, για να ελέγξει το μήνυμα. Να είστε προσεκτικοί για να μην διαβάσετε περισσότερα στην υπογραφή ό, τι είναι στην υπογραφή ίδιο το μήνυμα , για να μην εξαπατηθούν από έναν άνθρωπο -in - the-middle επίθεση.</translation>
+        <translation>Πληκτρολογήστε την υπογραφή διεύθυνσης, μήνυμα (βεβαιωθείτε ότι έχετε αντιγράψει τις αλλαγές γραμμής, κενά, tabs, κ.λπ. ακριβώς) και την υπογραφή παρακάτω, για να ελέγξει το μήνυμα. Να είστε προσεκτικοί για να μην διαβάσετε περισσότερα στην υπογραφή ό, τι είναι σ��ην υπογραφή ίδιο το μήνυμα , για να μην εξαπατηθούν από έναν άνθρωπο -in - the-middle επίθεση.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address the message was signed with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1568,8 +1568,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Monetaryunit address (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>Enter a Monetaryunit address (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Εισάγετε μια διεύθυνση Monetaryunit (π.χ. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2822,7 +2822,7 @@ for example: alertnotify=echo %%s | mail -s &quot;Monetaryunit Alert&quot; admin
     <message>
         <location line="+1"/>
         <source>Error loading wallet.dat: Wallet requires newer version of Monetaryunit</source>
-        <translation>Σφάλμα φόρτωσης wallet.dat: Το Πορτοφόλι απαιτεί μια νεότερη έκδοση του Monetaryunit</translation>
+        <translation>Σφάλμα φόρτωσης wallet.dat: Το Πορτοφόλι απ��ιτεί μια νεότερη έκδοση του Monetaryunit</translation>
     </message>
     <message>
         <location line="+93"/>

@@ -1407,8 +1407,8 @@ Address: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Адрес, на который будет выслан платёж (например Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to send the payment to (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Адрес, на который будет выслан платёж (например 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1471,8 +1471,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</source>
-        <translation>Адрес, которым вы хотите подписать сообщение  (напр. Qi1NooNjQySQLDJ643HWfZZ7UN2EmLEvix)</translation>
+        <source>The address to sign the message with (e.g. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</source>
+        <translation>Адрес, которым вы хотите подписать сообщение  (напр. 787JDE6UGZ1unuLrQntP3eza5qeZY22t5U)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2329,7 +2329,7 @@ rpcpassword=%s
     <message>
         <location line="+3"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Привязаться к указанному адресу и всегда прослушивать только его. Используйте [хост]:порт для IPv6</translation>
+        <translation>Привязаться к указ��нному адресу и всегда прослушивать только его. Используйте [хост]:порт для IPv6</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2484,7 +2484,7 @@ rpcpassword=%s
     <message>
         <location line="+1"/>
         <source>Failed to write block info</source>
-        <translation>Не удалось записать информацию блока</translation>
+        <translation>Не удалос�� записать информацию блока</translation>
     </message>
     <message>
         <location line="+1"/>
