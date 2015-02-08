@@ -13,6 +13,7 @@ src/test_monetaryunit
 
 # Compilation and Qt preprocessor part
 *.qm
+src/qt/locale/*.qm
 Makefile
 monetaryunit-qt
 Monetaryunit-Qt.app
