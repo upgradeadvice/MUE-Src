@@ -79,7 +79,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     }
 
     ui->unit->setModel(new BitcoinUnits(this));
-    
+    /*
     ui->checkboxMiningEnabled->setEnabled(true);
     
     ui->comboMiningProcLimit->setEnabled(true);
@@ -90,6 +90,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     ui->comboMiningProcLimit->addItem("4 threads", 4);
     ui->comboMiningProcLimit->addItem("Maximum", -1);
     ui->comboMiningProcLimit->setCurrentIndex(1);
+    */
     
     /* Widget-to-option mapper */
     mapper = new MonitoredDataMapper(this);
@@ -159,8 +160,8 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->displayAddresses, OptionsModel::DisplayAddresses);
     
     /* Mining */
-    mapper->addMapping(ui->checkboxMiningEnabled, OptionsModel::MiningEnabled);
-    mapper->addMapping(ui->comboMiningProcLimit, OptionsModel::MiningIntensity);
+    //mapper->addMapping(ui->checkboxMiningEnabled, OptionsModel::MiningEnabled);
+    //mapper->addMapping(ui->comboMiningProcLimit, OptionsModel::MiningIntensity);
 }
 
 void OptionsDialog::enableApplyButton()

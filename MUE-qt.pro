@@ -18,6 +18,15 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
 }
 
+# Use our old bdb4.8
+#BDB_INCLUDE_PATH=/opt/qt_wallet_deps/include
+#BDB_LIB_PATH=/opt/qt_wallet_deps/lib
+
+# And force building with qrcode, upnp
+USE_QRCODE=1
+USE_UPNP=-
+
+
 win32 {
 windows:LIBS += -lshlwapi
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
@@ -161,7 +170,7 @@ QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) cl
     DEFINES += HAVE_BUILD_INFO
 }
 
-QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
+QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wno-unused-variable -Wstack-protector
 
 # Input
 DEPENDPATH += src src/json src/qt

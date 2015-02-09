@@ -320,12 +320,11 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             settings.setValue("nMiningIntensity", nMiningIntensity);
             ApplyMiningSettings();
             break;
-        case CoinControlFeatures: {
+        case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();
             settings.setValue("fCoinControlFeatures", fCoinControlFeatures);
             emit coinControlFeaturesChanged(fCoinControlFeatures);
-        }
-        break;
+            break;
         default:
             break;
         }
