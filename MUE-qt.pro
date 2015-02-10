@@ -2,8 +2,9 @@ TEMPLATE = app
 TARGET = monetaryunit-qt
 macx:TARGET = "Monetaryunit-Qt"
 VERSION = 0.8.3
-INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
-QT += network gui network
+INCLUDEPATH += src src/json src/qt
+QT += core gui network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
@@ -32,8 +33,9 @@ windows:LIBS += -lshlwapi
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-LIBS += -lboost_system-mgw49-mt-s-1_55 -lboost_filesystem-mgw49-mt-s-1_55 -lboost_program_options-mgw49-mt-s-1_55 -lboost_thread-mgw49-mt-s-1_55
-BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
+LIBS += -lboost_system-mt-s -lboost_filesystem-mt-s -lboost_program_options-mt-s -lboost_thread_win32-mt-s
+BOOST_LIB_SUFFIX=-mt-s
+BOOST_THREAD_LIB_SUFFIX=_win32-mt-s
 BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
 BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
 BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
@@ -151,7 +153,7 @@ LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
         QMAKE_RANLIB = $$replace(QMAKE_STRIP, strip, ranlib)
     }
     LIBS += -lshlwapi
-    #genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libleveldb.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libmemenv.a
+    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
 }
 genleveldb.target = $$PWD/src/leveldb/libleveldb.a
 genleveldb.depends = FORCE
@@ -205,6 +207,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/init.h \
     src/bloom.h \
     src/mruset.h \
+    src/qt/macnotificationhandler.h \
     src/checkqueue.h \
     src/json/json_spirit_writer_template.h \
     src/json/json_spirit_writer.h \
@@ -260,9 +263,9 @@ HEADERS += src/qt/bitcoingui.h \
     src/sph_groestl.h \
     src/sph_bmw.h \
     src/sph_types.h \
-	src/qt/miningpage.h \
-	src/qt/header.h  \
-	src/qt/ActionButton.h \
+    src/qt/miningpage.h \
+    src/qt/header.h  \
+    src/qt/ActionButton.h \
     src/qt/QtWaitingSpinner.h \
 
 SOURCES += src/qt/bitcoin.cpp \
@@ -326,9 +329,9 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/notificator.cpp \
     src/qt/paymentserver.cpp \
     src/qt/rpcconsole.cpp \
-	src/qt/header.cpp \
-	src/qt/QtWaitingSpinner.cpp \
-	src/qt/ActionButton.cpp \
+    src/qt/header.cpp \
+    src/qt/QtWaitingSpinner.cpp \
+    src/qt/ActionButton.cpp \
     src/noui.cpp \
     src/leveldb.cpp \
     src/txdb.cpp \
@@ -339,7 +342,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/jh.c \
     src/keccak.c \
     src/skein.c \
-	src/qt/miningpage.cpp 
+    src/qt/miningpage.cpp
 
 RESOURCES += src/qt/bitcoin.qrc \
 	src/qt/themes.qrc
@@ -355,11 +358,10 @@ FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
-	src/qt/forms/miningpage.ui \
+    src/qt/forms/miningpage.ui \
     src/qt/forms/optionsdialog.ui \
-	src/qt/plugins/mrichtexteditor/mrichtextedit.ui \
-	src/qt/forms/Header.ui 
-	
+    src/qt/forms/Header.ui
+
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h
 SOURCES += src/qt/qrcodedialog.cpp
@@ -377,6 +379,7 @@ DEFINES += BITCOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }
 
+# Todo: Remove this line when switching to Qt5, as that option was removed
 CODECFORTR = UTF-8
 
 # for lrelease/lupdate
@@ -384,7 +387,7 @@ CODECFORTR = UTF-8
 TRANSLATIONS = $$files(src/qt/locale/bitcoin_*.ts)
 
 isEmpty(QMAKE_LRELEASE) {
-    win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\\lrelease.exe
+    win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
     else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
 }
 isEmpty(QM_DIR):QM_DIR = $$PWD/src/qt/locale
@@ -411,7 +414,7 @@ OTHER_FILES += README.md \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    win32:BOOST_LIB_SUFFIX = -mgw49-mt-s-1_55
+    win32:BOOST_LIB_SUFFIX = -mt-s
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {

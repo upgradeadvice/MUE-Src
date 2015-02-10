@@ -10,7 +10,6 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QClipboard>
-#include <QColor>
 #include <QCursor>
 #include <QDateTime>
 #include <QDialogButtonBox>
@@ -604,9 +603,6 @@ void CoinControlDialog::updateView()
 
             itemWalletAddress->setFlags(flgTristate);
             itemWalletAddress->setCheckState(0,Qt::Unchecked);
-
-            for (int i = 0; i < ui->treeWidget->columnCount(); i++)
-                itemWalletAddress->setBackground(i, QColor(248, 247, 246));
 
             // label
             itemWalletAddress->setText(2, sWalletLabel);

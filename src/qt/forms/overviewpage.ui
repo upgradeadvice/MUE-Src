@@ -128,7 +128,7 @@
           </property>
           <property name="text">
            <string notr="true">0 MUE</string>
-          </property>	
+          </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
           </property>
@@ -304,7 +304,7 @@
         <item>
          <widget class="QLabel" name="labelTransactionsStatus">
           <property name="toolTip">
-           <string>The displayed information may be out of date. Your wallet automatically synchronizes with the MUEdomCoin network after a connection is established, but this process has not completed yet.</string>
+           <string>The displayed information may be out of date. Your wallet automatically synchronizes with the MUE network after a connection is established, but this process has not completed yet.</string>
           </property>
           <property name="styleSheet">
            <string notr="true">QLabel { color: red;Background-color:transparent }</string>
