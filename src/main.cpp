@@ -381,7 +381,7 @@ bool CTransaction::IsStandard() const
 	// Disallow large transaction comments
 	if (strTxComment.length() > MAX_TX_COMMENT_LEN)
 		return false;
-        
+
     // Extremely large transactions with lots of inputs can cost the network
     // almost as much to process as they cost the sender in fees, because
     // computing signature hashes is O(ninputs*txsize). Limiting transactions
@@ -845,15 +845,15 @@ bool CTxMemPool::remove(const CTransaction &tx, bool fRecursive)
     {
         LOCK(cs);
         uint256 hash = tx.GetHash();
+        if (fRecursive) {
+            for (unsigned int i = 0; i < tx.vout.size(); i++) {
+                std::map<COutPoint, CInPoint>::iterator it = mapNextTx.find(COutPoint(hash, i));
+                if (it != mapNextTx.end())
+                    remove(*it->second.ptx, true);
+            }
+        }
         if (mapTx.count(hash))
         {
-            if (fRecursive) {
-                for (unsigned int i = 0; i < tx.vout.size(); i++) {
-                    std::map<COutPoint, CInPoint>::iterator it = mapNextTx.find(COutPoint(hash, i));
-                    if (it != mapNextTx.end())
-                        remove(*it->second.ptx, true);
-                }
-            }
             BOOST_FOREACH(const CTxIn& txin, tx.vin)
                 mapNextTx.erase(txin.prevout);
             mapTx.erase(hash);
@@ -1089,7 +1089,7 @@ static const int64 nGenesisBlockRewardCoin = 0 * COIN;
 static const int64 nBlockRewardStartCoin = 40 * COIN;
 static const int64 nBlockRewardMinimumCoin = 1 * COIN;
 
-static const int64 nTargetTimespan = 10 * 40; 
+static const int64 nTargetTimespan = 10 * 40;
 static const int64 nTargetSpacing = 40; // 40 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 10 blocks
 
@@ -1107,7 +1107,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, unsigned int nBits)
     else if(nHeight <= 280000 ) {nSubsidy = 20 * COIN;}
     else if(nHeight <= 320000 ) {nSubsidy = 30 * COIN;}
     else if(nHeight >= 320001 ) {nSubsidy = 40 * COIN;}
-    
+
     return nSubsidy + nFees;
 }
 
@@ -1167,7 +1167,7 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
         return pindexLast->nBits;
     }
 
-    // Go back by what we want to be nInterval blocks 
+    // Go back by what we want to be nInterval blocks
     const CBlockIndex* pindexFirst = pindexLast;
     for (int i = 0; pindexFirst && i < nInterval-1; i++)
         pindexFirst = pindexFirst->pprev;
@@ -1892,7 +1892,8 @@ bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew)
     BOOST_FOREACH(CTransaction& tx, vResurrect) {
         // ignore validation errors in resurrected transactions
         CValidationState stateDummy;
-        tx.AcceptToMemoryPool(stateDummy, true, false);
+        if (!tx.AcceptToMemoryPool(stateDummy, true, false))
+            mempool.remove(tx, true);
     }
 
     // Delete redundant memory transactions that are in the connected branch
@@ -1938,7 +1939,7 @@ bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew)
             // strMiscWarning is read by GetWarnings(), called by Qt and the JSON-RPC code to warn the user:
             strMiscWarning = _("Warning: This version is obsolete, upgrade required!");
     }
-    
+
     if (!Checkpoints::IsSyncCheckpointEnforced()) // checkpoint advisory mode
     {
         if (pindexBest->pprev && !Checkpoints::CheckSyncCheckpoint(pindexBest->GetBlockHash(), pindexBest->pprev))
@@ -2269,7 +2270,7 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
             if (nBestHeight > (pnode->nStartingHeight != -1 ? pnode->nStartingHeight - 2000 : nBlockEstimate))
                 pnode->PushInventory(CInv(MSG_BLOCK, hash));
     }
-    
+
     // ppcoin: check pending sync-checkpoint
     Checkpoints::AcceptPendingSyncCheckpoint();
 
@@ -2324,7 +2325,7 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
     // ppcoin: ask for pending sync-checkpoint if any
     if (!IsInitialBlockDownload())
         Checkpoints::AskForPendingSyncCheckpoint(pfrom);
- 
+
     // If we don't already have its previous block, shunt it off to holding area until we get it
     if (pblock->hashPrevBlock != 0 && !mapBlockIndex.count(pblock->hashPrevBlock))
     {
@@ -2368,12 +2369,12 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
     }
 
     printf("ProcessBlock: ACCEPTED\n");
-    
+
     // ppcoin: if responsible for sync-checkpoint send it
     if (pfrom && !CSyncCheckpoint::strMasterPrivKey.empty() &&
         (int)GetArg("-checkpointdepth", -1) >= 0)
         Checkpoints::SendSyncCheckpoint(Checkpoints::AutoSelectSyncCheckpoint());
-    
+
     return true;
 }
 
@@ -2797,7 +2798,7 @@ bool InitBlockIndex() {
 
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
-      
+
         // Genesis block
         const char* pszTimestamp = "M O N E T A R Y U N I T";
         CTransaction txNew;
@@ -2846,7 +2847,7 @@ bool InitBlockIndex() {
                 return error("LoadBlockIndex() : writing genesis block to disk failed");
             if (!block.AddToBlockIndex(state, blockPos))
                 return error("LoadBlockIndex() : genesis block not accepted");
-                
+
             // ppcoin: initialize synchronized checkpoint
             printf("InitBlockIndex\n");
             if (!Checkpoints::WriteSyncCheckpoint(hashGenesisBlock))
@@ -2856,7 +2857,7 @@ bool InitBlockIndex() {
             return error("LoadBlockIndex() : failed to initialize block database: %s", e.what());
         }
     }
-    
+
     // ppcoin: if checkpoint master key changed must reset sync-checkpoint
     printf("InitBlockIndex_CheckCheckpointPubKey\n");
     if (!Checkpoints::CheckCheckpointPubKey())
@@ -3058,14 +3059,14 @@ string GetWarnings(string strFor)
         nPriority = 2000;
         strStatusBar = strRPC = _("Warning: Displayed transactions may not be correct! You may need to upgrade, or other nodes may need to upgrade.");
     }
-    
+
     // ppcoin: if detected invalid checkpoint enter safe mode
     if (Checkpoints::hashInvalidCheckpoint != 0)
     {
         nPriority = 3000;
         strStatusBar = strRPC = "WARNING: Inconsistent checkpoint found! Stop enforcing checkpoints and notify developers to resolve the issue.";
     }
-    
+
 
     // Alerts
     {
@@ -3769,6 +3770,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
             LOCK(pfrom->cs_filter);
             delete pfrom->pfilter;
             pfrom->pfilter = new CBloomFilter(filter);
+            pfrom->pfilter->UpdateEmptyFull();
         }
         pfrom->fRelayTxes = true;
     }
@@ -4637,9 +4639,9 @@ void static BitcoinMiner(CWallet *pwallet)
              boost::this_thread::interruption_point();
              MilliSleep(50);
          }
-         
+
          printf("Step after sleep\n");
-         
+
         //
         // Create new block
         //
@@ -4700,7 +4702,7 @@ void static BitcoinMiner(CWallet *pwallet)
                 break;
             }
             ++pblock->nNonce;
-            
+
             // Meter hashes/sec
             static int64 nHashCounter;
             if (nHPSTimerStart == 0)
