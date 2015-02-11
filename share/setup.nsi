@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.8.5
+!define VERSION 0.8.6
 !define COMPANY "Monetaryunit project"
 !define URL http://www.monetaryunit.org/
 
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile monetaryunit-0.8.5-win32-setup.exe
+OutFile monetaryunit-0.8.6-win32-setup.exe
 InstallDir $PROGRAMFILES\Monetaryunit
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 0.8.5
+VIProductVersion 0.8.6
 VIAddVersionKey ProductName Monetaryunit
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"

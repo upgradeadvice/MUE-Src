@@ -95,6 +95,7 @@ static CCoinsViewDB *pcoinsdbview;
 
 void Shutdown()
 {
+    printf("Shutdown : In progress...\n");
     static CCriticalSection cs_Shutdown;
     TRY_LOCK(cs_Shutdown, lockShutdown);
     if (!lockShutdown) return;
@@ -120,6 +121,7 @@ void Shutdown()
     boost::filesystem::remove(GetPidFile());
     UnregisterWallet(pwalletMain);
     delete pwalletMain;
+    printf("Shutdown : done\n");
 }
 
 //
@@ -340,7 +342,7 @@ std::string HelpMessage()
         "  -testnet               " + _("Use the test network") + "\n" +
         "  -debug                 " + _("Output extra debugging information. Implies all other -debug* options") + "\n" +
         "  -debugnet              " + _("Output extra network debugging information") + "\n" +
-        "  -logtimestamps         " + _("Prepend debug output with timestamp") + "\n" +
+        "  -logtimestamps         " + _("Prepend debug output with timestamp (default: 1)") + "\n" +
         "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n" +
         "  -printtoconsole        " + _("Send trace/debug info to console instead of debug.log file") + "\n" +
 #ifdef WIN32
@@ -576,7 +578,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
     fPrintToConsole = GetBoolArg("-printtoconsole");
     fPrintToDebugger = GetBoolArg("-printtodebugger");
-    fLogTimestamps = GetBoolArg("-logtimestamps");
+    fLogTimestamps = GetBoolArg("-logtimestamps", true);
 
     if (mapArgs.count("-timeout"))
     {

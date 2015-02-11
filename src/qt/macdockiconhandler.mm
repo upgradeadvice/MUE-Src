@@ -46,6 +46,8 @@
 
 MacDockIconHandler::MacDockIconHandler() : QObject()
 {
+    this->setMainWindow(NULL);
+
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
     this->m_dockIconClickEventHandler = [[DockIconClickEventHandler alloc] initWithDockIconHandler:this];
@@ -114,8 +116,11 @@ MacDockIconHandler *MacDockIconHandler::instance()
 
 void MacDockIconHandler::handleDockIconClickEvent()
 {
-    this->mainWindow->activateWindow();
-    this->mainWindow->show();
+    if (this->mainWindow)
+    {
+        this->mainWindow->activateWindow();
+        this->mainWindow->show();
+    }
 
     emit this->dockIconClicked();
 }

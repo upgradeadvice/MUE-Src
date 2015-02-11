@@ -370,41 +370,51 @@ bool CTxOut::IsDust() const
     return ((nValue*1000)/(3*((int)GetSerializeSize(SER_DISK,0)+148)) < CTransaction::nMinRelayTxFee);
 }
 
-bool CTransaction::IsStandard() const
+bool CTransaction::IsStandard(string& strReason) const
 {
-    if (nVersion > CTransaction::TXCOMMENT_VERSION)
+    if (nVersion > CTransaction::CURRENT_VERSION || nVersion < 1) {
+        strReason = "version";
         return false;
+    }
 
-    if (!IsFinal())
+    if (!IsFinal()) {
+        strReason = "not-final";
         return false;
-
-	// Disallow large transaction comments
-	if (strTxComment.length() > MAX_TX_COMMENT_LEN)
-		return false;
+    }
 
     // Extremely large transactions with lots of inputs can cost the network
     // almost as much to process as they cost the sender in fees, because
     // computing signature hashes is O(ninputs*txsize). Limiting transactions
     // to MAX_STANDARD_TX_SIZE mitigates CPU exhaustion attacks.
-    unsigned int sz = this->GetSerializeSize(SER_NETWORK, CTransaction::TXCOMMENT_VERSION);
-    if (sz >= MAX_STANDARD_TX_SIZE)
+    unsigned int sz = this->GetSerializeSize(SER_NETWORK, CTransaction::CURRENT_VERSION);
+    if (sz >= MAX_STANDARD_TX_SIZE) {
+        strReason = "tx-size";
         return false;
+    }
 
     BOOST_FOREACH(const CTxIn& txin, vin)
     {
         // Biggest 'standard' txin is a 3-signature 3-of-3 CHECKMULTISIG
         // pay-to-script-hash, which is 3 ~80-byte signatures, 3
         // ~65-byte public keys, plus a few script ops.
-        if (txin.scriptSig.size() > 500)
+        if (txin.scriptSig.size() > 500) {
+            strReason = "scriptsig-size";
             return false;
-        if (!txin.scriptSig.IsPushOnly())
+        }
+        if (!txin.scriptSig.IsPushOnly()) {
+            strReason = "scriptsig-not-pushonly";
             return false;
+        }
     }
     BOOST_FOREACH(const CTxOut& txout, vout) {
-        if (!::IsStandard(txout.scriptPubKey))
+        if (!::IsStandard(txout.scriptPubKey)) {
+            strReason = "scriptpubkey";
             return false;
-        if (txout.IsDust())
+        }
+        if (txout.IsDust()) {
+            strReason = "dust";
             return false;
+        }
     }
     return true;
 }
@@ -669,8 +679,10 @@ bool CTxMemPool::accept(CValidationState &state, CTransaction &tx, bool fCheckIn
         return error("CTxMemPool::accept() : not accepting nLockTime beyond 2038 yet");
 
     // Rather not work on nonstandard transactions (unless -testnet)
-    if (!fTestNet && !tx.IsStandard())
-        return error("CTxMemPool::accept() : nonstandard transaction type");
+    string strNonStd;
+    if (!fTestNet && !tx.IsStandard(strNonStd))
+        return error("CTxMemPool::accept() : nonstandard transaction (%s)",
+                     strNonStd.c_str());
 
     // is it already in the memory pool?
     uint256 hash = tx.GetHash();
@@ -2165,7 +2177,7 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
         uniqueTx.insert(GetTxHash(i));
     }
     if (uniqueTx.size() != vtx.size())
-        return state.DoS(100, error("CheckBlock() : duplicate transaction"));
+        return state.DoS(100, error("CheckBlock() : duplicate transaction"), true);
 
     unsigned int nSigOps = 0;
     BOOST_FOREACH(const CTransaction& tx, vtx)
@@ -3657,6 +3669,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
     }
 
 
+            filter.UpdateEmptyFull();
     else if (strCommand == "block" && !fImporting && !fReindex) // Ignore blocks received while importing
     {
         CBlock block;
@@ -3669,7 +3682,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         pfrom->AddInventoryKnown(inv);
 
         CValidationState state;
-        if (ProcessBlock(state, pfrom, &block))
+        if (ProcessBlock(state, pfrom, &block) || state.CorruptionPossible())
             mapAlreadyAskedFor.erase(inv);
         int nDoS;
         if (state.IsInvalid(nDoS))
@@ -3801,7 +3814,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
     {
         LOCK(pfrom->cs_filter);
         delete pfrom->pfilter;
-        pfrom->pfilter = NULL;
+        pfrom->pfilter = new CBloomFilter();
         pfrom->fRelayTxes = true;
     }
 
