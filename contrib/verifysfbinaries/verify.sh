@@ -110,7 +110,7 @@ if [ $? -eq 1 ]; then
    exit 1
 elif [ $? -gt 1 ]; then
    echo "Error executing 'diff'"
-   exit 2
+   exit 2   
 fi
 
 #everything matches! clean up the mess

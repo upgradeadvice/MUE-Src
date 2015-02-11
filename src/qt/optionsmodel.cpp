@@ -80,7 +80,7 @@ void OptionsModel::Init()
     if (settings.contains("bMiningEnabled"))
         SoftSetBoolArg("-gen", settings.value("bMiningEnabled").toBool());
     else
-        SoftSetBoolArg("-gen", true);
+        SoftSetBoolArg("-gen", false);
     if (settings.contains("nMiningIntensity"))
         SoftSetArg("-genproclimit", settings.value("nMiningIntensity").toString().toStdString());
     else

@@ -78,7 +78,7 @@ static Value CallRPC(string args)
         throw runtime_error(find_value(objError, "message").get_str());
     }
 }
-/*
+
 BOOST_AUTO_TEST_CASE(rpc_rawparams)
 {
     // Test raw transaction API argument handling
@@ -146,5 +146,5 @@ BOOST_AUTO_TEST_CASE(rpc_rawsign)
     r = CallRPC(string("signrawtransaction ")+notsigned+" "+prevout+" "+"["+privkey1+","+privkey2+"]");
     BOOST_CHECK(find_value(r.get_obj(), "complete").get_bool() == true);
 }
-*/
+
 BOOST_AUTO_TEST_SUITE_END()
