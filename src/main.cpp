@@ -363,10 +363,10 @@ bool CTxOut::IsDust() const
     // which has units satoshis-per-kilobyte.
     // If you'd pay more than 1/3 in fees
     // to spend something, then we consider it dust.
-    // A typical txout is 33 bytes big, and will
+    // A typical txout is 34 bytes big, and will
     // need a CTxIn of at least 148 bytes to spend,
     // so dust is a txout less than 54 uBTC
-    // (5430 satoshis) with default nMinRelayTxFee
+    // (5460 satoshis) with default nMinRelayTxFee
     return ((nValue*1000)/(3*((int)GetSerializeSize(SER_DISK,0)+148)) < CTransaction::nMinRelayTxFee);
 }
 
@@ -627,8 +627,10 @@ int64 CTransaction::GetMinFee(unsigned int nBlockSize, bool fAllowFree,
         }
     }
 
-    // To limit dust spam, require base fee if any output is less than 0.01
-    if (nMinFee < nBaseFee)
+    // This code can be removed after enough miners have upgraded to version 0.9.
+    // Until then, be safe when sending and require a fee if any output
+    // is less than CENT:
+    if (nMinFee < nBaseFee && mode == GMF_SEND)
     {
         BOOST_FOREACH(const CTxOut& txout, vout)
             if (txout.nValue < CENT)
