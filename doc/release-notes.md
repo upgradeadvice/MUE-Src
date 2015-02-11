@@ -1,10 +1,12 @@
 (note: this is a temporary file, to be added-to by anybody, and deleted at
 release time)
 
+Workaround negative version numbers serialization bug.
+
 Fee Policy changes
 ------------------
 
-The default fee for low-priority transactions is lowered from 0.0005 BTC 
+The default fee for low-priority transactions is lowered from 0.0005 BTC
 (for each 1,000 bytes in the transaction; an average transaction is
 about 500 bytes) to 0.0001 BTC.
 
@@ -23,7 +25,7 @@ with code that automatically calculates and suggests appropriate fees in the
 0.9 release and note that if you set a fee policy significantly different from
 the rest of the network your transactions may never confirm.
 
-Bitcoin-Qt changes
+MonetaryUnit-Qt changes
 ------------------
 
 - New icon and splash screen
@@ -77,4 +79,3 @@ Wallet compatibility/rescuing
 
 * Cases where wallets cannot be opened in another version/installation should be reduced.
 * `-salvagewallet` now works for encrypted wallets.
-

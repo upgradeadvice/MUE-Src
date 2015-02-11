@@ -1,7 +1,7 @@
-Sifcoin 0.8.2 BETA
-====================
+MonetaryUnit 0.8.5 BETA
 
 Copyright (c) 2009-2013 Bitcoin Developers
+Copyright (c) 2014-2015 MonetaryUnit Developers
 
 Distributed under the MIT/X11 software license, see the accompanying
 file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -12,7 +12,7 @@ and sphlib 3.0 by Thomas Pornin.
 
 Intro
 ---------------------
-Sifcoin is a free open source peer-to-peer electronic cash system based of Bitcoin,that is
+MonetaryUnit is a free open source peer-to-peer electronic cash system based of Bitcoin,that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -20,17 +20,17 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 ---------------------
-You need the Qt4 run-time libraries to run Bitcoin-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run MonetaryUnit-Qt. On Debian or Ubuntu:
 	`sudo apt-get install libqtgui4`
 
 Unpack the files into a directory and run:
 
-- bin/32/bitcoin-qt (GUI, 32-bit)
-- bin/32/bitcoind (headless, 32-bit)
-- bin/64/bitcoin-qt (GUI, 64-bit)
-- bin/64/bitcoind (headless, 64-bit)
+- bin/32/MonetaryUnit-qt (GUI, 32-bit)
+- bin/32/MonetaryUnitd (headless, 32-bit)
+- bin/64/MonetaryUnit-qt (GUI, 64-bit)
+- bin/64/MonetaryUnitd (headless, 64-bit)
 
-See the documentation at the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Main_Page)
+See the documentation at the [MonetaryUnit Website](http://www.monetaryunit.org)
 for help and more information.
 
 

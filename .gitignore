@@ -5,7 +5,7 @@ src/test_monetaryunit
 .*.swp
 *.*~*
 *.bak
-*.rej
+
 *.orig
 *.o
 *.patch
