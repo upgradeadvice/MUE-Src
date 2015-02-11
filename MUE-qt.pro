@@ -25,8 +25,12 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 
 # And force building with qrcode, upnp
 USE_QRCODE=1
-USE_UPNP=-
+USE_UPNP=1
 
+# Use dbus for *nix
+!win32:!macx {
+    USE_DBUS=1
+}
 
 win32 {
 windows:LIBS += -lshlwapi
