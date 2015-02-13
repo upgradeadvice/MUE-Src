@@ -197,6 +197,7 @@ void WalletView::gotoSendCoinsPage(QString addr)
 void WalletView::gotoSignMessageTab(QString addr)
 {
     // call show() in showTab_SM()
+        emit showNormalIfMinimized();
     signVerifyMessageDialog->showTab_SM(true);
 
     if (!addr.isEmpty())

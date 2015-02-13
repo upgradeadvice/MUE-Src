@@ -7,6 +7,7 @@
 #include "walletstack.h"
 #include "walletview.h"
 #include "bitcoingui.h"
+    gui(0),
 
 #include <QMap>
 #include <QMessageBox>
@@ -28,6 +29,10 @@ bool WalletStack::addWallet(const QString& name, WalletModel *walletModel)
 {
     if (!gui || !clientModel || mapWalletViews.count(name) > 0)
         return false;
+
+
+    // Ensure a walletView is able to show the main window
+	connect(walletView, SIGNAL(showNormalIfMinimized()), gui, SLOT(showNormalIfMinimized()));
 
     WalletView *walletView = new WalletView(this, gui);
     walletView->setBitcoinGUI(gui);

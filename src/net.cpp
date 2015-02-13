@@ -613,7 +613,7 @@ void CNode::copyStats(CNodeStats &stats)
     X(nTimeConnected);
     X(addrName);
     X(nVersion);
-    X(strSubVer);
+    X(cleanSubVer);
     X(fInbound);
     X(nStartingHeight);
     X(nMisbehavior);
@@ -1651,7 +1651,11 @@ bool BindListenPort(const CService &addrBind, string& strError)
 #ifdef WIN32
         setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&nOne, sizeof(int));
 #else
+#ifdef WIN32
+        setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&nOne, sizeof(int));
+#else
         setsockopt(hListenSocket, IPPROTO_IPV6, IPV6_V6ONLY, (void*)&nOne, sizeof(int));
+#endif
 #endif
 #endif
 #ifdef WIN32

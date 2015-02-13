@@ -93,6 +93,10 @@ public slots:
     */
     void incomingTransaction(const QModelIndex& parent, int start, int /*end*/);
     /** Encrypt the wallet */
+
+signals:
+    /** Signal that we want to show the main window */
+    void showNormalIfMinimized();
     void encryptWallet(bool status);
     /** Backup the wallet */
     void backupWallet();

@@ -1192,7 +1192,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
         if (wtxNew.strTxComment.length() > MAX_TX_COMMENT_LEN)
             wtxNew.strTxComment.resize(MAX_TX_COMMENT_LEN);
     }
-        
+
     {
         LOCK2(cs_main, cs_wallet);
         {
@@ -1308,7 +1308,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                 // Limit size
                 unsigned int nBytes = ::GetSerializeSize(*(CTransaction*)&wtxNew, SER_NETWORK, PROTOCOL_VERSION);
                 // Monetaryunit: Added safety margin 4000 bytes and 160 transactions
-                if ((nBytes + 4000 >= MAX_STANDARD_TX_SIZE) || 
+                if ((nBytes + 4000 >= MAX_STANDARD_TX_SIZE) ||
                     (wtxNew.vin.size() >= 160))
                 {
                     strFailReason = _("Transaction too large");

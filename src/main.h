@@ -28,13 +28,15 @@ struct CBlockIndexWorkComparator;
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 5000000;
 /** The maximum transaction comment size */
-static const unsigned int MAX_TX_COMMENT_LEN = 140; 
-/** The maximum size for mined blocks */
-static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE;
-/** The maximum size for transactions we're willing to relay/mine */
-static const unsigned int MAX_STANDARD_TX_SIZE = MAX_BLOCK_SIZE_GEN/3;
+static const unsigned int MAX_TX_COMMENT_LEN = 140;
+/** Obsolete: maximum size for mined blocks */
+static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
+/** Default for -blockmaxsize, maximum size for mined blocks **/
+static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 350000;
 /** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 30000;
+/** The maximum size for transactions we're willing to relay/mine */
+static const unsigned int MAX_STANDARD_TX_SIZE = MAX_BLOCK_SIZE_GEN/3;;
 /** The maximum allowed number of signature check operations in a block (network rule) */
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 /** The maximum number of orphan transactions kept in memory */
@@ -496,7 +498,7 @@ public:
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
-		if(this->nVersion >= TXCOMMENT_VERSION) { 
+		if(this->nVersion >= TXCOMMENT_VERSION) {
         READWRITE(strTxComment); }
     )
 
@@ -1319,7 +1321,7 @@ public:
         return !(a == b);
     }
     int GetDepthInMainChain() const;
- 
+
 };
 
 
@@ -1695,7 +1697,7 @@ public:
 
     // (memory only) Total amount of work (expected number of hashes) in the chain up to and including this block
     uint256 nChainWork;
-    
+
     // Number of transactions in this block.
     // Note: in a potential headers-first mode, this number cannot be relied upon
     unsigned int nTx;
