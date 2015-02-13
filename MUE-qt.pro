@@ -23,9 +23,10 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 #BDB_INCLUDE_PATH=/opt/qt_wallet_deps/include
 #BDB_LIB_PATH=/opt/qt_wallet_deps/lib
 
-# And force building with qrcode, upnp
+# And force building with qrcode, upnp, build_info
 USE_QRCODE=1
 USE_UPNP=1
+USE_BUILD_INFO=1
 
 # Use dbus for *nix
 !win32:!macx {
@@ -40,18 +41,18 @@ windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system-mt-s -lboost_filesystem-mt-s -lboost_program_options-mt-s -lboost_thread_win32-mt-s
 BOOST_LIB_SUFFIX=-mt-s
 BOOST_THREAD_LIB_SUFFIX=_win32-mt-s
-BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
-BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
-BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1j/include
-OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1j
-MINIUPNPC_INCLUDE_PATH=C:/deps/
-MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
-LIBPNG_INCLUDE_PATH=d:/deps/libpng-1.6.15
-LIBPNG_LIB_PATH=d:/deps/libpng-1.6.15/.libs
-QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
-QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
+#BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
+#BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
+#BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
+#BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
+#OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1j/include
+#OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1j
+#MINIUPNPC_INCLUDE_PATH=C:/deps/
+#MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
+#LIBPNG_INCLUDE_PATH=d:/deps/libpng-1.6.15
+#LIBPNG_LIB_PATH=d:/deps/libpng-1.6.15/.libs
+#QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
+#QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
 }
 # for boost 1.37, add -mt to the boost libraries
 # use: qmake BOOST_LIB_SUFFIX=-mt
@@ -167,7 +168,7 @@ QMAKE_EXTRA_TARGETS += genleveldb
 QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clean
 
 # regenerate src/build.h
-!win32|contains(USE_BUILD_INFO, 1) {
+contains(USE_BUILD_INFO, 1) {
     genbuild.depends = FORCE
     genbuild.commands = cd $$PWD; /bin/sh share/genbuild.sh $$OUT_PWD/build/build.h
     genbuild.target = $$OUT_PWD/build/build.h
@@ -211,7 +212,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/init.h \
     src/bloom.h \
     src/mruset.h \
-    src/qt/macnotificationhandler.h \
     src/checkqueue.h \
     src/json/json_spirit_writer_template.h \
     src/json/json_spirit_writer.h \
@@ -384,7 +384,7 @@ DEFINES += BITCOIN_QT_TEST
 }
 
 # Todo: Remove this line when switching to Qt5, as that option was removed
-CODECFORTR = UTF-8
+lessThan(QT_MAJOR_VERSION, 5):CODECFORTR = UTF-8
 
 # for lrelease/lupdate
 # also add new translations to src/qt/bitcoin.qrc under translations/

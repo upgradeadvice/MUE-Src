@@ -29,6 +29,10 @@ signers:
     key: tcatm
   01CDF4627A3B88AAE4A571C87588242FBE38D3A8:
     weight: 40
+  AEC1884398647C47413C1C3FB1179EB7347DC10D:
+    weight: 40
+    name: "Warren Togami"
+    key: wtogami
     name: "Gavin Andresen"
     key: gavinandresen
   71A3B16735405025D447E8F274810B012346C9A6:
