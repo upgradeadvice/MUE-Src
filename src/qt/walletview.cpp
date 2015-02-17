@@ -18,7 +18,6 @@
 #include "transactionview.h"
 #include "walletmodel.h"
 #include "header.h"
-#include "miningpage.h"
 
 #include "ui_interface.h"
 
