@@ -25,8 +25,8 @@ public:
     enum Unit
     {
         MUE,
-        mMUE,
-        uMUE
+        cMUE,
+        mMUE
     };
 
     //! @name Static API

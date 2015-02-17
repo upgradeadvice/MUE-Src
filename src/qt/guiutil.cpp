@@ -178,7 +178,7 @@ bool parseMonetaryUnitURI(QString uri, SendCoinsRecipient *out)
     //    which will lower-case it (and thus invalidate the address).
     if(uri.startsWith("monetaryunit://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "monetaryunit:");
+        uri.replace(0, 8, "monetaryunit:");
     }
     QUrl uriInstance(uri);
     return parseMonetaryUnitURI(uriInstance, out);

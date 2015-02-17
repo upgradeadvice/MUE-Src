@@ -17,8 +17,8 @@ QList<MonetaryUnitUnits::Unit> MonetaryUnitUnits::availableUnits()
 {
     QList<MonetaryUnitUnits::Unit> unitlist;
     unitlist.append(MUE);
+    unitlist.append(cMUE);
     unitlist.append(mMUE);
-    unitlist.append(uMUE);
     return unitlist;
 }
 
@@ -27,8 +27,8 @@ bool MonetaryUnitUnits::valid(int unit)
     switch(unit)
     {
     case MUE:
+    case cMUE:
     case mMUE:
-    case uMUE:
         return true;
     default:
         return false;
@@ -40,8 +40,8 @@ QString MonetaryUnitUnits::name(int unit)
     switch(unit)
     {
     case MUE: return QString("MUE");
-    case mMUE: return QString("mMUE");
-    case uMUE: return QString::fromUtf8("μMUE");
+    case cMUE: return QString("cMUE");
+    case mMUE: return QString::fromUtf8("mMUE");
     default: return QString("???");
     }
 }
@@ -51,8 +51,8 @@ QString MonetaryUnitUnits::description(int unit)
     switch(unit)
     {
     case MUE: return QString("MonetaryUnits");
+    case cMUE: return QString("Centum-MonetaryUnits (1 / 100)");
     case mMUE: return QString("Milli-MonetaryUnits (1 / 1,000)");
-    case uMUE: return QString("Micro-MonetaryUnits (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -61,10 +61,10 @@ qint64 MonetaryUnitUnits::factor(int unit)
 {
     switch(unit)
     {
-    case MUE:  return 100000000;
-    case mMUE: return 100000;
-    case uMUE: return 100;
-    default:   return 100000000;
+    case MUE:  return 100000;
+    case cMUE: return 1000;
+    case mMUE: return 100;
+    default:   return 100000;
     }
 }
 
@@ -72,9 +72,9 @@ qint64 MonetaryUnitUnits::maxAmount(int unit)
 {
     switch(unit)
     {
-    case MUE:  return Q_INT64_C(21000000);
-    case mMUE: return Q_INT64_C(21000000000);
-    case uMUE: return Q_INT64_C(21000000000000);
+    case MUE:  return Q_INT64_C(210000000);
+    case cMUE: return Q_INT64_C(21000000000);
+    case mMUE: return Q_INT64_C(210000000000);
     default:   return 0;
     }
 }
@@ -83,10 +83,9 @@ int MonetaryUnitUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case MUE: return 8; // 21,000,000 (# digits, without commas)
-    case mMUE: return 11; // 21,000,000,000
-    case uMUE: return 14; // 21,000,000,000,000
-    default: return 0;
+    case MUE: return 17; // trillions (# digits, without commas)
+    case cMUE: return 19; // *100
+    case mMUE: return 20; // *1,000
     }
 }
 
@@ -95,8 +94,8 @@ int MonetaryUnitUnits::decimals(int unit)
     switch(unit)
     {
     case MUE: return 8;
-    case mMUE: return 5;
-    case uMUE: return 2;
+    case cMUE: return 3;
+    case mMUE: return 2;
     default: return 0;
     }
 }
