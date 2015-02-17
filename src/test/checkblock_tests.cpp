@@ -1,25 +1,29 @@
+// Copyright (c) 2009-2015 Bitcoin Developers
+// Copyright (c) 2014-2015 MonetaryUnit Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 //
 // Unit tests for block.CheckBlock()
 //
-#include <algorithm>
 
-#include <boost/assign/list_of.hpp> // for 'map_list_of()'
-#include <boost/date_time/posix_time/posix_time_types.hpp>
-#include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
+
 
 #include "main.h"
-#include "wallet.h"
-#include "net.h"
-#include "util.h"
+
+#include <cstdio>
+
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
+#include <boost/test/unit_test.hpp>
+
 
 BOOST_AUTO_TEST_SUITE(CheckBlock_tests)
 
-bool
-read_block(const std::string& filename, CBlock& block)
+bool read_block(const std::string& filename, CBlock& block)
 {
     namespace fs = boost::filesystem;
-    fs::path testFile = fs::current_path() / "test" / "data" / filename;
+    fs::path testFile = fs::current_path() / "data" / filename;
 #ifdef TEST_DATA_DIR
     if (!fs::exists(testFile))
     {
@@ -44,7 +48,7 @@ BOOST_AUTO_TEST_CASE(May15)
     // Putting a 1MB binary file in the git repository is not a great
     // idea, so this test is only run if you manually download
     // test/data/Mar12Fork.dat from
-    // http://sourceforge.net/projects/bitcoin/files/Bitcoin/blockchain/Mar12Fork.dat/download
+    // http://sourceforge.net/projects/monetaryunit/files/MonetaryUnit/blockchain/Mar12Fork.dat/download
     unsigned int tMay15 = 1368576000;
     SetMockTime(tMay15); // Test as if it was right at May 15
 
@@ -52,12 +56,10 @@ BOOST_AUTO_TEST_CASE(May15)
     if (read_block("Mar12Fork.dat", forkingBlock))
     {
         CValidationState state;
-        forkingBlock.nTime = tMay15-1; // Invalidates PoW
-        BOOST_CHECK(!forkingBlock.CheckBlock(state, false, false));
 
         // After May 15'th, big blocks are OK:
         forkingBlock.nTime = tMay15; // Invalidates PoW
-        BOOST_CHECK(forkingBlock.CheckBlock(state, false, false));
+        BOOST_CHECK(CheckBlock(forkingBlock, state, false, false));
     }
 
     SetMockTime(0);

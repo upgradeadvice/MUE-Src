@@ -1,12 +1,21 @@
+// Copyright (c) 2009-2015 Bitcoin Developers
+// Copyright (c) 2014-2015 MonetaryUnit Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "macdockiconhandler.h"
 
-#include <QMenu>
-#include <QWidget>
-#include <QTemporaryFile>
 #include <QImageWriter>
+#include <QMenu>
+#include <QTemporaryFile>
+#include <QWidget>
 
 #undef slots
 #include <Cocoa/Cocoa.h>
+
+#if QT_VERSION < 0x050000
+extern void qt_mac_set_dock_menu(QMenu *);
+#endif
 
 @interface DockIconClickEventHandler : NSObject
 {
@@ -46,14 +55,17 @@
 
 MacDockIconHandler::MacDockIconHandler() : QObject()
 {
-    this->setMainWindow(NULL);
-
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
     this->m_dockIconClickEventHandler = [[DockIconClickEventHandler alloc] initWithDockIconHandler:this];
     this->m_dummyWidget = new QWidget();
     this->m_dockMenu = new QMenu(this->m_dummyWidget);
-
+    this->setMainWindow(NULL);
+#if QT_VERSION < 0x050000
+    qt_mac_set_dock_menu(this->m_dockMenu);
+#elif QT_VERSION >= 0x050200
+    this->m_dockMenu->setAsDockMenu();
+#endif
     [pool release];
 }
 

@@ -1,3 +1,8 @@
+// Copyright (c) 2009-2015 Bitcoin Developers
+// Copyright (c) 2014-2015 MonetaryUnit Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef ADDRESSTABLEMODEL_H
 #define ADDRESSTABLEMODEL_H
 
@@ -5,8 +10,9 @@
 #include <QStringList>
 
 class AddressTablePriv;
-class CWallet;
 class WalletModel;
+
+class CWallet;
 
 /**
    Qt model of the address book in the core. This allows views to access and modify the address book.
@@ -21,7 +27,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< Bitcoin address */
+        Address = 1  /**< MonetaryUnit address */
     };
 
     enum RoleIndex {
@@ -79,13 +85,10 @@ private:
     /** Notify listeners that data changed. */
     void emitDataChanged(int index);
 
-signals:
-    void defaultAddressChanged(const QString &address);
-
 public slots:
     /* Update address list from core.
      */
-    void updateEntry(const QString &address, const QString &label, bool isMine, int status);
+    void updateEntry(const QString &address, const QString &label, bool isMine, const QString &purpose, int status);
 
     friend class AddressTablePriv;
 };
