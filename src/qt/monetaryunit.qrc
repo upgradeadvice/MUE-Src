@@ -49,6 +49,8 @@
         <file alias="checkbox.png">res/images/checkbox.png</file>
         <file alias="down_arrow.png">res/images/down_arrow.png</file>
         <file alias="handle.png">res/images/handle.png</file>
+        <file alias="bg">res/images/bg.png</file>
+        <file alias="qbg">res/images/qbg.png</file>
     </qresource>
     <qresource prefix="/style">
         <file alias="qss">res/style/monetaryunit.qss</file>

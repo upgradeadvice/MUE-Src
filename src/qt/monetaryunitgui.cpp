@@ -265,6 +265,13 @@ void MonetaryUnitGUI::createActions(bool fIsTestnet)
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
 
+    miningAction = new QAction(QIcon(":/icons/tx_mined"), tr("&Mining"), this);
+    miningAction->setStatusTip(tr("Mine new MonetaryUnits"));
+    miningAction->setToolTip(miningAction->statusTip());
+    miningAction->setCheckable(true);
+    miningAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    tabGroup->addAction(miningAction);
+
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -275,6 +282,8 @@ void MonetaryUnitGUI::createActions(bool fIsTestnet)
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(gotoReceiveCoinsPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
+    connect(miningAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setStatusTip(tr("Quit application"));
@@ -404,6 +413,7 @@ void MonetaryUnitGUI::createToolBars()
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
+        toolbar->addAction(miningAction);
         overviewAction->setChecked(true);
     }
 }
@@ -468,6 +478,7 @@ void MonetaryUnitGUI::setWalletActionsEnabled(bool enabled)
     sendCoinsAction->setEnabled(enabled);
     receiveCoinsAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
+    miningAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
     changePassphraseAction->setEnabled(enabled);
@@ -617,6 +628,11 @@ void MonetaryUnitGUI::gotoSignMessageTab(QString addr)
 void MonetaryUnitGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
+}
+
+void MonetaryUnitGUI::gotoMiningPage()
+{
+    if (walletFrame) walletFrame->gotoMiningPage();
 }
 #endif
 

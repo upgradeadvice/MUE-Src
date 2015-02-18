@@ -100,6 +100,7 @@ QT_FORMS_UI = \
   forms/rpcconsole.ui \
   forms/sendcoinsdialog.ui \
   forms/sendcoinsentry.ui \
+  forms/miningpage.ui \
   forms/signverifymessagedialog.ui \
   forms/transactiondescdialog.ui
 
@@ -147,8 +148,7 @@ QT_MOC_CPP = \
   moc_walletframe.cpp \
   moc_walletmodel.cpp \
   moc_walletview.cpp \
-  moc_miningpage.cpp \
-  moc_header.cpp \
+  moc_miningpage.cpp
 
 MONETARYUNIT_MM = \
   macdockiconhandler.mm \
@@ -216,8 +216,7 @@ MONETARYUNIT_QT_H = \
   walletmodeltransaction.h \
   walletview.h \
   winshutdownmonitor.h \
-  miningpage.h \
-  header.h
+  miningpage.h
 
 RES_ICONS = \
   res/icons/add.png \
@@ -314,14 +313,15 @@ MONETARYUNIT_QT_CPP += \
   walletmodel.cpp \
   walletmodeltransaction.cpp \
   walletview.cpp \
-  miningpage.cpp \
-  header.cpp
+  miningpage.cpp
 endif
 
 RES_IMAGES = \
   res/images/about.png \
   res/images/splash.png \
-  res/images/splash_testnet.png
+  res/images/splash_testnet.png \
+  res/images/bg.png \
+  res/images/qbg.png
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
