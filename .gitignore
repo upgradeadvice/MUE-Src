@@ -83,3 +83,10 @@ qa/pull-tester/run-monetaryunitd-for-test.sh
 qa/pull-tester/build-tests.sh
 
 !src/leveldb*/Makefile
+/.idea/.name
+/.idea/MUE-Src-0.9.3.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/CMakeLists.txt
