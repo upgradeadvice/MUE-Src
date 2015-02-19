@@ -93,7 +93,7 @@ int MonetaryUnitUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case MUE: return 8;
+    case MUE: return 5;
     case cMUE: return 3;
     case mMUE: return 2;
     default: return 0;
