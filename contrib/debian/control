@@ -11,15 +11,15 @@ Build-Depends: debhelper,
  libdb4.8++-dev,
  libssl-dev,
  pkg-config,
- libminiupnpc8-dev,
+ libminiupnpc-dev,
  libboost-filesystem-dev (>> 1.35) | libboost-filesystem1.35-dev,
  libboost-program-options-dev (>> 1.35) | libboost-program-options1.35-dev,
  libboost-thread-dev (>> 1.35) | libboost-thread1.35-dev,
  libboost-test-dev (>> 1.35) | libboost-test1.35-dev,
  qt5-qmake,
- libqt5-dev,
+ qtbase5-dev,
  libqrencode-dev,
- libprotobuf-dev, protobuf-compiler
+ libprotobuf-dev, protobuf-compiler, qttools5-dev
 Standards-Version: 3.9.2
 Homepage: http://www.monetaryunit.org/
 Vcs-Git: git://github.com/monetaryunit/mue-src.git
