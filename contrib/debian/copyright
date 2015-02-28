@@ -1,9 +1,8 @@
 Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
 Upstream-Name: MonetaryUnit
-Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
+Upstream-Contact: upgradeadvice <upgradeadvice@gmail.com>
  irc://#monetaryunit@freenode.net
-Source: http://sourceforge.net/projects/monetaryunit/files/
- https://github.com/monetaryunit/monetaryunit
+Source: https://github.com/monetaryunit/mue-src
 
 Files: *
 Copyright: 2009-2015, Bitcoin Developers, 2014-15, MonetaryUnit Developers

@@ -1,8 +1,8 @@
 Source: monetaryunit
 Section: utils
 Priority: optional
-Maintainer: Jonas Smedegaard <dr@jones.dk>
-Uploaders: Micah Anderson <micah@debian.org>
+Maintainer: upgradeadvice <upgradeadvice@gmail.com>
+Uploaders: upgradeadvice <upgradeadvice@gmail.com>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -22,8 +22,8 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler
 Standards-Version: 3.9.2
 Homepage: http://www.monetaryunit.org/
-Vcs-Git: git://github.com/monetaryunit/monetaryunit.git
-Vcs-Browser: http://github.com/monetaryunit/monetaryunit
+Vcs-Git: git://github.com/monetaryunit/mue-src.git
+Vcs-Browser: http://github.com/monetaryunit/mue-src
 
 Package: monetaryunitd
 Architecture: any
