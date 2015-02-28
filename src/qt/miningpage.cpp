@@ -132,59 +132,59 @@ void MiningPage::switchMining()
     restartMining(!GetBoolArg("-gen", false));
 }
 
-static QString formatTimeInterval(CBigNum t)
-{
-    enum  EUnit { YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, NUM_UNITS };
-
-    const int SecondsPerUnit[NUM_UNITS] =
-    {
-        31556952, // average number of seconds in gregorian year
-        31556952/12, // average number of seconds in gregorian month
-        24*60*60, // number of seconds in a day
-        60*60, // number of seconds in an hour
-        60, // number of seconds in a minute
-        1
-    };
-
-    const char* UnitNames[NUM_UNITS] =
-    {
-        "year",
-        "month",
-        "day",
-        "hour",
-        "minute",
-        "second"
-    };
-
-    if (t > 0xFFFFFFFF)
-    {
-        t /= SecondsPerUnit[YEAR];
-        return QString("%1 years").arg(t.ToString(10).c_str());
-    }
-    else
-    {
-        unsigned int t32 = t.getuint();
-
-        int Values[NUM_UNITS];
-        for (int i = 0; i < NUM_UNITS; i++)
-        {
-            Values[i] = t32/SecondsPerUnit[i];
-            t32 %= SecondsPerUnit[i];
-        }
-
-        int FirstNonZero = 0;
-        while (FirstNonZero < NUM_UNITS && Values[FirstNonZero] == 0)
-            FirstNonZero++;
-
-        QString TimeStr;
-        for (int i = FirstNonZero; i < std::min(FirstNonZero + 3, (int)NUM_UNITS); i++)
-        {
-            int Value = Values[i];
-            TimeStr += QString("%1 %2%3 ").arg(Value).arg(UnitNames[i]).arg((Value == 1)? "" : "s"); // FIXME: this is English specific
-        }
-        return TimeStr;
-    }
-}
+// static QString formatTimeInterval(CBigNum t)
+// {
+//     enum  EUnit { YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, NUM_UNITS };
+//
+//     const int SecondsPerUnit[NUM_UNITS] =
+//     {
+//         31556952, // average number of seconds in gregorian year
+//         31556952/12, // average number of seconds in gregorian month
+//         24*60*60, // number of seconds in a day
+//         60*60, // number of seconds in an hour
+//         60, // number of seconds in a minute
+//         1
+//     };
+//
+//     const char* UnitNames[NUM_UNITS] =
+//     {
+//         "year",
+//         "month",
+//         "day",
+//         "hour",
+//         "minute",
+//         "second"
+//     };
+//
+//     if (t > 0xFFFFFFFF)
+//     {
+//         t /= SecondsPerUnit[YEAR];
+//         return QString("%1 years").arg(t.ToString(10).c_str());
+//     }
+//     else
+//     {
+//         unsigned int t32 = t.getuint();
+//
+//         int Values[NUM_UNITS];
+//         for (int i = 0; i < NUM_UNITS; i++)
+//         {
+//             Values[i] = t32/SecondsPerUnit[i];
+//             t32 %= SecondsPerUnit[i];
+//         }
+//
+//         int FirstNonZero = 0;
+//         while (FirstNonZero < NUM_UNITS && Values[FirstNonZero] == 0)
+//             FirstNonZero++;
+//
+//         QString TimeStr;
+//         for (int i = FirstNonZero; i < std::min(FirstNonZero + 3, (int)NUM_UNITS); i++)
+//         {
+//             int Value = Values[i];
+//             TimeStr += QString("%1 %2%3 ").arg(Value).arg(UnitNames[i]).arg((Value == 1)? "" : "s"); // FIXME: this is English specific
+//         }
+//         return TimeStr;
+//     }
+// }
 
 static QString formatHashrate(int64_t n)
 {
