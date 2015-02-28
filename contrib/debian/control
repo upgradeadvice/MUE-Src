@@ -19,7 +19,7 @@ Build-Depends: debhelper,
  qt5-qmake,
  qtbase5-dev,
  libqrencode-dev,
- libprotobuf-dev, protobuf-compiler, qttools5-dev
+ libprotobuf-dev, protobuf-compiler, qttools5-dev, qttools5-dev-tools
 Standards-Version: 3.9.2
 Homepage: http://www.monetaryunit.org/
 Vcs-Git: git://github.com/monetaryunit/mue-src.git
