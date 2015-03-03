@@ -167,7 +167,7 @@ public:
         nDefaultPort = 18444;
         strDataDir = "regtest";
         //assert(hashGenesisBlock == uint256("0x0000070e6b650e7a6f20e015031b74c1f7e2b25ed4e419d8825ab9cc7eccfa92"));
-	assert(hashGenesisBlock == hashGenesisBlock);
+        assert(hashGenesisBlock == hashGenesisBlock);
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
 

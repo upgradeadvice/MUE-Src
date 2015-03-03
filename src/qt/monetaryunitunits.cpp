@@ -41,7 +41,7 @@ QString MonetaryUnitUnits::name(int unit)
     {
     case MUE: return QString("MUE");
     case cMUE: return QString("cMUE");
-    case mMUE: return QString::fromUtf8("mMUE");
+    case mMUE: return QString("mMUE");
     default: return QString("???");
     }
 }

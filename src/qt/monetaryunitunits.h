@@ -19,9 +19,6 @@ class MonetaryUnitUnits: public QAbstractListModel
 public:
     explicit MonetaryUnitUnits(QObject *parent);
 
-    /** MonetaryUnit units.
-      @note Source: https://en.monetaryunit.it/wiki/Units . Please add only sensible ones
-     */
     enum Unit
     {
         MUE,
