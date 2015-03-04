@@ -410,7 +410,8 @@ res/style/form/bg-combo.png \
 res/style/form/btn-bar.png \
 res/style/form/bg-textbox.png \
 res/style/form/cheveron-up.png \
-res/style/bg.png
+res/style/bg.png \
+res/style/monetaryunit.qss
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
