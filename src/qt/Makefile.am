@@ -328,6 +328,90 @@ RES_IMAGES = \
   res/images/logo.png \
   res/images/wallet_bgcoin.png
 
+RES_STYLE = \
+res/style/icons/black/copy.png \
+res/style/icons/black/key.png \
+res/style/icons/black/connected.png \
+res/style/icons/black/terminal.png \
+res/style/icons/black/paste.png \
+res/style/icons/black/save.png \
+res/style/icons/black/wrench.png \
+res/style/icons/black/address-book.png \
+res/style/icons/black/lock.png \
+res/style/icons/black/sign-out.png \
+res/style/icons/black/sign-in.png \
+res/style/icons/black/lock-open.png \
+res/style/icons/light/copy.png \
+res/style/icons/light/key.png \
+res/style/icons/light/connected.png \
+res/style/icons/light/terminal.png \
+res/style/icons/light/paste.png \
+res/style/icons/light/disconnected.png \
+res/style/icons/light/save.png \
+res/style/icons/light/wrench.png \
+res/style/icons/light/address-book.png \
+res/style/icons/light/lock.png \
+res/style/icons/light/sign-out.png \
+res/style/icons/light/sign-in.png \
+res/style/icons/light/spinner.png \
+res/style/icons/light/verify.png \
+res/style/icons/light/lock-open.png \
+res/style/bg-old.png \
+res/style/items/checkbox_unchecked_pressed.png \
+res/style/items/checkbox_unchecked_hover.png \
+res/style/items/checkbox_disabled.png \
+res/style/items/checkbox_checked_hover.png \
+res/style/items/checkbox_checked_pressed.png \
+res/style/items/checkbox_unchecked.png \
+res/style/items/checkbox_checked.png \
+res/style/items/checkbox/checkbox_checked_disabled.png \
+res/style/items/checkbox/checkbox_indeterminate_disabled.png \
+res/style/items/checkbox/checkbox_intermediate.png \
+res/style/items/checkbox/checkbox_unchecked.png \
+res/style/items/checkbox/checkbox_checked.png \
+res/style/items/checkbox/checkbox_unchecked_disabled.png \
+res/style/sendcoins/btn-add-rcpnt.png \
+res/style/sendcoins/btn-clear-all.png \
+res/style/sendcoins/btn-send.png \
+res/style/icon-txt/active/overview.png \
+res/style/icon-txt/active/send-coin.png \
+res/style/icon-txt/active/mining.png \
+res/style/icon-txt/active/address.png \
+res/style/icon-txt/active/recieve.png \
+res/style/icon-txt/active/export.png \
+res/style/icon-txt/active/transactions.png \
+res/style/icon-txt/disabled/btn-exports-disable.png \
+res/style/icon-txt/normal/overview.png \
+res/style/icon-txt/normal/send-coin.png \
+res/style/icon-txt/normal/mining.png \
+res/style/icon-txt/normal/address.png \
+res/style/icon-txt/normal/recieve.png \
+res/style/icon-txt/normal/export.png \
+res/style/icon-txt/normal/transactions.png \
+res/style/logo.png \
+res/style/button/pushbutton_pressed.png \
+res/style/button/btn.png \
+res/style/button/pushbutton_hover.png \
+res/style/button/pushbutton.png \
+res/style/address/btn-ok-orange1.png \
+res/style/address/btn-ok-1.png \
+res/style/address/btn-verify-msg.png \
+res/style/address/btn-delete.png \
+res/style/address/btn-show-codes.png \
+res/style/address/btn-new-adrs.png \
+res/style/address/btn-copy-adrs.png \
+res/style/address/btn-sign-msg.png \
+res/style/leftbar/bg-menu.png \
+res/style/leftbar/btn-bar.png \
+res/style/leftbar/bg-footer.png \
+res/style/leftbar/bg-form.png \
+res/style/form/cheveron-down.png \
+res/style/form/bg-combo.png \
+res/style/form/btn-bar.png \
+res/style/form/bg-textbox.png \
+res/style/form/cheveron-up.png \
+res/style/bg.png
+
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
 MONETARYUNIT_RC = res/monetaryunit-qt-res.rc
@@ -335,7 +419,7 @@ MONETARYUNIT_RC = res/monetaryunit-qt-res.rc
 libmonetaryunitqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
 libmonetaryunitqt_a_SOURCES = $(MONETARYUNIT_QT_CPP) $(MONETARYUNIT_QT_H) $(QT_FORMS_UI) \
-  $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
+  $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_STYLE) $(RES_MOVIES)
 
 nodist_libmonetaryunitqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP)
@@ -381,7 +465,7 @@ translate: monetaryunitstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(MONETARYUNIT_
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
 	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/monetaryunit_en.ts
 
-$(QT_QRC_CPP): $(QT_QRC) $(QT_QM) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
+$(QT_QRC_CPP): $(QT_QRC) $(QT_QM) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_STYLE) $(RES_MOVIES) $(PROTOBUF_H)
 	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name monetaryunit -o $(abs_builddir)/$@ $< || \
 	  echo error: could not build $@
 	$(SED) -e '/^\*\*.*Created:/d' $@ > $@.n && mv $@{.n,}
