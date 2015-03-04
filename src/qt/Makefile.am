@@ -321,7 +321,12 @@ RES_IMAGES = \
   res/images/splash.png \
   res/images/splash_testnet.png \
   res/images/bg.png \
-  res/images/qbg.png
+  res/images/qbg.png  \
+  res/images/checkbox.png \
+  res/images/down_arrow.png \
+  res/images/handle.png \
+  res/images/logo.png \
+  res/images/wallet_bgcoin.png
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 

@@ -18,7 +18,6 @@
 #include "transactiontablemodel.h"
 #include "transactionview.h"
 #include "walletmodel.h"
-#include "header.h"
 
 #include "ui_interface.h"
 
