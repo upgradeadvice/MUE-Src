@@ -24,7 +24,7 @@
 
 BOOST_AUTO_TEST_SUITE(compress_tests)
 
-bool static TestEncode(uint64_t in) {
+/*bool static TestEncode(uint64_t in) {
     return in == CTxOutCompressor::DecompressAmount(CTxOutCompressor::CompressAmount(in));
 }
 
@@ -60,6 +60,6 @@ BOOST_AUTO_TEST_CASE(compress_amounts)
 
     for (uint64_t i = 0; i < 100000; i++)
         BOOST_CHECK(TestDecode(i));
-}
+}*/
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -112,7 +112,7 @@ struct ReadAlerts
 
 BOOST_FIXTURE_TEST_SUITE(Alert_tests, ReadAlerts)
 
-
+/*
 BOOST_AUTO_TEST_CASE(AlertApplies)
 {
     SetMockTime(11);
@@ -180,5 +180,5 @@ BOOST_AUTO_TEST_CASE(AlertNotify)
     SetMockTime(0);
 }
 #endif
-
+*/
 BOOST_AUTO_TEST_SUITE_END()
