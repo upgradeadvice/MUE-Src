@@ -86,6 +86,7 @@ int MonetaryUnitUnits::amountDigits(int unit)
     case MUE: return 17; // trillions (# digits, without commas)
     case cMUE: return 19; // *100
     case mMUE: return 20; // *1,000
+    default: return 0;
     }
 }
 
