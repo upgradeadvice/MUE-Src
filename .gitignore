@@ -90,3 +90,5 @@ qa/pull-tester/build-tests.sh
 /.idea/vcs.xml
 /.idea/workspace.xml
 /CMakeLists.txt
+/.idea/MUE-Src.iml
+/config.cache
