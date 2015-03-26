@@ -2457,7 +2457,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CDiskBlockPos* dbp)
             return state.DoS(100, error("AcceptBlock() : forked chain older than last checkpoint (height %d)", nHeight));
 
         // Reject block.nVersion=1 blocks when 95% (75% on testnet) of the network has upgraded:
-        if (block.nVersion < 112)
+        // Skip blocks before we implemented this so chain will sync...
+        if (nHeight >=600000 && block.nVersion < 112)
         {
             if ((!TestNet() && CBlockIndex::IsSuperMajority(112, pindexPrev, 950, 1000)) ||
                 (TestNet() && CBlockIndex::IsSuperMajority(112, pindexPrev, 75, 100)))
@@ -2468,7 +2469,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CDiskBlockPos* dbp)
         }
 
         // Reject block.nVersion=2 blocks when 95% (75% on testnet) of the network has upgraded:
-        if (block.nVersion < 113)
+        if (nHeight >=600000 && block.nVersion < 113)
         {
             if ((!TestNet() && CBlockIndex::IsSuperMajority(113, pindexPrev, 950, 1000)) ||
                 (TestNet() && CBlockIndex::IsSuperMajority(113, pindexPrev, 75, 100)))
