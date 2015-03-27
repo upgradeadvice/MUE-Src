@@ -37,35 +37,6 @@ MiningPage::MiningPage(QWidget *parent) :
         model(0)
 {
     ui->setupUi(this);
-
-    int nThreads = boost::thread::hardware_concurrency();
-
-    int nUseThreads = GetArg("-genproclimit", -1);
-    if (nUseThreads < 0)
-         nUseThreads = nThreads;
-
-    std::string PrivAddress = GetArg("-miningprivkey", "");
-    if (!PrivAddress.empty())
-    {
-        CMonetaryUnitSecret Secret;
-        Secret.SetString(PrivAddress);
-        if (Secret.IsValid())
-        {
-            CMonetaryUnitAddress Address;
-            Address.Set(Secret.GetKey().GetPubKey().GetID());
-            ui->labelAddress->setText(QString("All mined coins will go to to %1").arg(Address.ToString().c_str()));
-            hasMiningprivkey = true;
-        }
-    }
-
-    ui->sliderCores->setMinimum(0);
-    ui->sliderCores->setMaximum(nThreads);
-    ui->sliderCores->setValue(nUseThreads);
-    ui->labelNCores->setText(QString("%1").arg(nUseThreads));
-
-    connect(ui->sliderCores, SIGNAL(valueChanged(int)), this, SLOT(changeNumberOfCores(int)));
-    connect(ui->pushSwitchMining, SIGNAL(clicked()), this, SLOT(switchMining()));
-
     updateUI();
     startTimer(1500);
 }
@@ -82,109 +53,7 @@ void MiningPage::setModel(WalletModel *model)
 
 void MiningPage::updateUI()
 {
-    int nThreads = boost::thread::hardware_concurrency();
-
-    int nUseThreads = GetArg("-genproclimit", -1);
-    if (nUseThreads < 0)
-        nUseThreads = nThreads;
-
-
-    ui->labelNCores->setText(QString("%1").arg(nUseThreads));
-    ui->pushSwitchMining->setText(GetBoolArg("-gen", false)? tr("Stop mining") : tr("Start mining"));
 }
-
-void MiningPage::restartMining(bool fGenerate)
-{
-    int nThreads = ui->sliderCores->value();
-
-    mapArgs["-genproclimit"] = QString("%1").arg(nThreads).toUtf8().data();
-
-    // unlock wallet before mining
-    if (fGenerate && !hasMiningprivkey && !unlockContext.get())
-    {
-        this->unlockContext.reset(new WalletModel::UnlockContext(model->requestUnlock()));
-        if (!unlockContext->isValid())
-        {
-            unlockContext.reset(NULL);
-            return;
-        }
-    }
-
-    json_spirit::Array Args;
-    Args.push_back(fGenerate);
-    Args.push_back(nThreads);
-    setgenerate(Args, false);
-
-    // lock wallet after mining
-    if (!fGenerate && !hasMiningprivkey)
-        unlockContext.reset(NULL);
-
-    updateUI();
-}
-
-void MiningPage::changeNumberOfCores(int i)
-{
-    restartMining(GetBoolArg("-gen", true));
-}
-
-void MiningPage::switchMining()
-{
-    restartMining(!GetBoolArg("-gen", false));
-}
-
-// static QString formatTimeInterval(CBigNum t)
-// {
-//     enum  EUnit { YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, NUM_UNITS };
-//
-//     const int SecondsPerUnit[NUM_UNITS] =
-//     {
-//         31556952, // average number of seconds in gregorian year
-//         31556952/12, // average number of seconds in gregorian month
-//         24*60*60, // number of seconds in a day
-//         60*60, // number of seconds in an hour
-//         60, // number of seconds in a minute
-//         1
-//     };
-//
-//     const char* UnitNames[NUM_UNITS] =
-//     {
-//         "year",
-//         "month",
-//         "day",
-//         "hour",
-//         "minute",
-//         "second"
-//     };
-//
-//     if (t > 0xFFFFFFFF)
-//     {
-//         t /= SecondsPerUnit[YEAR];
-//         return QString("%1 years").arg(t.ToString(10).c_str());
-//     }
-//     else
-//     {
-//         unsigned int t32 = t.getuint();
-//
-//         int Values[NUM_UNITS];
-//         for (int i = 0; i < NUM_UNITS; i++)
-//         {
-//             Values[i] = t32/SecondsPerUnit[i];
-//             t32 %= SecondsPerUnit[i];
-//         }
-//
-//         int FirstNonZero = 0;
-//         while (FirstNonZero < NUM_UNITS && Values[FirstNonZero] == 0)
-//             FirstNonZero++;
-//
-//         QString TimeStr;
-//         for (int i = FirstNonZero; i < std::min(FirstNonZero + 3, (int)NUM_UNITS); i++)
-//         {
-//             int Value = Values[i];
-//             TimeStr += QString("%1 %2%3 ").arg(Value).arg(UnitNames[i]).arg((Value == 1)? "" : "s"); // FIXME: this is English specific
-//         }
-//         return TimeStr;
-//     }
-// }
 
 static QString formatHashrate(int64_t n)
 {
@@ -204,20 +73,5 @@ static QString formatHashrate(int64_t n)
 void MiningPage::timerEvent(QTimerEvent *)
 {
     int64_t NetworkHashrate = GetNetworkHashPS(120, -1).get_int64();
-    int64_t Hashrate = GetBoolArg("-gen", true)? gethashespersec(json_spirit::Array(), false).get_int64() : 0;
-    QString NextBlockTime;
-    if (Hashrate == 0)
-        NextBlockTime = QChar(L'∞');
-    else
-    {
-//        CBigNum Target;
-//        Target.SetCompact(pblock->nBits);
-//        CBigNum ExpectedTime = (CBigNum(1) << 256)/(Target*Hashrate);
-//        NextBlockTime = formatTimeInterval(ExpectedTime);
-        NextBlockTime = QChar(L'?');
-    }
-
     ui->labelNethashrate->setText(formatHashrate(NetworkHashrate));
-    ui->labelYourHashrate->setText(formatHashrate(Hashrate));
-    ui->labelNextBlock->setText(NextBlockTime);
 }

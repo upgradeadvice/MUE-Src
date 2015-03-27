@@ -10,11 +10,11 @@ SetCompressor /SOLID lzma
 !define URL http://www.monetaryunit.org/
 
 # MUI Symbol Definitions
-!define MUI_ICON "/home/james/Code/MUE-Src-0.9.3/share/pixmaps/monetaryunit.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "/home/james/Code/MUE-Src-0.9.3/share/pixmaps/nsis-wizard.bmp"
+!define MUI_ICON "/home/james/Code/MUE-Src/share/pixmaps/monetaryunit.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "/home/james/Code/MUE-Src/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "/home/james/Code/MUE-Src-0.9.3/share/pixmaps/nsis-header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "/home/james/Code/MUE-Src/share/pixmaps/nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
@@ -22,7 +22,7 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "MonetaryUnit Core"
 !define MUI_FINISHPAGE_RUN $INSTDIR\monetaryunit-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/james/Code/MUE-Src-0.9.3/share/pixmaps/nsis-wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/james/Code/MUE-Src/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
@@ -48,7 +48,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /home/james/Code/MUE-Src-0.9.3/monetaryunit-${VERSION}-win-setup.exe
+OutFile /home/james/Code/MUE-Src/monetaryunit-${VERSION}-win-setup.exe
 !if "" == "64"
 InstallDir $PROGRAMFILES64\MonetaryUnit
 !else
@@ -73,14 +73,14 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /home/james/Code/MUE-Src-0.9.3/release/monetaryunit-qt.exe
-    File /oname=COPYING.txt /home/james/Code/MUE-Src-0.9.3/COPYING
-    File /oname=readme.txt /home/james/Code/MUE-Src-0.9.3/doc/README_windows.txt
+    File /home/james/Code/MUE-Src/release/monetaryunit-qt.exe
+    File /oname=COPYING.txt /home/james/Code/MUE-Src/COPYING
+    File /oname=readme.txt /home/james/Code/MUE-Src/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /home/james/Code/MUE-Src-0.9.3/release/monetaryunitd.exe
-    File /home/james/Code/MUE-Src-0.9.3/release/monetaryunit-cli.exe
+    File /home/james/Code/MUE-Src/release/monetaryunitd.exe
+    File /home/james/Code/MUE-Src/release/monetaryunit-cli.exe
     SetOutPath $INSTDIR\doc
-    File /r /home/james/Code/MUE-Src-0.9.3/doc\*.*
+    File /r /home/james/Code/MUE-Src/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 

@@ -186,6 +186,7 @@ MONETARYUNIT_QT_H = \
   macdockiconhandler.h \
   macnotificationhandler.h \
   monitoreddatamapper.h \
+  networkstyle.h \
   notificator.h \
   openuridialog.h \
   optionsdialog.h \
@@ -274,6 +275,7 @@ MONETARYUNIT_QT_CPP = \
   guiutil.cpp \
   intro.cpp \
   monitoreddatamapper.cpp \
+  networkstyle.cpp \
   notificator.cpp \
   optionsdialog.cpp \
   optionsmodel.cpp \

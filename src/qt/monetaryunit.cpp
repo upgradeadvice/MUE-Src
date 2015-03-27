@@ -13,6 +13,7 @@
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "intro.h"
+#include "networkstyle.h"
 #include "optionsmodel.h"
 #include "splashscreen.h"
 #include "utilitydialog.h"
@@ -179,9 +180,9 @@ public:
     /// Create options model
     void createOptionsModel();
     /// Create main window
-    void createWindow(bool isaTestNet);
+    void createWindow(const NetworkStyle *networkStyle);
     /// Create splash screen
-    void createSplashScreen(bool isaTestNet);
+    void createSplashScreen(const NetworkStyle *networkStyle);
     /// Request core initialization
     void requestInitialize();
     /// Request core shutdown
@@ -317,18 +318,18 @@ void MonetaryUnitApplication::createOptionsModel()
     optionsModel = new OptionsModel();
 }
 
-void MonetaryUnitApplication::createWindow(bool isaTestNet)
+void MonetaryUnitApplication::createWindow(const NetworkStyle *networkStyle)
 {
-    window = new MonetaryUnitGUI(isaTestNet, 0);
+    window = new MonetaryUnitGUI(networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
     pollShutdownTimer->start(200);
 }
 
-void MonetaryUnitApplication::createSplashScreen(bool isaTestNet)
+void MonetaryUnitApplication::createSplashScreen(const NetworkStyle *networkStyle)
 {
-    SplashScreen *splash = new SplashScreen(QPixmap(), 0, isaTestNet);
+    SplashScreen *splash = new SplashScreen(0, networkStyle);
     splash->setAttribute(Qt::WA_DeleteOnClose);
     splash->show();
     connect(this, SIGNAL(splashFinished(QWidget*)), splash, SLOT(slotFinish(QWidget*)));
@@ -393,7 +394,6 @@ void MonetaryUnitApplication::initializeResult(int retval)
         paymentServer->setOptionsModel(optionsModel);
 #endif
 
-        emit splashFinished(window);
 
         clientModel = new ClientModel(optionsModel);
         window->setClientModel(clientModel);
@@ -420,6 +420,8 @@ void MonetaryUnitApplication::initializeResult(int retval)
         {
             window->show();
         }
+        emit splashFinished(window);
+
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
         // monetaryunit: URIs or payment requests:
@@ -548,12 +550,10 @@ int main(int argc, char *argv[])
     if (!PaymentServer::ipcParseCommandLine(argc, argv))
         exit(0);
 #endif
-    bool isaTestNet = Params().NetworkID() != CChainParams::MAIN;
+    QScopedPointer<const NetworkStyle> networkStyle(NetworkStyle::instantiate(QString::fromStdString(Params().NetworkIDString())));
+    assert(!networkStyle.isNull());
     // Allow for separate UI settings for testnets
-    if (isaTestNet)
-        QApplication::setApplicationName(QAPP_APP_NAME_TESTNET);
-    else
-        QApplication::setApplicationName(QAPP_APP_NAME_DEFAULT);
+    QApplication::setApplicationName(networkStyle->getAppName());
     // Re-initialize translations after changing application name (language in network-specific settings can be different)
     initTranslations(qtTranslatorBase, qtTranslator, translatorBase, translator);
 
@@ -593,11 +593,11 @@ int main(int argc, char *argv[])
     uiInterface.InitMessage.connect(InitMessage);
 
     if (GetBoolArg("-splash", true) && !GetBoolArg("-min", false))
-        app.createSplashScreen(isaTestNet);
+        app.createSplashScreen(networkStyle.data());
 
     try
     {
-        app.createWindow(isaTestNet);
+        app.createWindow(networkStyle.data());
         app.requestInitialize();
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
         WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("MonetaryUnit Core didn't yet exit safely..."), (HWND)app.getMainWinId());
