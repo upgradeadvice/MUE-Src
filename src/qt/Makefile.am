@@ -328,7 +328,32 @@ RES_IMAGES = \
   res/images/down_arrow.png \
   res/images/handle.png \
   res/images/logo.png \
-  res/images/wallet_bgcoin.png
+  res/images/wallet_bgcoin.png \
+  res/images/up_arrow_disabled.png  \
+  res/images/Hmovetoolbar.png  \
+  res/images/stylesheet-branch-end.png  \
+  res/images/branch_closed-on.png  \
+  res/images/stylesheet-vline.png  \
+  res/images/branch_closed.png  \
+  res/images/branch_open-on.png  \
+  res/images/transparent.png  \
+  res/images/right_arrow_disabled.png  \
+  res/images/sizegrip.png  \
+  res/images/close.png  \
+  res/images/down_arrow.png  \
+  res/images/Vmovetoolbar.png  \
+  res/images/left_arrow.png  \
+  res/images/stylesheet-branch-more.png  \
+  res/images/up_arrow.png  \
+  res/images/right_arrow.png  \
+  res/images/left_arrow_disabled.png  \
+  res/images/Hsepartoolbar.png  \
+  res/images/checkbox.png  \
+  res/images/checkbox_indeterminate.png  \
+  res/images/branch_open.png  \
+  res/images/Vsepartoolbar.png  \
+  res/images/down_arrow_disabled.png  \
+  res/images/undock.png
 
 RES_STYLE = \
 res/style/icons/black/copy.png \

@@ -39,7 +39,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     // define text to place
     QString titleText       = tr("MonetaryUnit Core");
     QString versionText     = QString("Version %1").arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightText   = QChar(0xA9)+QString(" 20014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The MonetaryUnit Core developers"));
+    QString copyrightText   = QChar(0xA9)+QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The MonetaryUnit Core developers"));
     QString titleAddText    = networkStyle->getTitleAddText();
 
     QString font            = QApplication::font().toString();
@@ -77,7 +77,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     int titleTextWidth  = fm.width(titleText);
     if(titleTextWidth > 160) {
         // strange font rendering, Arial probably not found
-        fontFactor = 0.75;
+        fontFactor = 0.55;
     }
 
     pixPaint.setFont(QFont(font, 33*fontFactor));

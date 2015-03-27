@@ -52,6 +52,19 @@
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>110</y>
+        <width>561</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Getting Started&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Linux quarkminer installation &amp;amp; startscript by &lt;a href=&quot;https://bitcointalk.org/index.php?action=profile;u=184146&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#ff9f31;&quot;&gt;drakoin&lt;/span&gt;&lt;/a&gt;:&lt;br/&gt;- &lt;a href=&quot;https://bitcointalk.org/index.php?topic=460178.msg9304572#msg9304572&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#ff9f31;&quot;&gt;https://bitcointalk.org/index.php?topic=460178.msg9304572#msg9304572&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;e-pool.net - 1% fee &lt;a href=&quot;http://p2pool.e-pool.net:8963/static/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#ff9f31;&quot;&gt;MonetaryUnit on e-pool&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Suprnova.cc - 1% fee &lt;a href=&quot;https://mue.suprnova.cc&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#ff9f31;&quot;&gt;MonetaryUnit on Suprnova&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>
