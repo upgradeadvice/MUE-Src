@@ -71,8 +71,8 @@ public:
         assert(hashGenesisBlock == hashMainGenesisBlock);
         assert(genesis.hashMerkleRoot == uint256("0xa2cc3c1d8ab6e50e80464693199eefdd172d45c4129998394e636e47b5621364"));
 
-        vSeeds.push_back(CDNSSeedData("dnsseed.monetaryunit.tk", "dnsseed.monetaryunit.tk"));
-        vSeeds.push_back(CDNSSeedData("dnsseed2.monetaryunit.tk", "dnsseed2.monetaryunit.tk"));
+        vSeeds.push_back(CDNSSeedData("dnsseed.monetaryunit.tk", "dns.monetaryunit.tk"));
+        vSeeds.push_back(CDNSSeedData("dnsseed2.monetaryunit.tk", "dns.monetaryunit.tk"));
         // vSeeds.push_back(CDNSSeedData("103.19.252.82", "103.19.252.82"));
         // vSeeds.push_back(CDNSSeedData("178.62.247.76", "178.62.247.76"));
         // vSeeds.push_back(CDNSSeedData("104.131.66.88", "104.131.66.88"));

@@ -1,18 +1,18 @@
 Regression tests of RPC interface
 =================================
 
-### [python-monetaryunitrpc](https://github.com/jgarzik/python-monetaryunitrpc)
-Git subtree of [https://github.com/jgarzik/python-monetaryunitrpc](https://github.com/jgarzik/python-monetaryunitrpc).
-Changes to python-monetaryunitrpc should be made upstream, and then
+### [python-bitcoinrpc](https://github.com/jgarzik/python-bitcoinrpc)
+Git subtree of [https://github.com/jgarzik/python-bitcoinrpc](https://github.com/jgarzik/python-bitcoinrpc).
+Changes to python-bitcoinrpc should be made upstream, and then
 pulled here using git subtree.
 
-### [skeleton.py](skeleton.py)
-Copy this to create new regression tests.
+### [test_framework.py](test_framework.py)
+Base class for new regression tests.
 
 ### [listtransactions.py](listtransactions.py)
 Tests for the listtransactions RPC call.
 
-### [util.py](util.sh)
+### [util.py](util.py)
 Generally useful functions.
 
 Bash-based tests, to be ported to Python:
@@ -28,7 +28,7 @@ Notes
 A 200-block -regtest blockchain and wallets for four nodes
 is created the first time a regression test is run and
 is stored in the cache/ directory. Each node has 25 mature
-blocks (25*50=1250 MUE) in their wallet.
+blocks (25*50=1250 BTC) in their wallet.
 
 After the first run, the cache/ blockchain and wallets are
 copied into a temporary directory and used as the initial
