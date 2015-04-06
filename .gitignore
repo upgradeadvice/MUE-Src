@@ -80,7 +80,10 @@ linux-coverage-build
 linux-build
 win32-build
 qa/pull-tester/run-monetaryunitd-for-test.sh
-qa/pull-tester/build-tests.sh
+qa/pull-tester/tests-config.sh
+qa/pull-tester/cache/*
+qa/pull-tester/test.*/*
+cache
 
 !src/leveldb*/Makefile
 /.idea/.name
