@@ -5,6 +5,8 @@
 #   command. See: https://github.com/travis-ci/casher/issues/6
 os: linux
 language: cpp
+notifications:
+  slack: monetaryunit:C2TQNQk9Y2EdkcpMeK6RCacb
 env:
   global:
     - MAKEJOBS=-j3
