@@ -35,7 +35,7 @@ src/qt/test/moc*.cpp
 *.orig
 *.o
 *.o-*
-*.patch
+
 .monetaryunit
 *.a
 *.pb.cc
