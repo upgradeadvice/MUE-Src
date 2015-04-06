@@ -42,7 +42,7 @@ matrix:
       env: HOST=x86_64-apple-darwin11 PACKAGES="cmake libcap-dev libz-dev libbz2-dev" MONETARYUNIT_CONFIG="" OSX_SDK=10.9 GOAL="deploy"
 install:
     - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get update; fi
-    - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES; fi
+    - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get install --no-upgrade -qq $PACKAGES; fi
 before_script:
     - unset CC; unset CXX
     - mkdir -p depends/SDKs depends/sdk-sources
