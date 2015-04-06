@@ -86,6 +86,7 @@ qa/pull-tester/test.*/*
 cache
 
 !src/leveldb*/Makefile
+!depends/Makefile
 /.idea/.name
 /.idea/MUE-Src-0.9.3.iml
 /.idea/misc.xml
