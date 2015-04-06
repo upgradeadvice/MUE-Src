@@ -394,6 +394,8 @@ AC_TRY_COMPILE([#include <sys/socket.h>],
  [ AC_MSG_RESULT(no)]
 )
 
+AC_SEARCH_LIBS([clock_gettime],[rt])
+
 LEVELDB_CPPFLAGS=
 LIBLEVELDB=
 LIBMEMENV=
