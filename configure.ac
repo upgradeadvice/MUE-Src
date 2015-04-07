@@ -7,19 +7,12 @@ define(_CLIENT_VERSION_BUILD, 1)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2015)
 AC_INIT([MonetaryUnit Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION._CLIENT_VERSION_BUILD],[info@monetaryunit.org],[monetaryunit])
-AC_CONFIG_AUX_DIR([src/build-aux])
-AC_CONFIG_MACRO_DIR([src/m4])
+AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([build-aux/m4])
 AC_CANONICAL_HOST
 AH_TOP([#ifndef MONETARYUNIT_CONFIG_H])
 AH_TOP([#define MONETARYUNIT_CONFIG_H])
 AH_BOTTOM([#endif //MONETARYUNIT_CONFIG_H])
-
-# This m4 will only be used if a system copy cannot be found. This is helpful
-# on systems where autotools are installed but the pkg-config macros are not in
-# a default location. It is currently used for building on OSX where autotools
-# are preinstalled but pkg-config comes from macports or homebrew. It should
-# probably be removed when building on <= 10.6 is no longer supported.
-m4_include([pkg.m4])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -42,6 +35,30 @@ AM_MAINTAINER_MODE([enable])
 
 dnl make the compilation flags quiet unless V=1 is used
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
+dnl Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXXCPP
+AC_PROG_INSTALL
+AC_PROG_OBJC
+AC_PROG_LN_S
+m4_ifdef([AC_PROG_OBJCXX],[AC_PROG_OBJCXX])
+AC_PROG_MKDIR_P
+AC_PROG_SED
+AC_PATH_TOOL(AR, ar)
+AC_PATH_TOOL(RANLIB, ranlib)
+AC_PATH_TOOL(STRIP, strip)
+AC_PATH_TOOL(GCOV, gcov)
+AC_PATH_PROG(LCOV, lcov)
+AC_PATH_PROG(JAVA, java)
+AC_PATH_PROG(GENHTML, genhtml)
+AC_PATH_PROG([GIT], [git])
+AC_PATH_PROG(CCACHE,ccache)
+AC_PATH_PROG(XGETTEXT,xgettext)
+AC_PATH_PROG(HEXDUMP,hexdump)
+PKG_PROG_PKG_CONFIG
 
 # Enable wallet
 AC_ARG_ENABLE([wallet],
@@ -112,30 +129,6 @@ AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[spec
 
 AC_CONFIG_SRCDIR([src])
 AC_CONFIG_HEADERS([src/monetaryunit-config.h])
-
-dnl Checks for programs.
-AC_PROG_CXX
-AC_PROG_CC
-AC_PROG_CPP
-AC_PROG_CXXCPP
-AC_PROG_INSTALL
-AC_PROG_OBJC
-AC_PROG_LN_S
-m4_ifdef([AC_PROG_OBJCXX],[AC_PROG_OBJCXX])
-AC_PROG_MKDIR_P
-AC_PROG_SED
-AC_PATH_TOOL(AR, ar)
-AC_PATH_TOOL(RANLIB, ranlib)
-AC_PATH_TOOL(STRIP, strip)
-AC_PATH_TOOL(GCOV, gcov)
-AC_PATH_PROG(LCOV, lcov)
-AC_PATH_PROG(JAVA, java)
-AC_PATH_PROG(GENHTML, genhtml)
-AC_PATH_PROG([GIT], [git])
-AC_PATH_PROG(CCACHE,ccache)
-AC_PATH_PROG(XGETTEXT,xgettext)
-AC_PATH_PROG(HEXDUMP,hexdump)
-PKG_PROG_PKG_CONFIG
 
 # Enable debug
 AC_ARG_ENABLE([debug],
@@ -266,6 +259,9 @@ case $host in
      fi
 
      CPPFLAGS="$CPPFLAGS -DMAC_OSX"
+     ;;
+   *linux*)
+     TARGET_OS=linux
      ;;
    *)
      ;;
