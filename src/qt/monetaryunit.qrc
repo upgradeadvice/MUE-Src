@@ -46,39 +46,34 @@
         <file alias="about">res/images/about.png</file>
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
-        <file alias="checkbox.png">res/images/checkbox.png</file>
-        <file alias="down_arrow.png">res/images/down_arrow.png</file>
-        <file alias="handle.png">res/images/handle.png</file>
-        <file alias="bg">res/images/bg.png</file>
-        <file alias="qbg">res/images/qbg.png</file>
-        <file>res/images/up_arrow_disabled.png</file>
-        <file>res/images/Hmovetoolbar.png</file>
-        <file>res/images/stylesheet-branch-end.png</file>
-        <file>res/images/branch_closed-on.png</file>
-        <file>res/images/stylesheet-vline.png</file>
-        <file>res/images/branch_closed.png</file>
-        <file>res/images/branch_open-on.png</file>
-        <file>res/images/transparent.png</file>
-        <file>res/images/right_arrow_disabled.png</file>
-        <file>res/images/sizegrip.png</file>
-        <file>res/images/close.png</file>
-        <file>res/images/down_arrow.png</file>
-        <file>res/images/Vmovetoolbar.png</file>
-        <file>res/images/left_arrow.png</file>
-        <file>res/images/stylesheet-branch-more.png</file>
-        <file>res/images/up_arrow.png</file>
-        <file>res/images/right_arrow.png</file>
-        <file>res/images/left_arrow_disabled.png</file>
-        <file>res/images/Hsepartoolbar.png</file>
-        <file>res/images/checkbox.png</file>
-        <file>res/images/checkbox_indeterminate.png</file>
-        <file>res/images/branch_open.png</file>
-        <file>res/images/Vsepartoolbar.png</file>
-        <file>res/images/down_arrow_disabled.png</file>
-        <file>res/images/undock.png</file>
     </qresource>
     <qresource prefix="/style">
         <file alias="qss">res/style/monetaryunit.qss</file>
+        <file alias="up_arrow_disabled">res/style/up_arrow_disabled.png</file>
+        <file alias="Hmovetoolbar">res/style/Hmovetoolbar.png</file>
+        <file alias="stylesheet-branch-end">res/style/stylesheet-branch-end.png</file>
+        <file alias="branch_closed-on">res/style/branch_closed-on.png</file>
+        <file alias="stylesheet-vline">res/style/stylesheet-vline.png</file>
+        <file alias="branch_closed">res/style/branch_closed.png</file>
+        <file alias="branch_open-on">res/style/branch_open-on.png</file>
+        <file alias="transparent">res/style/transparent.png</file>
+        <file alias="right_arrow_disabled">res/style/right_arrow_disabled.png</file>
+        <file alias="sizegrip">res/style/sizegrip.png</file>
+        <file alias="close">res/style/close.png</file>
+        <file alias="down_arrow">res/style/down_arrow.png</file>
+        <file alias="Vmovetoolbar">res/style/Vmovetoolbar.png</file>
+        <file alias="left_arrow">res/style/left_arrow.png</file>
+        <file alias="stylesheet-branch-more">res/style/stylesheet-branch-more.png</file>
+        <file alias="up_arrow">res/style/up_arrow.png</file>
+        <file alias="right_arrow">res/style/right_arrow.png</file>
+        <file alias="left_arrow_disabled">res/style/left_arrow_disabled.png</file>
+        <file alias="Hsepartoolbar">res/style/Hsepartoolbar.png</file>
+        <file alias="checkbox">res/style/checkbox.png</file>
+        <file alias="checkbox_indeterminate">res/style/checkbox_indeterminate.png</file>
+        <file alias="branch_open">res/style/branch_open.png</file>
+        <file alias="Vsepartoolbar">res/style/Vsepartoolbar.png</file>
+        <file alias="down_arrow_disabled">res/style/down_arrow_disabled.png</file>
+        <file alias="undock">res/style/undock.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>
@@ -116,78 +111,5 @@
         <file alias="spinner-032">res/movies/spinner-032.png</file>
         <file alias="spinner-033">res/movies/spinner-033.png</file>
         <file alias="spinner-034">res/movies/spinner-034.png</file>
-    </qresource>
-    <qresource prefix="/translations">
-        <file alias="ach">locale/monetaryunit_ach.qm</file>
-        <file alias="af_ZA">locale/monetaryunit_af_ZA.qm</file>
-        <file alias="ar">locale/monetaryunit_ar.qm</file>
-        <file alias="be_BY">locale/monetaryunit_be_BY.qm</file>
-        <file alias="bg">locale/monetaryunit_bg.qm</file>
-        <file alias="bs">locale/monetaryunit_bs.qm</file>
-        <file alias="ca_ES">locale/monetaryunit_ca_ES.qm</file>
-        <file alias="ca">locale/monetaryunit_ca.qm</file>
-        <file alias="ca@valencia">locale/monetaryunit_ca@valencia.qm</file>
-        <file alias="cmn">locale/monetaryunit_cmn.qm</file>
-        <file alias="cs">locale/monetaryunit_cs.qm</file>
-        <file alias="cy">locale/monetaryunit_cy.qm</file>
-        <file alias="da">locale/monetaryunit_da.qm</file>
-        <file alias="de">locale/monetaryunit_de.qm</file>
-        <file alias="el_GR">locale/monetaryunit_el_GR.qm</file>
-        <file alias="en">locale/monetaryunit_en.qm</file>
-        <file alias="eo">locale/monetaryunit_eo.qm</file>
-        <file alias="es_CL">locale/monetaryunit_es_CL.qm</file>
-        <file alias="es_DO">locale/monetaryunit_es_DO.qm</file>
-        <file alias="es_MX">locale/monetaryunit_es_MX.qm</file>
-        <file alias="es">locale/monetaryunit_es.qm</file>
-        <file alias="es_UY">locale/monetaryunit_es_UY.qm</file>
-        <file alias="et">locale/monetaryunit_et.qm</file>
-        <file alias="eu_ES">locale/monetaryunit_eu_ES.qm</file>
-        <file alias="fa_IR">locale/monetaryunit_fa_IR.qm</file>
-        <file alias="fa">locale/monetaryunit_fa.qm</file>
-        <file alias="fi">locale/monetaryunit_fi.qm</file>
-        <file alias="fr_CA">locale/monetaryunit_fr_CA.qm</file>
-        <file alias="fr">locale/monetaryunit_fr.qm</file>
-        <file alias="gl">locale/monetaryunit_gl.qm</file>
-        <file alias="gu_IN">locale/monetaryunit_gu_IN.qm</file>
-        <file alias="he">locale/monetaryunit_he.qm</file>
-        <file alias="hi_IN">locale/monetaryunit_hi_IN.qm</file>
-        <file alias="hr">locale/monetaryunit_hr.qm</file>
-        <file alias="hu">locale/monetaryunit_hu.qm</file>
-        <file alias="id_ID">locale/monetaryunit_id_ID.qm</file>
-        <file alias="it">locale/monetaryunit_it.qm</file>
-        <file alias="ja">locale/monetaryunit_ja.qm</file>
-        <file alias="ka">locale/monetaryunit_ka.qm</file>
-        <file alias="kk_KZ">locale/monetaryunit_kk_KZ.qm</file>
-        <file alias="ko_KR">locale/monetaryunit_ko_KR.qm</file>
-        <file alias="ky">locale/monetaryunit_ky.qm</file>
-        <file alias="la">locale/monetaryunit_la.qm</file>
-        <file alias="lt">locale/monetaryunit_lt.qm</file>
-        <file alias="lv_LV">locale/monetaryunit_lv_LV.qm</file>
-        <file alias="mn">locale/monetaryunit_mn.qm</file>
-        <file alias="ms_MY">locale/monetaryunit_ms_MY.qm</file>
-        <file alias="nb">locale/monetaryunit_nb.qm</file>
-        <file alias="nl">locale/monetaryunit_nl.qm</file>
-        <file alias="pam">locale/monetaryunit_pam.qm</file>
-        <file alias="pl">locale/monetaryunit_pl.qm</file>
-        <file alias="pt_BR">locale/monetaryunit_pt_BR.qm</file>
-        <file alias="pt_PT">locale/monetaryunit_pt_PT.qm</file>
-        <file alias="ro_RO">locale/monetaryunit_ro_RO.qm</file>
-        <file alias="ru">locale/monetaryunit_ru.qm</file>
-        <file alias="sah">locale/monetaryunit_sah.qm</file>
-        <file alias="sk">locale/monetaryunit_sk.qm</file>
-        <file alias="sl_SI">locale/monetaryunit_sl_SI.qm</file>
-        <file alias="sq">locale/monetaryunit_sq.qm</file>
-        <file alias="sr">locale/monetaryunit_sr.qm</file>
-        <file alias="sv">locale/monetaryunit_sv.qm</file>
-        <file alias="th_TH">locale/monetaryunit_th_TH.qm</file>
-        <file alias="tr">locale/monetaryunit_tr.qm</file>
-        <file alias="uk">locale/monetaryunit_uk.qm</file>
-        <file alias="ur_PK">locale/monetaryunit_ur_PK.qm</file>
-        <file alias="uz@Cyrl">locale/monetaryunit_uz@Cyrl.qm</file>
-        <file alias="vi">locale/monetaryunit_vi.qm</file>
-        <file alias="vi_VN">locale/monetaryunit_vi_VN.qm</file>
-        <file alias="zh_CN">locale/monetaryunit_zh_CN.qm</file>
-        <file alias="zh_HK">locale/monetaryunit_zh_HK.qm</file>
-        <file alias="zh_TW">locale/monetaryunit_zh_TW.qm</file>
     </qresource>
 </RCC>
