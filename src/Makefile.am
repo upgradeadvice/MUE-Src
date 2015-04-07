@@ -1,16 +1,43 @@
-include Makefile.include
+AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS)
 
-AM_CPPFLAGS += -I$(builddir)
 
-noinst_LIBRARIES = \
+if EMBEDDED_LEVELDB
+LEVELDB_CPPFLAGS += -I$(srcdir)/leveldb/include
+LEVELDB_CPPFLAGS += -I$(srcdir)/leveldb/helpers/memenv
+LIBLEVELDB += $(builddir)/leveldb/libleveldb.a
+LIBMEMENV  += $(builddir)/leveldb/libmemenv.a
+
+# NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
+$(LIBLEVELDB): $(LIBMEMENV)
+
+$(LIBLEVELDB) $(LIBMEMENV):
+	@echo "Building LevelDB ..." && $(MAKE) -C $(@D) $(@F) CXX="$(CXX)" \
+	  CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" $(LEVELDB_TARGET_FLAGS) \
+          OPT="$(CXXFLAGS) $(CPPFLAGS)"
+endif
+
+MONETARYUNIT_CONFIG_INCLUDES=-I$(builddir)/config
+MONETARYUNIT_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+
+LIBMONETARYUNIT_SERVER=libmonetaryunit_server.a
+LIBMONETARYUNIT_WALLET=libmonetaryunit_wallet.a
+LIBMONETARYUNIT_COMMON=libmonetaryunit_common.a
+LIBMONETARYUNIT_CLI=libmonetaryunit_cli.a
+LIBMONETARYUNITQT=qt/libmonetaryunitqt.a
+
+# Make is not made aware of per-object dependencies to avoid limiting building parallelization
+# But to build the less dependent modules first, we manually select their order here:
+EXTRA_LIBRARIES = \
   libmonetaryunit_server.a \
   libmonetaryunit_common.a \
   libmonetaryunit_cli.a
 if ENABLE_WALLET
-noinst_LIBRARIES += libmonetaryunit_wallet.a
+MONETARYUNIT_INCLUDES += $(BDB_CPPFLAGS)
+EXTRA_LIBRARIES += libmonetaryunit_wallet.a
 endif
 
 bin_PROGRAMS =
+TESTS =
 
 if BUILD_MONETARYUNITD
   bin_PROGRAMS += monetaryunitd
@@ -20,8 +47,6 @@ if BUILD_MONETARYUNIT_CLI
   bin_PROGRAMS += monetaryunit-cli
 endif
 
-SUBDIRS = . $(BUILD_QT) $(BUILD_TEST)
-DIST_SUBDIRS = . qt test
 .PHONY: FORCE
 # monetaryunit core #
 MONETARYUNIT_CORE_H = \
@@ -90,11 +115,13 @@ JSON_H = \
   json/json_spirit_writer_template.h
 
 obj/build.h: FORCE
-	@$(MKDIR_P) $(abs_top_builddir)/src/obj
+	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-version.o: obj/build.h
+libmonetaryunit_common_a-version.$(OBJEXT): obj/build.h
 
+
+libmonetaryunit_server_a_CPPFLAGS = $(MONETARYUNIT_INCLUDES) $(MINIUPNPC_CPPFLAGS)
 libmonetaryunit_server_a_SOURCES = \
   addrman.cpp \
   alert.cpp \
@@ -119,6 +146,7 @@ libmonetaryunit_server_a_SOURCES = \
   $(JSON_H) \
   $(MONETARYUNIT_CORE_H)
 
+libmonetaryunit_wallet_a_CPPFLAGS = $(MONETARYUNIT_INCLUDES)
 libmonetaryunit_wallet_a_SOURCES = \
   db.cpp \
   crypter.cpp \
@@ -128,6 +156,7 @@ libmonetaryunit_wallet_a_SOURCES = \
   walletdb.cpp \
   $(MONETARYUNIT_CORE_H)
 
+libmonetaryunit_common_a_CPPFLAGS = $(MONETARYUNIT_INCLUDES) -fPIC
 libmonetaryunit_common_a_SOURCES = \
   base58.cpp \
   allocators.cpp \
@@ -152,9 +181,9 @@ libmonetaryunit_common_a_SOURCES = \
 
 if GLIBC_BACK_COMPAT
 libmonetaryunit_common_a_SOURCES += compat/glibc_compat.cpp
-libmonetaryunit_common_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
+libmonetaryunit_cli_a_CPPFLAGS = $(MONETARYUNIT_INCLUDES)
 libmonetaryunit_cli_a_SOURCES = \
   rpcclient.cpp \
   $(MONETARYUNIT_CORE_H)
@@ -163,55 +192,75 @@ nodist_libmonetaryunit_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
 #
 
 # monetaryunitd binary #
-monetaryunitd_LDADD = \
-  libmonetaryunit_server.a \
-  libmonetaryunit_cli.a \
-  libmonetaryunit_common.a \
-  $(LIBLEVELDB) \
-  $(LIBMEMENV)
-if ENABLE_WALLET
-monetaryunitd_LDADD += libmonetaryunit_wallet.a
-endif
 monetaryunitd_SOURCES = monetaryunitd.cpp
-#
+monetaryunitd_CPPFLAGS = $(MONETARYUNIT_INCLUDES)
+monetaryunitd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
 monetaryunitd_SOURCES += monetaryunitd-res.rc
 endif
 
-AM_CPPFLAGS += $(BDB_CPPFLAGS)
-monetaryunitd_LDADD += $(BOOST_LIBS) $(BDB_LIBS)
+monetaryunitd_LDADD = \
+  $(LIBMONETARYUNIT_SERVER) \
+  $(LIBMONETARYUNIT_COMMON) \
+  $(LIBMONETARYUNIT_CLI) \
+  $(LIBLEVELDB) \
+  $(LIBMEMENV)
+
+if ENABLE_WALLET
+monetaryunitd_LDADD += libmonetaryunit_wallet.a
+endif
+
+monetaryunitd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+#
 
 # monetaryunit-cli binary #
-monetaryunit_cli_LDADD = \
-  libmonetaryunit_cli.a \
-  libmonetaryunit_common.a \
-  $(BOOST_LIBS)
 monetaryunit_cli_SOURCES = monetaryunit-cli.cpp
-#
+monetaryunit_cli_CPPFLAGS = $(MONETARYUNIT_INCLUDES)
+monetaryunit_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
 monetaryunit_cli_SOURCES += monetaryunit-cli-res.rc
 endif
 
-# NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
-leveldb/libleveldb.a: leveldb/libmemenv.a
+monetaryunit_cli_LDADD = \
+  $(LIBMONETARYUNIT_CLI) \
+  $(LIBMONETARYUNIT_COMMON)
 
-leveldb/%.a:
-	@echo "Building LevelDB ..." && $(MAKE) -C $(@D) $(@F) CXX="$(CXX)" \
-	  CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" $(LEVELDB_TARGET_FLAGS) \
-	  OPT="$(CXXFLAGS) $(CPPFLAGS)"
-
-qt/monetaryunitstrings.cpp: $(libmonetaryunit_server_a_SOURCES) $(libmonetaryunit_common_a_SOURCES) $(libmonetaryunit_cli_a_SOURCES)
-	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
-	@cd $(top_srcdir); XGETTEXT=$(XGETTEXT) share/qt/extract_strings_qt.py
+monetaryunit_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS)
+#
 
 CLEANFILES = leveldb/libleveldb.a leveldb/libmemenv.a *.gcda *.gcno
 
 DISTCLEANFILES = obj/build.h
 
-EXTRA_DIST = leveldb Makefile.include
+EXTRA_DIST = leveldb
 
 clean-local:
 	-$(MAKE) -C leveldb clean
 	rm -f leveldb/*/*.gcno leveldb/helpers/memenv/*.gcno
+	-rm -f config.h
+
+.rc.o:
+	@test -f $(WINDRES)
+	$(AM_V_GEN) $(WINDRES) -DWINDRES_PREPROC -i $< -o $@
+
+.mm.o:
+	$(AM_V_CXX) $(OBJCXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	  $(CPPFLAGS) $(AM_CXXFLAGS) $(QT_INCLUDES) $(CXXFLAGS)  -c -o $@ $<
+
+%.pb.cc %.pb.h: %.proto
+	@test -f $(PROTOC)
+	$(AM_V_GEN) $(PROTOC) --cpp_out=$(@D) --proto_path=$(abspath $(<D) $<)
+
+if ENABLE_TESTS
+include Makefile.test.include
+endif
+
+if ENABLE_QT
+include Makefile.qt.include
+endif
+
+if ENABLE_QT_TESTS
+include Makefile.qttest.include
+endif

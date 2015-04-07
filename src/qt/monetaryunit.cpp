@@ -483,6 +483,7 @@ int main(int argc, char *argv[])
 #endif
 
     Q_INIT_RESOURCE(monetaryunit);
+    Q_INIT_RESOURCE(monetaryunit_locale);
 
     GUIUtil::SubstituteFonts();
 

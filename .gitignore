@@ -13,8 +13,10 @@ autom4te.cache/
 config.log
 config.status
 configure
-src/monetaryunit-config.h
-src/monetaryunit-config.h.in
+libtool
+src/config/monetaryunit-config.h
+src/config/monetaryunit-config.h.in
+src/config/stamp-h1
 src/build-aux/
 src/stamp-h1
 share/setup.nsi
@@ -112,3 +114,5 @@ out/
 /CMakeLists.txt
 /.idea/MUE-Src.iml
 /config.cache
+/src/monetaryunit-config.h
+/src/monetaryunit-config.h.in

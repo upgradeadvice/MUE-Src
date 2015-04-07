@@ -476,7 +476,7 @@ void MonetaryUnitGUI::createTrayIcon(const NetworkStyle *networkStyle)
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
 
-    QString toolTip = tr("Bitcoin Core client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("MonetaryUnit Core client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->show();
