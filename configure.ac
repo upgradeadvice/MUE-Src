@@ -185,9 +185,9 @@ case $host in
      AC_CHECK_LIB([iphlpapi],      [main],, AC_MSG_ERROR(lib missing))
      AC_CHECK_LIB([crypt32],      [main],, AC_MSG_ERROR(lib missing))
 
-     AX_CHECK_LINK_FLAG([[-static]],[LDFLAGS="$LDFLAGS -static"])
-     AX_CHECK_LINK_FLAG([[-static-libgcc]],[LDFLAGS="$LDFLAGS -static-libgcc"])
-     AX_CHECK_LINK_FLAG([[-static-libstdc++]],[LDFLAGS="$LDFLAGS -static-libstdc++"])
+     # -static is interpreted by libtool, where it has a different meaning.
+     # In libtool-speak, it's -all-static.
+     AX_CHECK_LINK_FLAG([[-static]],[LIBTOOL_APP_LDFLAGS="$LIBTOOL_APP_LDFLAGS -all-static"])
 
      AC_PATH_PROG([MAKENSIS], [makensis], none)
      if test x$MAKENSIS = xnone; then
@@ -210,6 +210,15 @@ case $host in
        *) AC_MSG_ERROR("Could not determine win32/win64 for installer") ;;
      esac
      AC_SUBST(WINDOWS_BITS)
+
+     dnl libtool insists upon adding -nostdlib and a list of objects/libs to link against.
+     dnl That breaks our ability to build dll's with static libgcc/libstdc++/libssp. Override
+     dnl its command here, with the predeps/postdeps removed, and -static inserted. Postdeps are
+     dnl also overridden to prevent their insertion later.
+     dnl This should only affect dll's.
+     archive_cmds_CXX="\$CC -shared \$libobjs \$deplibs \$compiler_flags -static -o \$output_objdir/\$soname \${wl}--enable-auto-image-base -Xlinker --out-implib -Xlinker \$lib"
+     postdeps_CXX=
+
      ;;
   *darwin*)
      TARGET_OS=darwin
@@ -219,13 +228,17 @@ case $host in
        AC_CHECK_PROG([PORT],port, port)
        if test x$PORT = xport; then
          dnl add default macports paths
-         CPPFLAGS="$CPPFLAGS -isystem /opt/local/include -I/opt/local/include/db48"
-         LIBS="$LIBS -L/opt/local/lib -L/opt/local/lib/db48"
+         CPPFLAGS="$CPPFLAGS -isystem /opt/local/include"
+         LIBS="$LIBS -L/opt/local/lib"
+         if test -d /opt/local/include/db48; then
+           CPPFLAGS="$CPPFLAGS -I/opt/local/include/db48"
+           LIBS="$LIBS -L/opt/local/lib/db48"
+         fi
        fi
 
        AC_CHECK_PROG([BREW],brew, brew)
        if test x$BREW = xbrew; then
-         dnl These Homebrew packages may be bottled, meaning that they won't be found
+         dnl These Homebrew packages may be keg-only, meaning that they won't be found
          dnl in expected paths because they may conflict with system files. Ask
          dnl Homebrew where each one is located, then adjust paths accordingly.
          dnl It's safe to add these paths even if the functionality is disabled by
@@ -235,14 +248,16 @@ case $host in
          bdb_prefix=`$BREW --prefix berkeley-db4 2>/dev/null`
          qt5_prefix=`$BREW --prefix qt5 2>/dev/null`
          if test x$openssl_prefix != x; then
-           export PKG_CONFIG_PATH="$openssl_prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
+           PKG_CONFIG_PATH="$openssl_prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
+           export PKG_CONFIG_PATH
          fi
          if test x$bdb_prefix != x; then
            CPPFLAGS="$CPPFLAGS -I$bdb_prefix/include"
            LIBS="$LIBS -L$bdb_prefix/lib"
          fi
          if test x$qt5_prefix != x; then
-           export PKG_CONFIG_PATH="$qt5_prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
+           PKG_CONFIG_PATH="$qt5_prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
+           export PKG_CONFIG_PATH
          fi
        fi
      else
@@ -254,10 +269,17 @@ case $host in
            AC_PATH_TOOL([INSTALLNAMETOOL], [install_name_tool], install_name_tool)
            AC_PATH_TOOL([OTOOL], [otool], otool)
            AC_PATH_PROGS([GENISOIMAGE], [genisoimage mkisofs],genisoimage)
+
+           dnl libtool will try to strip the static lib, which is a problem for
+           dnl cross-builds because strip attempts to call a hard-coded ld,
+           dnl which may not exist in the path. Stripping the .a is not
+           dnl necessary, so just disable it.
+           old_striplib=
            ;;
        esac
      fi
 
+     AX_CHECK_LINK_FLAG([[-Wl,-headerpad_max_install_names]], [LDFLAGS="$LDFLAGS -Wl,-headerpad_max_install_names"])
      CPPFLAGS="$CPPFLAGS -DMAC_OSX"
      ;;
    *linux*)
