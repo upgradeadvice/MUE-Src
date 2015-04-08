@@ -1,5 +1,7 @@
 MonetaryUnit Core integration/staging tree
 =====================================
+[![Build Status](https://travis-ci.org/MonetaryUnit/MUE-Src.svg?branch=master)](https://travis-ci.org/MonetaryUnit/MUE-Src) [![forthebadge](http://forthebadge.com/images/badges/built-by-developers.svg)](http://forthebadge.com)
+
 
 http://www.monetaryunit.org
 
