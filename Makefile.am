@@ -11,7 +11,7 @@ MONETARYUNIT_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setu
 
 OSX_APP=MonetaryUnit-Qt.app
 OSX_DMG=MonetaryUnit-Qt.dmg
-OSX_BACKGROUND_IMAGE=background.png
+OSX_BACKGROUND_IMAGE=background.tiff
 OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
 OSX_FANCY_PLIST=$(top_srcdir)/contrib/macdeploy/fancy.plist
 OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/monetaryunit.icns
