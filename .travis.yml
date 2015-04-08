@@ -14,9 +14,9 @@ deploy:
   api_key:
     secure: B9qVig4Y8iPgHQvp8t3OyZwAhLjZhfRsSWZpRX3kOlQn/LEGQ3xTXF8qpnT0UsgjUyHY0rlWrNwRVFehAYdgn2WHEXGOpQ1glGRGV4LhxgFI7hEFj+9n4Pi71ySeP9yzjekX/fqX/52rLFstPs/Lxb61/xpABF9Dhz1OuIbP5h8=
   file:
-	- "monetaryunit-x86_64-w64-mingw32/monetaryunit-1.0.0.1-win64-setup.exe"
-	- "monetaryunit-i686-w64-mingw32/monetaryunit-1.0.0.1-win32-setup.exe"
-	- "monetaryunit-x86_64-apple-darwin11/MonetaryUnit-Qt.dmg"
+    - "monetaryunit-x86_64-w64-mingw32/monetaryunit-1.0.0.1-win64-setup.exe"
+    - "monetaryunit-i686-w64-mingw32/monetaryunit-1.0.0.1-win32-setup.exe"
+    - "monetaryunit-x86_64-apple-darwin11/MonetaryUnit-Qt.dmg"
   on:
     repo: MonetaryUnit/MUE-Src
     tags: true
