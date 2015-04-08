@@ -213,6 +213,7 @@ MONETARYUNIT_QT_H = \
   qt/monitoreddatamapper.h
 
 RES_ICONS = \
+  qt/res/icons/monetaryunit.ico \
   qt/res/icons/monetaryunit.png \
   qt/res/icons/address-book.png \
   qt/res/icons/quit.png \
