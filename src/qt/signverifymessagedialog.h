@@ -1,19 +1,25 @@
+// Copyright (c) 2009-2015 Bitcoin developers
+// Copyright (c) 2014-2015 MonetaryUnit developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef SIGNVERIFYMESSAGEDIALOG_H
 #define SIGNVERIFYMESSAGEDIALOG_H
 
 #include <QDialog>
 
+class WalletModel;
+
 namespace Ui {
     class SignVerifyMessageDialog;
 }
-class WalletModel;
 
 class SignVerifyMessageDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit SignVerifyMessageDialog(QWidget *parent = 0);
+    explicit SignVerifyMessageDialog(QWidget *parent);
     ~SignVerifyMessageDialog();
 
     void setModel(WalletModel *model);

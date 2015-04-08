@@ -1,80 +1,101 @@
-(note: this is a temporary file, to be added-to by anybody, and deleted at
-release time)
+MonetaryUnit Core version 0.9.4 is now available from:
 
-Fee Policy changes
-------------------
+  https://monetaryunit.org/bin/0.9.4/
 
-The default fee for low-priority transactions is lowered from 0.0005 BTC 
-(for each 1,000 bytes in the transaction; an average transaction is
-about 500 bytes) to 0.0001 BTC.
+This is a new minor version release, bringing only bug fixes and updated
+translations. Upgrading to this release is recommended.
 
-Payments (transaction outputs) of 0.543 times the minimum relay fee
-(0.00005430 BTC) are now considered 'non-standard', because storing them
-costs the network more than they are worth and spending them will usually
-cost their owner more in transaction fees than they are worth.
+Please report bugs using the issue tracker at github:
 
-Non-standard transactions are not relayed across the network, are not included
-in blocks by most miners, and will not show up in your wallet until they are
-included in a block.
+  https://github.com/monetaryunit/monetaryunit/issues
 
-The default fee policy can be overridden using the -mintxfee and -minrelaytxfee
-command-line options, but note that we intend to replace the hard-coded fees
-with code that automatically calculates and suggests appropriate fees in the
-0.9 release and note that if you set a fee policy significantly different from
-the rest of the network your transactions may never confirm.
+Upgrading and downgrading
+==========================
 
-Bitcoin-Qt changes
-------------------
+How to Upgrade
+--------------
 
-- New icon and splash screen
-- Improve reporting of synchronization process
-- Remove hardcoded fee recommendations
-- Improve metadata of executable on MacOSX and Windows
-- Move export button to individual tabs instead of toolbar
-- Add "send coins" command to context menu in address book
-- Add "copy txid" command to copy transaction IDs from transaction overview
-- Save & restore window size and position when showing & hiding window
-- New translations: Arabic (ar), Bosnian (bs), Catalan (ca), Welsh (cy), Esperanto (eo), Interlingua (la), Latvian (lv) and many improvements to current translations
+If you are running an older version, shut it down. Wait until it has completely
+shut down (which might take a few minutes for older versions), then run the
+installer (on Windows) or just copy over /Applications/MonetaryUnit-Qt (on Mac) or
+monetaryunitd/monetaryunit-qt (on Linux).
 
-MacOSX:
+If you are upgrading from version 0.7.2 or earlier, the first time you run
+0.9.3 your blockchain files will be re-indexed, which will take anywhere from 
+30 minutes to several hours, depending on the speed of your machine.
 
-- OSX support for click-to-pay (bitcoin:) links
-- Fix GUI disappearing problem on MacOSX (issue #1522)
-
-Linux/Unix:
-
-- Copy addresses to middle-mouse-button clipboard
-
-
-Command-line options
+Downgrading warnings
 --------------------
 
-* `-walletnotify` will call a command on receiving transactions that affect the wallet.
-* `-alertnotify` will call a command on receiving an alert from the network.
-* `-par` now takes a negative number, to leave a certain amount of cores free.
+The 'chainstate' for this release is not always compatible with previous
+releases, so if you run 0.9.x and then decide to switch back to a
+0.8.x release you might get a blockchain validation error when starting the
+old release (due to 'pruned outputs' being omitted from the index of
+unspent transaction outputs).
 
-JSON-RPC API changes
---------------------
+Running the old release with the -reindex option will rebuild the chainstate
+data structures and correct the problem.
 
-* `listunspent` now lists account and address infromation.
-* `getinfo` now also returns the time adjustment estimated from your peers.
-* `getpeerinfo` now returns bytessent, bytesrecv and syncnode.
-* `gettxoutsetinfo` returns statistics about the unspent transaction output database.
-* `gettxout` returns information about a specific unspent transaction output.
+Also, the first time you run a 0.8.x release on a 0.9 wallet it will rescan
+the blockchain for missing spent coins, which will take a long time (tens
+of minutes on a typical machine).
 
+0.9.3 Release notes
+=======================
 
-Networking changes
-------------------
+RPC:
+- Avoid a segfault on getblock if it can't read a block from disk
+- Add paranoid return value checks in base58
 
-* Significant changes to the networking code, reducing latency and memory consumption.
-* Avoid initial block download stalling.
-* Remove IRC seeding support.
-* Performance tweaks.
-* Added testnet DNS seeds.
+Protocol and network code:
+- Don't poll showmyip.com, it doesn't exist anymore
+- Add a way to limit deserialized string lengths and use it
+- Add a new checkpoint at block 295,000
+- Increase IsStandard() scriptSig length
+- Avoid querying DNS seeds, if we have open connections
+- Remove a useless millisleep in socket handler
+- Stricter memory limits on CNode
+- Better orphan transaction handling
+- Add `-maxorphantx=<n>` and `-maxorphanblocks=<n>` options for control over the maximum orphan transactions and blocks
 
-Wallet compatibility/rescuing
------------------------------
+Wallet:
+- Check redeemScript size does not exceed 520 byte limit
+- Ignore (and warn about) too-long redeemScripts while loading wallet
 
-* Cases where wallets cannot be opened in another version/installation should be reduced.
-* `-salvagewallet` now works for encrypted wallets.
+GUI:
+- fix 'opens in testnet mode when presented with a BIP-72 link with no fallback'
+- AvailableCoins: acquire cs_main mutex
+- Fix unicode character display on MacOSX
 
+Miscellaneous:
+- key.cpp: fail with a friendlier message on missing ssl EC support
+- Remove bignum dependency for scripts
+- Upgrade OpenSSL to 1.0.1i (see https://www.openssl.org/news/secadv_20140806.txt - just to be sure, no critical issues for MonetaryUnit Core)
+- Upgrade miniupnpc to 1.9.20140701
+- Fix boost detection in build system on some platforms
+
+Credits
+--------
+
+Thanks to everyone who contributed to this release:
+
+- Andrew Poelstra
+- Cory Fields
+- Gavin Andresen
+- Jeff Garzik
+- Johnathan Corgan
+- Julian Haight
+- Michael Ford
+- Pavel Vasin
+- Peter Todd
+- phantomcircuit
+- Pieter Wuille
+- Rose Toomey
+- Ruben Dario Ponticelli
+- shshshsh
+- Trevin Hofmann
+- Warren Togami
+- Wladimir J. van der Laan
+- Zak Wilcox
+
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/monetaryunit/).

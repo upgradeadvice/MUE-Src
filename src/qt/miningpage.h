@@ -1,32 +1,23 @@
+// Copyright (c) 2009-2015 Bitcoin Developers
+// Copyright (c) 2014-2015 MonetaryUnit Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef MININGPAGE_H
 #define MININGPAGE_H
 
-#include "clientmodel.h"
+#include <QDialog>
+#include <memory>
 
-#include <QWidget>
+#include "walletmodel.h"
 
-#include <QDir>
-#include <QFile>
-#include <QProcess>
-#include <QTime>
-#include <QTimer>
-#include <QStringList>
-#include <QMap>
-#include <QSettings>
-
-// Log types
-#define STARTED 0
-#define SHARE_SUCCESS 1
-#define SHARE_FAIL 2
-#define ERROR 3
-#define LONGPOLL 4
+class WalletModel;
 
 namespace Ui {
     class MiningPage;
 }
-class ClientModel;
 
-class MiningPage : public QWidget
+class MiningPage : public QDialog
 {
     Q_OBJECT
 
@@ -34,61 +25,20 @@ public:
     explicit MiningPage(QWidget *parent = 0);
     ~MiningPage();
 
-    bool minerActive;
-    bool minerSet;
+    void setModel(WalletModel *model);
 
-    QProcess *minerProcess;
-
-
-    QMap<int, double> threadSpeed;
-
-    QTimer *readTimer;
-
-    int acceptedShares;
-    int rejectedShares;
-
-    int roundAcceptedShares;
-    int roundRejectedShares;
-
-    int initThreads;
-
-
-public slots:
-    void startPressed();
-
-    void startPoolMining();
-    void stopPoolMining();
-
-    void updateSpeed();
-
-    void setModel(ClientModel *model);
-
-    void loadSettings();
-    void saveSettings();
-
-    void reportToList(QString, int, QString);
-
-    void minerStarted();
-
-    void minerError(QProcess::ProcessError);
-    void minerFinished();
-
-    void readProcessOutput();
-
-    QString getTime(QString);
-    void enableMiningControls(bool enable);
-    void enablePoolMiningControls(bool enable);
-    ClientModel::MiningType getMiningType();
-    void typeChanged(int index);
-    void debugToggled(bool checked);
-
-private slots:
+    /** Set up the tab chain manually, as Qt messes up the tab chain by default in some cases (issue https://bugreports.qt-project.org/browse/QTBUG-10907).
+    */
+    QWidget *setupTabChain(QWidget *prev);
 
 private:
     Ui::MiningPage *ui;
-    ClientModel *model;
+    WalletModel *model;
+    std::auto_ptr<WalletModel::UnlockContext> unlockContext;
 
-    void resetMiningButton();
+    void timerEvent(QTimerEvent *event);
+    void updateUI();
+
 };
 
 #endif // MININGPAGE_H

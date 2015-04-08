@@ -1,14 +1,19 @@
+// Copyright (c) 2009-2015 Bitcoin Developers
+// Copyright (c) 2014-2015 MonetaryUnit Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
+#include "monetaryunitunits.h"
 #include "clientmodel.h"
-#include "walletmodel.h"
-#include "bitcoinunits.h"
-#include "optionsmodel.h"
-#include "transactiontablemodel.h"
-#include "transactionfilterproxy.h"
-#include "guiutil.h"
 #include "guiconstants.h"
+#include "guiutil.h"
+#include "optionsmodel.h"
+#include "transactionfilterproxy.h"
+#include "transactiontablemodel.h"
+#include "walletmodel.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
@@ -20,7 +25,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::QRK)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(MonetaryUnitUnits::MUE)
     {
 
     }
@@ -46,6 +51,7 @@ public:
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
         QVariant value = index.data(Qt::ForegroundRole);
         QColor foreground = option.palette.color(QPalette::Text);
+
         if(value.canConvert<QBrush>())
         {
             QBrush brush = qvariant_cast<QBrush>(value);
@@ -68,7 +74,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(foreground);
-        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
+        QString amountText = MonetaryUnitUnits::formatWithUnit(unit, amount, true);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -137,9 +143,10 @@ void OverviewPage::setBalance(qint64 balance, qint64 unconfirmedBalance, qint64 
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
-    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
+    ui->labelBalance->setText(MonetaryUnitUnits::formatWithUnit(unit, balance));
+    ui->labelUnconfirmed->setText(MonetaryUnitUnits::formatWithUnit(unit, unconfirmedBalance));
+    ui->labelImmature->setText(MonetaryUnitUnits::formatWithUnit(unit, immatureBalance));
+    ui->labelTotal->setText(MonetaryUnitUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -147,7 +154,7 @@ void OverviewPage::setBalance(qint64 balance, qint64 unconfirmedBalance, qint64 
     ui->labelImmature->setVisible(showImmature);
     ui->labelImmatureText->setVisible(showImmature);
 }
-/*
+
 void OverviewPage::setClientModel(ClientModel *model)
 {
     this->clientModel = model;
@@ -158,8 +165,8 @@ void OverviewPage::setClientModel(ClientModel *model)
         updateAlerts(model->getStatusBarWarnings());
     }
 }
-*/
-void OverviewPage::setModel(WalletModel *model)
+
+void OverviewPage::setWalletModel(WalletModel *model)
 {
     this->walletModel = model;
     if(model && model->getOptionsModel())
@@ -170,6 +177,7 @@ void OverviewPage::setModel(WalletModel *model)
         filter->setLimit(NUM_ITEMS);
         filter->setDynamicSortFilter(true);
         filter->setSortRole(Qt::EditRole);
+        filter->setShowInactive(false);
         filter->sort(TransactionTableModel::Status, Qt::DescendingOrder);
 
         ui->listTransactions->setModel(filter);
@@ -182,7 +190,7 @@ void OverviewPage::setModel(WalletModel *model)
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
 
-    // update the display unit, to not use the default ("BTC")
+    // update the display unit, to not use the default ("MUE")
     updateDisplayUnit();
 }
 
@@ -199,13 +207,13 @@ void OverviewPage::updateDisplayUnit()
         ui->listTransactions->update();
     }
 }
-/*
+
 void OverviewPage::updateAlerts(const QString &warnings)
 {
     this->ui->labelAlerts->setVisible(!warnings.isEmpty());
     this->ui->labelAlerts->setText(warnings);
 }
-*/
+
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);

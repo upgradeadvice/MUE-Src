@@ -60,10 +60,10 @@
         <string>Create a new address</string>
        </property>
        <property name="text">
-        <string>&amp;New Address</string>
+        <string>&amp;New</string>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../monetaryunit.qrc">
          <normaloff>:/icons/add</normaloff>:/icons/add</iconset>
        </property>
       </widget>
@@ -74,50 +74,11 @@
         <string>Copy the currently selected address to the system clipboard</string>
        </property>
        <property name="text">
-        <string>&amp;Copy Address</string>
+        <string>&amp;Copy</string>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../monetaryunit.qrc">
          <normaloff>:/icons/editcopy</normaloff>:/icons/editcopy</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="showQRCode">
-       <property name="text">
-        <string>Show &amp;QR Code</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/qrcode</normaloff>:/icons/qrcode</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="signMessage">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sign a message to prove you own a Monetaryunit address&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>Sign &amp;Message</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="verifyMessage">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verify a message to ensure it was signed with a specified Monetaryunit address&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>&amp;Verify Message</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/transaction_0</normaloff>:/icons/transaction_0</iconset>
        </property>
       </widget>
      </item>
@@ -130,7 +91,7 @@
         <string>&amp;Delete</string>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../monetaryunit.qrc">
          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
        </property>
       </widget>
@@ -157,21 +118,21 @@
         <string>&amp;Export</string>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../monetaryunit.qrc">
          <normaloff>:/icons/export</normaloff>:/icons/export</iconset>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
+      <widget class="QPushButton" name="closeButton">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Ok</set>
+       <property name="text">
+        <string>C&amp;lose</string>
        </property>
       </widget>
      </item>
@@ -180,7 +141,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../bitcoin.qrc"/>
+  <include location="../monetaryunit.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,15 +1,21 @@
+// Copyright (c) 2009-2015 Bitcoin Developers
+// Copyright (c) 2014-2015 MonetaryUnit Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef OVERVIEWPAGE_H
 #define OVERVIEWPAGE_H
 
 #include <QWidget>
 
+class ClientModel;
+class TransactionFilterProxy;
+class TxViewDelegate;
+class WalletModel;
+
 namespace Ui {
     class OverviewPage;
 }
-class ClientModel;
-class WalletModel;
-class TxViewDelegate;
-class TransactionFilterProxy;
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
@@ -25,7 +31,7 @@ public:
     ~OverviewPage();
 
     void setClientModel(ClientModel *clientModel);
-    void setModel(WalletModel *walletModel);
+    void setWalletModel(WalletModel *walletModel);
     void showOutOfSyncWarning(bool fShow);
 
 public slots:
@@ -48,7 +54,7 @@ private:
 private slots:
     void updateDisplayUnit();
     void handleTransactionClicked(const QModelIndex &index);
- //   void updateAlerts(const QString &warnings);
+    void updateAlerts(const QString &warnings);
 };
 
 #endif // OVERVIEWPAGE_H
