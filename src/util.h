@@ -8,7 +8,7 @@
 #define MONETARYUNIT_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "monetaryunit-config.h"
+#include "config/monetaryunit-config.h"
 #endif
 
 #include "compat.h"
