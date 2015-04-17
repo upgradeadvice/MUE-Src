@@ -1,5 +1,5 @@
-monetaryunit (1.0.0-trusty1) trusty; urgency=low
+monetaryunit (1.0.0.1) trusty; urgency=low
 
-  * New upstream release.
+  * https://github.com/MonetaryUnit/MUE-Src/commits/master
 
- -- upgradeadvice <upgradeadvice@gmail.com>  Fri, 27 Feb 2015 17:29:00 -0400
+ -- upgradeadvice <upgradeadvice@gmail.com>  Fri, 17 Apr 2015 16:04:00 -0600
