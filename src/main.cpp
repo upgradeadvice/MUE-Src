@@ -1956,7 +1956,7 @@ void static UpdateTip(CBlockIndex *pindexNew) {
 
     // Update best block in wallet (so we can detect restored wallets)
     bool fIsInitialDownload = IsInitialBlockDownload();
-    if ((chainActive.Height() % 20160) == 0 || (!fIsInitialDownload && (chainActive.Height() % 144) == 0))
+    if ((chainActive.Height() % 20160) == 0 || (!fIsInitialDownload && (chainActive.Height() % 2162) == 0))
         g_signals.SetBestChain(chainActive.GetLocator());
 
     // New best block
