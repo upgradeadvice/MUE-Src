@@ -18,6 +18,7 @@ class ClientModel;
 class NetworkStyle;
 class Notificator;
 class RPCConsole;
+class BlockBrowser;
 class SendCoinsRecipient;
 class WalletFrame;
 class WalletModel;
@@ -70,6 +71,8 @@ private:
     ClientModel *clientModel;
     WalletFrame *walletFrame;
 
+    BlockBrowser *blockBrowser;
+
     QLabel *labelEncryptionIcon;
     QLabel *labelConnectionsIcon;
     QLabel *labelBlocksIcon;
@@ -80,6 +83,7 @@ private:
     QAction *overviewAction;
     QAction *historyAction;
     QAction *miningAction;
+    QAction *blockAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
     QAction *usedSendingAddressesAction;
@@ -169,6 +173,8 @@ private slots:
     void gotoSendCoinsPage(QString addr = "");
     /** Switch to mining page */
     void gotoMiningPage();
+    /** Switch to Block Browser page */
+    void gotoBlockBrowserPage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");

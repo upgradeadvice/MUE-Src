@@ -93,7 +93,8 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
   qt/forms/transactiondescdialog.ui \
-  qt/forms/miningpage.ui
+  qt/forms/miningpage.ui \
+	qt/forms/blockbrowser.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -139,6 +140,7 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp \
   qt/moc_miningpage.cpp \
+	qt/moc_blockbrowser.cpp \
   qt/moc_monitoreddatamapper.cpp
 
 MONETARYUNIT_MM = \
@@ -210,6 +212,7 @@ MONETARYUNIT_QT_H = \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
   qt/miningpage.h \
+	qt/blockbrowser.h \
   qt/monitoreddatamapper.h
 
 RES_ICONS = \
@@ -254,7 +257,8 @@ RES_ICONS = \
   qt/res/icons/key.png \
   qt/res/icons/filesave.png \
   qt/res/icons/qrcode.png \
-  qt/res/icons/debugwindow.png
+  qt/res/icons/debugwindow.png \
+	qt/res/icons/blexp.png
 
 MONETARYUNIT_QT_CPP = \
   qt/monetaryunit.cpp \
@@ -307,7 +311,8 @@ MONETARYUNIT_QT_CPP += \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
-  qt/miningpage.cpp
+  qt/miningpage.cpp \
+	qt/blockbrowser.cpp
 endif
 
 RES_IMAGES = \

@@ -260,6 +260,13 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
     miningAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     tabGroup->addAction(miningAction);
 
+    blockAction = new QAction(QIcon(":/icons/blexp"), tr("&Block Explorer"), this);
+    blockAction->setStatusTip(tr("Explore the BlockChain"));
+    blockAction->setToolTip(blockAction->statusTip());
+    blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
+    blockAction->setCheckable(true);
+    tabGroup->addAction(blockAction);
+
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -272,6 +279,8 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(miningAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
+    connect(blockAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowserPage()));
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setStatusTip(tr("Quit application"));
@@ -336,6 +345,7 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
         connect(usedSendingAddressesAction, SIGNAL(triggered()), walletFrame, SLOT(usedSendingAddresses()));
         connect(usedReceivingAddressesAction, SIGNAL(triggered()), walletFrame, SLOT(usedReceivingAddresses()));
         connect(openAction, SIGNAL(triggered()), this, SLOT(openClicked()));
+        connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
     }
 #endif
 }
@@ -374,6 +384,9 @@ void MonetaryUnitGUI::createMenuBar()
     }
     settings->addAction(optionsAction);
 
+    QMenu *network = appMenuBar->addMenu(tr("&Network"));
+    network->addAction(blockAction);
+
     QMenu *help = appMenuBar->addMenu(tr("&Help"));
     if(walletFrame)
     {
@@ -396,6 +409,7 @@ void MonetaryUnitGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(miningAction);
+        toolbar->addAction(blockAction);
         overviewAction->setChecked(true);
     }
 }
@@ -607,6 +621,12 @@ void MonetaryUnitGUI::gotoVerifyMessageTab(QString addr)
 void MonetaryUnitGUI::gotoMiningPage()
 {
     if (walletFrame) walletFrame->gotoMiningPage();
+}
+
+void MonetaryUnitGUI::gotoBlockBrowserPage()
+{
+    blockAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoBlockBrowserPage();
 }
 #endif
 

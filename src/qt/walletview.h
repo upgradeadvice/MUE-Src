@@ -16,6 +16,7 @@ class SendCoinsDialog;
 class SendCoinsRecipient;
 class TransactionView;
 class MiningPage;
+class BlockBrowser;
 class WalletModel;
 
 QT_BEGIN_NAMESPACE
@@ -61,6 +62,7 @@ private:
     ReceiveCoinsDialog *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     MiningPage *miningPage;
+    BlockBrowser *blockBrowser;
 
     TransactionView *transactionView;
 
@@ -77,6 +79,8 @@ public slots:
     void gotoSendCoinsPage(QString addr = "");
     /** Switch to mining page */
     void gotoMiningPage();
+    /** Switch to Block Browser page */
+    void gotoBlockBrowserPage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
