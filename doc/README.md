@@ -1,4 +1,4 @@
-MonetaryUnit 1.0.0.1 BETA
+MonetaryUnit 1.0.0.2 BETA
 =====================
 
 Copyright (c) 2009-2015 Bitcoin Developers
