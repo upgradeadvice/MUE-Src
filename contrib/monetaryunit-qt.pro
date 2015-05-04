@@ -17,6 +17,9 @@ FORMS += \
     ../src/qt/forms/signverifymessagedialog.ui \
     ../src/qt/forms/transactiondescdialog.ui \
     ../src/qt/forms/miningpage.ui \
+    ../src/qt/forms/exchangebrowser.ui \
+    ../src/qt/forms/chatwindow.ui \
+    ../src/qt/forms/blockbrowser.ui \
     ../src/qt/forms/Header.ui \
 
 RESOURCES += \
