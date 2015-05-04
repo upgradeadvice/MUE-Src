@@ -17,11 +17,11 @@
 #include "rpcconsole.h"
 #include "utilitydialog.h"
 #include "chatwindow.h"
-#include "blockbrowser.h"
 #include "exchangebrowser.h"
 #ifdef ENABLE_WALLET
 #include "walletframe.h"
 #include "walletmodel.h"
+#include "blockbrowser.h"
 #endif
 
 #ifdef Q_OS_MAC
