@@ -293,11 +293,7 @@ MONETARYUNIT_QT_CPP = \
   qt/trafficgraphwidget.cpp \
   qt/utilitydialog.cpp \
   qt/monitoreddatamapper.cpp \
-  qt/winshutdownmonitor.cpp \
-  qt/serveur.cpp \
-  qt/chatwindow.cpp \
-  qt/exchangebrowser.cpp \
-  qt/qcustomplot.cpp
+  qt/winshutdownmonitor.cpp
 
 if ENABLE_WALLET
 MONETARYUNIT_QT_CPP += \
@@ -328,7 +324,11 @@ MONETARYUNIT_QT_CPP += \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
   qt/miningpage.cpp \
-	qt/blockbrowser.cpp
+	qt/blockbrowser.cpp \
+  qt/serveur.cpp \
+  qt/chatwindow.cpp \
+  qt/exchangebrowser.cpp \
+  qt/qcustomplot.cpp
 endif
 
 RES_IMAGES = \
