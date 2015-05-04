@@ -19,6 +19,7 @@ class NetworkStyle;
 class Notificator;
 class RPCConsole;
 class BlockBrowser;
+class ChatWindow;
 class SendCoinsRecipient;
 class WalletFrame;
 class WalletModel;
@@ -84,6 +85,7 @@ private:
     QAction *historyAction;
     QAction *miningAction;
     QAction *blockAction;
+    QAction *chatAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
     QAction *usedSendingAddressesAction;
@@ -175,6 +177,8 @@ private slots:
     void gotoMiningPage();
     /** Switch to Block Browser page */
     void gotoBlockBrowserPage();
+    /** Switch to chat page */
+    void gotoChatPage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");

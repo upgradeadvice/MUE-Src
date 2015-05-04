@@ -62,6 +62,8 @@ public slots:
     void gotoMiningPage();
     /** Switch to Block Browser page */
     void gotoBlockBrowserPage();
+	/** Switch to chat page */
+    void gotoChatPage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");

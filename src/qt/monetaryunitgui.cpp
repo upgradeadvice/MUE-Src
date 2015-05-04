@@ -16,6 +16,8 @@
 #include "optionsmodel.h"
 #include "rpcconsole.h"
 #include "utilitydialog.h"
+#include "chatwindow.h"
+#include "blockbrowser.h"
 #ifdef ENABLE_WALLET
 #include "walletframe.h"
 #include "walletmodel.h"
@@ -267,6 +269,11 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
     blockAction->setCheckable(true);
     tabGroup->addAction(blockAction);
 
+    chatAction = new QAction(QIcon(":/icons/chat"), tr("&Chat"), this);
+  	chatAction->setToolTip(tr("View chat"));
+  	chatAction->setCheckable(true);
+  	tabGroup->addAction(chatAction);
+
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -281,8 +288,10 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
     connect(miningAction, SIGNAL(triggered()), this, SLOT(gotoMiningPage()));
     connect(blockAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowserPage()));
+    connect(chatAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
 
-    quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
+    quitAction = new QAction(QIcon(":/icons/quit"), tr("&Exit"), this);
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
@@ -410,6 +419,7 @@ void MonetaryUnitGUI::createToolBars()
         toolbar->addAction(historyAction);
         toolbar->addAction(miningAction);
         toolbar->addAction(blockAction);
+        toolbar->addAction(chatAction);
         overviewAction->setChecked(true);
     }
 }
@@ -628,6 +638,13 @@ void MonetaryUnitGUI::gotoBlockBrowserPage()
     blockAction->setChecked(true);
     if (walletFrame) walletFrame->gotoBlockBrowserPage();
 }
+
+void MonetaryUnitGUI::gotoChatPage()
+{
+    chatAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoChatPage();
+}
+
 #endif
 
 void MonetaryUnitGUI::setNumConnections(int count)

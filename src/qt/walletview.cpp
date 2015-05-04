@@ -15,6 +15,7 @@
 #include "sendcoinsdialog.h"
 #include "miningpage.h"
 #include "blockbrowser.h"
+#include "chatwindow.h"
 #include "signverifymessagedialog.h"
 #include "transactiontablemodel.h"
 #include "transactionview.h"
@@ -57,6 +58,7 @@ WalletView::WalletView(QWidget *parent):
     sendCoinsPage = new SendCoinsDialog();
     miningPage = new MiningPage();
     blockBrowser = new BlockBrowser();
+    chatWindow = new ChatWindow();
 
     addWidget(overviewPage);
     addWidget(transactionsPage);
@@ -64,6 +66,7 @@ WalletView::WalletView(QWidget *parent):
     addWidget(sendCoinsPage);
     addWidget(miningPage);
     addWidget(blockBrowser);
+    addWidget(chatWindow);
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
@@ -82,6 +85,8 @@ WalletView::WalletView(QWidget *parent):
     connect(miningPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
     //blockbrowser
     connect(blockBrowser, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+    //chatwindow
+    connect(chatWindow, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
 
 }
 
@@ -176,6 +181,11 @@ void WalletView::gotoHistoryPage()
 void WalletView::gotoMiningPage()
 {
     setCurrentWidget(miningPage);
+}
+
+void WalletView::gotoChatPage()
+{
+    setCurrentWidget(chatWindow);
 }
 
 void WalletView::gotoBlockBrowserPage()
