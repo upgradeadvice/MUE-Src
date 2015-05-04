@@ -18,6 +18,7 @@
 #include "utilitydialog.h"
 #include "chatwindow.h"
 #include "blockbrowser.h"
+#include "exchangebrowser.h"
 #ifdef ENABLE_WALLET
 #include "walletframe.h"
 #include "walletmodel.h"
@@ -274,6 +275,12 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
   	chatAction->setCheckable(true);
   	tabGroup->addAction(chatAction);
 
+    exchangeAction = new QAction(QIcon(":/icons/markets"), tr("&Market Data"), this);
+    exchangeAction->setToolTip(tr("Market"));
+    exchangeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
+    exchangeAction->setCheckable(true);
+    tabGroup->addAction(exchangeAction);
+
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -290,6 +297,8 @@ void MonetaryUnitGUI::createActions(const NetworkStyle *networkStyle)
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowserPage()));
     connect(chatAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
+    connect(exchangeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(exchangeAction, SIGNAL(triggered()), this, SLOT(gotoExchangeBrowserPage()));
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("&Exit"), this);
     quitAction->setStatusTip(tr("Quit application"));
@@ -420,6 +429,7 @@ void MonetaryUnitGUI::createToolBars()
         toolbar->addAction(miningAction);
         toolbar->addAction(blockAction);
         toolbar->addAction(chatAction);
+        toolbar->addAction(exchangeAction);
         overviewAction->setChecked(true);
     }
 }
@@ -645,6 +655,11 @@ void MonetaryUnitGUI::gotoChatPage()
     if (walletFrame) walletFrame->gotoChatPage();
 }
 
+void MonetaryUnitGUI::gotoExchangeBrowserPage()
+{
+    exchangeAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoExchangeBrowserPage();
+}
 #endif
 
 void MonetaryUnitGUI::setNumConnections(int count)
