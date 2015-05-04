@@ -1,7 +1,9 @@
 #include "blockbrowser.h"
 #include "ui_blockbrowser.h"
 #include "main.h"
+#ifdef ENABLE_WALLET
 #include "wallet.h"
+#endif
 #include "base58.h"
 #include "clientmodel.h"
 #include "rpcserver.h"

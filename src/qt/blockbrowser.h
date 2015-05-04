@@ -3,7 +3,9 @@
 
 #include "clientmodel.h"
 #include "main.h"
+#ifdef ENABLE_WALLET
 #include "wallet.h"
+#endif
 #include "base58.h"
 #include <QWidget>
 

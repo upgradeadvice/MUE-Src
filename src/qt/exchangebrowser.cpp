@@ -1,7 +1,9 @@
 #include "exchangebrowser.h"
 #include "ui_exchangebrowser.h"
 #include "main.h"
+#ifdef ENABLE_WALLET
 #include "wallet.h"
+#endif
 #include "base58.h"
 #include "clientmodel.h"
 #include "rpcclient.h"
