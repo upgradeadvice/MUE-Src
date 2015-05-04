@@ -116,3 +116,5 @@ out/
 /config.cache
 /src/monetaryunit-config.h
 /src/monetaryunit-config.h.in
+/.cproject
+/.project
