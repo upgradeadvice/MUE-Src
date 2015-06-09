@@ -22,7 +22,9 @@ using namespace boost::assign;
 
 unsigned int pnSeed[] =
 {
-    0x01020304,
+  0x02ee4c90, 0x52bec405, 0x1d98ec68, 0xc0578368, 0x7a65ec68, 0x0ee421b2, 0xabfed23e, 0x579c72a7,
+  0x7e29a43a, 0x24737957, 0xc4e51c56, 0xc0bec15a, 0x52bec405, 0x1d98ec68, 0xc0578368, 0x02ee4c90,
+  0x0ee421b2, 0x579c72a7,
 };
 
 static const unsigned int timeMainGenesisBlock = 1404668200;

@@ -3,7 +3,7 @@
 # Generate pnSeed[] from Pieter's DNS seeder
 #
 
-NSEEDS=600
+NSEEDS=20
 
 import re
 import sys
@@ -13,7 +13,7 @@ def main():
     lines = sys.stdin.readlines()
 
     ips = []
-    pattern = re.compile(r"^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3}):8333")
+    pattern = re.compile(r"^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3}):29948")
     for line in lines:
         m = pattern.match(line)
         if m is None:
