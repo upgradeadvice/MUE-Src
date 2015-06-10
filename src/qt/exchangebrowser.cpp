@@ -41,7 +41,7 @@ ExchangeBrowser::ExchangeBrowser(QWidget* parent) : QWidget(parent), ui(new Ui::
     getRequest(apiCoinbasePrice);
 
     ui->setupUi(this);
-    setFixedSize(500, 420);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     ui->qCustomPlotBittrexTrades->addGraph();
     ui->qCustomPlotBittrexTrades->setBackground(QBrush(QColor("#edf1f7")));

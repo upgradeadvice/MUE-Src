@@ -416,12 +416,22 @@ void MonetaryUnitGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
+static QWidget* makeToolBarSpacer()
+{
+    QWidget* spacer = new QWidget();
+    spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+    //spacer->setStyleSheet("QWidget{ background-color: #ffffff; }");
+
+    return spacer;
+}
+
 void MonetaryUnitGUI::createToolBars()
 {
     if(walletFrame)
     {
         QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
         toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
@@ -430,7 +440,16 @@ void MonetaryUnitGUI::createToolBars()
         toolbar->addAction(blockAction);
         toolbar->addAction(chatAction);
         toolbar->addAction(exchangeAction);
+        toolbar->addWidget(makeToolBarSpacer());
         overviewAction->setChecked(true);
+        //toolbar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        toolbar->setOrientation(Qt::Vertical);
+        toolbar->setMovable(false);
+        addToolBar(Qt::LeftToolBarArea, toolbar);
+        int w = 140;
+        foreach(QAction *action, toolbar->actions()) {
+            toolbar->widgetForAction(action)->setFixedWidth(w);
+        }
     }
 }
 
