@@ -1,3 +1,4 @@
+![MonetaryUnit](https://github.com/MonetaryUnit/MUE-Src/raw/master/share/pixmaps/monetaryunit256.png "MonetaryUnit")
 MonetaryUnit Core integration/staging tree
 =====================================
 [![Build Status](https://travis-ci.org/MonetaryUnit/MUE-Src.svg?branch=master)](https://travis-ci.org/MonetaryUnit/MUE-Src)
