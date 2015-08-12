@@ -231,7 +231,8 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sha3/keccak.c \
   crypto/sha3/sph_keccak.h \
   crypto/sha3/skein.c \
-  crypto/sha3/sph_skein.h
+  crypto/sha3/sph_skein.h \
+	crypto/sha3/sph_types.h
 
 # univalue JSON library
 univalue_libbitcoin_univalue_a_SOURCES = \
@@ -377,6 +378,7 @@ libbitcoinconsensus_la_SOURCES = \
   crypto/sha3/jh.c \
   crypto/sha3/keccak.c \
   crypto/sha3/skein.c \
+	crypto/sha3/sph_types.h \
   eccryptoverify.cpp \
   ecwrapper.cpp \
   hash.cpp \
