@@ -11,7 +11,7 @@ notifications:
     secure: mb2bj3QwJf+WOOI/gcFeQIGtzbrSlFqFzOIcht6bdQDG3c5hkiGjSx3HufYjKAh91nAu4AyBjI0d6R6fCfJVclU4UpRumpNhaui3/dTyV+7/IjIOKlgF72/4O04j47wBc+y7YA7N+6JxcWl1gdBwPOptVO1moSSEm/WlOTRRuAo=
 env:
   global:
-    - MAKEJOBS=-j3
+    - MAKEJOBS=-j1
     - RUN_TESTS=false
     - CCACHE_SIZE=100M
     - CCACHE_TEMPDIR=/tmp/.ccache-temp
