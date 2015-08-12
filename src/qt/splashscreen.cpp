@@ -25,16 +25,16 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 {
     // set reference point, paddings
     int paddingRight            = 50;
-    int paddingTop              = 50;
+    int paddingTop              = 80;
     int titleVersionVSpace      = 17;
     int titleCopyrightVSpace    = 40;
 
     float fontFactor            = 1.0;
 
     // define text to place
-    QString titleText       = tr("Bitcoin Core");
+    QString titleText       = tr("MonetaryUnit Core");
     QString versionText     = QString("Version %1").arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightText   = QChar(0xA9)+QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
+    QString copyrightText   = QChar(0xA9)+QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The MonetaryUnit Core developers"));
     QString titleAddText    = networkStyle->getTitleAddText();
 
     QString font            = QApplication::font().toString();
@@ -43,7 +43,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     pixmap     = networkStyle->getSplashImage();
 
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100,100,100));
+    pixPaint.setPen(QColor(255,255,255));
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 33*fontFactor));
@@ -51,7 +51,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     int titleTextWidth  = fm.width(titleText);
     if(titleTextWidth > 160) {
         // strange font rendering, Arial probably not found
-        fontFactor = 0.75;
+        fontFactor = 0.66;
     }
 
     pixPaint.setFont(QFont(font, 33*fontFactor));
@@ -115,7 +115,7 @@ static void InitMessage(SplashScreen *splash, const std::string &message)
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom|Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(55,55,55)));
+        Q_ARG(QColor, QColor(255,255,255)));
 }
 
 static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)

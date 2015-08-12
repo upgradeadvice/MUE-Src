@@ -1062,7 +1062,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "Bitcoin " + FormatFullVersion();
+        string strDesc = "MonetaryUnit " + FormatFullVersion();
 
         try {
             while (true) {
@@ -1555,7 +1555,7 @@ bool BindListenPort(const CService &addrBind, string& strError, bool fWhiteliste
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. Bitcoin Core is probably already running."), addrBind.ToString());
+            strError = strprintf(_("Unable to bind to %s on this computer. MonetaryUnit Core is probably already running."), addrBind.ToString());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %s)"), addrBind.ToString(), NetworkErrorString(nErr));
         LogPrintf("%s\n", strError);

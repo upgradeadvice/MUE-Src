@@ -62,12 +62,12 @@
         <translation>Adresa za primanje</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ovo su vaše Bitcoin adrese za slanje uplate. Uvijek provjerite iznos i adresu primatelja prije slanja novca.</translation>
+        <source>These are your MonetaryUnit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ovo su vaše MonetaryUnit adrese za slanje uplate. Uvijek provjerite iznos i adresu primatelja prije slanja novca.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Ovo su vaše Bitcoin adrese za primanje isplate. Preporučamo da koristite novu primateljsku adresu za svaku transakciju.</translation>
+        <source>These are your MonetaryUnit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Ovo su vaše MonetaryUnit adrese za primanje isplate. Preporučamo da koristite novu primateljsku adresu za svaku transakciju.</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
@@ -184,8 +184,8 @@
         <translation>Unesite novu lozinku za novčanik. &lt;br/&gt;Molimo Vas da koristite zaporku od &lt;b&gt;deset ili više slučajnih znakova&lt;/b&gt;, ili &lt;b&gt;osam ili više riječi.&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>Bitcoin će se sada zatvoriti kako bi dovršio postupak šifriranja. Zapamtite da šifriranje vašeg novčanika ne može u potpunosti zaštititi vaše bitcoine od krađe preko zloćudnog softvera koji bi bio na vašem računalu.</translation>
+        <source>MonetaryUnit will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
+        <translation>MonetaryUnit će se sada zatvoriti kako bi dovršio postupak šifriranja. Zapamtite da šifriranje vašeg novčanika ne može u potpunosti zaštititi vaše bitcoine od krađe preko zloćudnog softvera koji bi bio na vašem računalu.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
@@ -291,8 +291,8 @@
         <translation>Otvori &amp;URI...</translation>
     </message>
     <message>
-        <source>Bitcoin Core client</source>
-        <translation>Bitcoin Core klijent</translation>
+        <source>MonetaryUnit Core client</source>
+        <translation>MonetaryUnit Core klijent</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
@@ -303,11 +303,11 @@
         <translation>Re-indeksiranje blokova na disku...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitcoin address</source>
+        <source>Send coins to a MonetaryUnit address</source>
         <translation>Slanje novca na bitcoin adresu</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bitcoin</source>
+        <source>Modify configuration options for MonetaryUnit</source>
         <translation>Promijeni postavke konfiguracije za bitcoin</translation>
     </message>
     <message>
@@ -331,8 +331,8 @@
         <translation>&amp;Potvrdite poruku...</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>MonetaryUnit</source>
+        <translation>MonetaryUnit</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -347,8 +347,8 @@
         <translation>Pri&amp;miti</translation>
     </message>
     <message>
-        <source>Show information about Bitcoin Core</source>
-        <translation>Prikaži informacije o Bitcoin Coreu</translation>
+        <source>Show information about MonetaryUnit Core</source>
+        <translation>Prikaži informacije o MonetaryUnit Coreu</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -363,12 +363,12 @@
         <translation>Šifriraj privatne ključeve koji pripadaju tvom novčaniku</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
-        <translation>Potpiši poruke svojim Bitcoin adresama kako bi dokazao da si njihov vlasnik</translation>
+        <source>Sign messages with your MonetaryUnit addresses to prove you own them</source>
+        <translation>Potpiši poruke svojim MonetaryUnit adresama kako bi dokazao da si njihov vlasnik</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
-        <translation>Provjerite porkue kako bi se uvjerili da su potpisane navedenim Bitcoin adresama</translation>
+        <source>Verify messages to ensure they were signed with specified MonetaryUnit addresses</source>
+        <translation>Provjerite porkue kako bi se uvjerili da su potpisane navedenim MonetaryUnit adresama</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -387,16 +387,16 @@
         <translation>Traka kartica</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Jezgra</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Jezgra</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Zatraži uplate (Stvara QR kodove i bitcoin: URIje)</translation>
+        <source>Request payments (generates QR codes and monetaryunit: URIs)</source>
+        <translation>Zatraži uplate (Stvara QR kodove i monetaryunit: URIje)</translation>
     </message>
     <message>
-        <source>&amp;About Bitcoin Core</source>
-        <translation>&amp;O Bitcoin Jezgri</translation>
+        <source>&amp;About MonetaryUnit Core</source>
+        <translation>&amp;O MonetaryUnit Jezgri</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -407,8 +407,8 @@
         <translation>Prikaži popis korištenih adresa i oznaka za primanje isplate</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aktivna veza na Bitcoin mrežu</numerusform><numerusform>%n aktivne veze na Bitcoin mrežu</numerusform><numerusform>%n aktivnih veza na Bitcoin mrežu</numerusform></translation>
+        <source>%n active connection(s) to MonetaryUnit network</source>
+        <translation><numerusform>%n aktivna veza na MonetaryUnit mrežu</numerusform><numerusform>%n aktivne veze na MonetaryUnit mrežu</numerusform><numerusform>%n aktivnih veza na MonetaryUnit mrežu</numerusform></translation>
     </message>
     <message>
         <source>Error</source>
@@ -532,7 +532,7 @@ Adresa:%4
         <translation>Upisana adresa "%1" je već u adresaru.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
+        <source>The entered address "%1" is not a valid MonetaryUnit address.</source>
         <translation>Upisana adresa "%1" nije valjana bitcoin adresa.</translation>
     </message>
     <message>
@@ -554,16 +554,16 @@ Adresa:%4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Jezgra</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Jezgra</translation>
     </message>
     <message>
         <source>version</source>
         <translation>verzija</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
-        <translation>O Bitcoin Jezrgu</translation>
+        <source>About MonetaryUnit Core</source>
+        <translation>O MonetaryUnit Jezrgu</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -585,8 +585,8 @@ Adresa:%4
         <translation>Dobrodošli</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Jezgra</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Jezgra</translation>
     </message>
     <message>
         <source>Error</source>
@@ -607,20 +607,20 @@ Adresa:%4
         <translation>&amp;Glavno</translation>
     </message>
     <message>
-        <source>Automatically start Bitcoin after logging in to the system.</source>
-        <translation>Automatski pokreni Bitcoin kad se uključi računalo</translation>
+        <source>Automatically start MonetaryUnit after logging in to the system.</source>
+        <translation>Automatski pokreni MonetaryUnit kad se uključi računalo</translation>
     </message>
     <message>
-        <source>&amp;Start Bitcoin on system login</source>
-        <translation>&amp;Pokreni Bitcoin kod pokretanja sustava</translation>
+        <source>&amp;Start MonetaryUnit on system login</source>
+        <translation>&amp;Pokreni MonetaryUnit kod pokretanja sustava</translation>
     </message>
     <message>
         <source>&amp;Network</source>
         <translation>&amp;Mreža</translation>
     </message>
     <message>
-        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatski otvori port Bitcoin klijenta na ruteru. To radi samo ako ruter podržava UPnP i ako je omogućen.</translation>
+        <source>Automatically open the MonetaryUnit client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatski otvori port MonetaryUnit klijenta na ruteru. To radi samo ako ruter podržava UPnP i ako je omogućen.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -690,8 +690,8 @@ Adresa:%4
         <translation>Oblik</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Prikazani podatci mogu biti zastarjeli. Vaš novčanik se automatski sinkronizira s Bitcoin mrežom kada je veza uspostavljena, ali taj proces još nije završen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the MonetaryUnit network after a connection is established, but this process has not completed yet.</source>
+        <translation>Prikazani podatci mogu biti zastarjeli. Vaš novčanik se automatski sinkronizira s MonetaryUnit mrežom kada je veza uspostavljena, ali taj proces još nije završen.</translation>
     </message>
     <message>
         <source>Total:</source>
@@ -789,8 +789,8 @@ Adresa:%4
         <translation>Očisti konzolu</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Dobrodošli u Bitcoin RPC konzolu.</translation>
+        <source>Welcome to the MonetaryUnit RPC console.</source>
+        <translation>Dobrodošli u MonetaryUnit RPC konzolu.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1029,8 +1029,8 @@ Adresa:%4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Jezgra</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Jezgra</translation>
     </message>
     <message>
         <source>[testnet]</source>

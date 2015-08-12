@@ -62,12 +62,12 @@
         <translation>მიღების მისამართი</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>ეს არის თქვენი Bitcoin-მისამართები გადახდების შესასრულებლად. მონეტების გაგზავნამდე ყოველთვის შეამოწმეთ თანხა და მიმღების მისამართი.</translation>
+        <source>These are your MonetaryUnit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>ეს არის თქვენი MonetaryUnit-მისამართები გადახდების შესასრულებლად. მონეტების გაგზავნამდე ყოველთვის შეამოწმეთ თანხა და მიმღების მისამართი.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>ეს არის თქვენი Bitcoin-მისამართები გადახდების მისაღებად. რეკომენდებულია ყოველი ტრანსაქციისათვის ახალი მიღების მისამართის გამოყენება.</translation>
+        <source>These are your MonetaryUnit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>ეს არის თქვენი MonetaryUnit-მისამართები გადახდების მისაღებად. რეკომენდებულია ყოველი ტრანსაქციისათვის ახალი მიღების მისამართის გამოყენება.</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
@@ -176,8 +176,8 @@
         <translation>საფულე დაშიფრულია</translation>
     </message>
     <message>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>ახლა Bitcoin დაიხურება დაშიფრვის პროცესის დასასრულებლად. გაითვალისწინეთ, რომ დაშიფრვა სრულად ვერ დაიცავს თქვენს ბითქოინებს თქვენს კომპიუტერში შემოპარული მავნე პროგრამების საშუალებით დატაცებისაგან.</translation>
+        <source>MonetaryUnit will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
+        <translation>ახლა MonetaryUnit დაიხურება დაშიფრვის პროცესის დასასრულებლად. გაითვალისწინეთ, რომ დაში���რვა სრ���ლად ვერ დაიცავს თქვენს ბითქოინებს თქვენს კომპიუტერში შემოპარული მავნე პროგრამების საშუალებით დატაცებისაგან.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
@@ -291,11 +291,11 @@
         <translation>დისკზე ბლოკების რეინდექსაცია...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>მონეტების გაგზავნა Bitcoin-მისამართზე</translation>
+        <source>Send coins to a MonetaryUnit address</source>
+        <translation>მონეტების გაგზავნა MonetaryUnit-მისამართზე</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bitcoin</source>
+        <source>Modify configuration options for MonetaryUnit</source>
         <translation>Bitcoin-ის საკონფიგურაციო პარამეტრების ცვლილება</translation>
     </message>
     <message>
@@ -319,8 +319,8 @@
         <translation>&amp;ვერიფიკაცია</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>MonetaryUnit</source>
+        <translation>MonetaryUnit</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -347,12 +347,12 @@
         <translation>თქვენი საფულის პირადი გასაღებების დაშიფრვა</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
-        <translation>მესიჯებზე ხელმოწერა თქვენი Bitcoin-მისამართებით იმის დასტურად, რომ ის თქვენია</translation>
+        <source>Sign messages with your MonetaryUnit addresses to prove you own them</source>
+        <translation>მესიჯებზე ხელმოწერა თქვენი MonetaryUnit-მისამართებით იმის დასტურად, რომ ის თქვენია</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
-        <translation>შეამოწმეთ, რომ მესიჯები ხელმოწერილია მითითებული Bitcoin-მისამართით</translation>
+        <source>Verify messages to ensure they were signed with specified MonetaryUnit addresses</source>
+        <translation>შეამოწმეთ, რომ მესიჯები ხელმოწერილია მითითებული MonetaryUnit-მისამართით</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -371,16 +371,16 @@
         <translation>ბარათების პანელი</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>გადახდის მოთხოვნა (შეიქმნება QR-კოდები და bitcoin: ბმულები)</translation>
+        <source>Request payments (generates QR codes and monetaryunit: URIs)</source>
+        <translation>გადახდის მოთხოვნა (შეიქმნება QR-კოდები და monetaryunit: ბმულები)</translation>
     </message>
     <message>
-        <source>&amp;About Bitcoin Core</source>
-        <translation>Bitcoin Core-ს შეს&amp;ახებ</translation>
+        <source>&amp;About MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core-ს შეს&amp;ახებ</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -388,19 +388,19 @@
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>გამოყენებული მიღების მისამართებისა და ნიშნულების სიის ჩვენება</translation>
+        <translation>გამოყენებული ���იღ���ბის მისამართ���ბისა და ნიშნულების სი���ს ჩვენება</translation>
     </message>
     <message>
-        <source>Open a bitcoin: URI or payment request</source>
-        <translation>bitcoin: URI-ის ან გადახდის მოთხოვნის გახსნა</translation>
+        <source>Open a monetaryunit: URI or payment request</source>
+        <translation>monetaryunit: URI-ის ან გადახდის მოთხოვნის გახსნა</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>საკომანდო სტრიქონის ოპ&amp;ციები</translation>
     </message>
     <message>
-        <source>Show the Bitcoin Core help message to get a list with possible Bitcoin command-line options</source>
-        <translation>Bitcoin Core-ს დახმარების ჩვენება Bitcoin-ის საკომანდო სტრიქონის დასაშვები ოპციების სანახავად</translation>
+        <source>Show the MonetaryUnit Core help message to get a list with possible MonetaryUnit command-line options</source>
+        <translation>MonetaryUnit Core-ს დახმარების ჩვენება MonetaryUnit-ის საკომანდო სტრიქონის დასაშვები ოპციების სანახავად</translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -650,7 +650,7 @@ Address: %4
     </message>
     <message>
         <source>Can vary +/- 1 byte per input.</source>
-        <translation>შეიძლება იყოს +/- 1 ბაიტი ყოველ შესავალზე.</translation>
+        <translation>შეიძლება იყ���ს +/- 1 ბაიტი ყოველ შესავალზე.</translation>
     </message>
     <message>
         <source>Transactions with higher priority are more likely to get included into a block.</source>
@@ -720,8 +720,8 @@ Address: %4
         <translation>მისამართი "%1" უკვე არის მისამართების წიგნში.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>შეყვანილი მისამართი "%1" არ არის ვალიდური Bitcoin-მისამართი.</translation>
+        <source>The entered address "%1" is not a valid MonetaryUnit address.</source>
+        <translation>შეყვანილი მისამართი "%1" არ არის ვალიდური MonetaryUnit-მისამართი.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -758,16 +758,16 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
         <source>version</source>
         <translation>ვერსია</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
-        <translation>Bitcoin Core-ს შესახებ</translation>
+        <source>About MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core-ს შესახებ</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -809,12 +809,12 @@ Address: %4
         <translation>მოგესალმებით</translation>
     </message>
     <message>
-        <source>Welcome to Bitcoin Core.</source>
-        <translation>მოგესალმებათ Bitcoin Core.</translation>
+        <source>Welcome to MonetaryUnit Core.</source>
+        <translation>მოგესალმებათ MonetaryUnit Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Bitcoin Core will store its data.</source>
-        <translation>ეს პროგრამის პირველი გაშვებაა; შეგიძლიათ მიუთითოთ, სად შეინახოს მონაცემები Bitcoin Core-მ.</translation>
+        <source>As this is the first time the program is launched, you can choose where MonetaryUnit Core will store its data.</source>
+        <translation>ეს პროგრამის პირველი გაშვებაა; შეგიძლიათ მიუთითოთ, სად შეინახოს მონაცემები MonetaryUnit Core-მ.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -825,8 +825,8 @@ Address: %4
         <translation>მითითებული კატალოგის გამოყენება:</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -853,7 +853,7 @@ Address: %4
     </message>
     <message>
         <source>Select payment request file to open</source>
-        <translation>გადახდის მოთხოვნის ფაილის არჩევა გასახსნელად</translation>
+        <translation>გადახდის მოთხოვნის ფა���ლის არჩ���ვა გასახსნელად</translation>
     </message>
 </context>
 <context>
@@ -867,11 +867,11 @@ Address: %4
         <translation>&amp;მთავარი</translation>
     </message>
     <message>
-        <source>Automatically start Bitcoin after logging in to the system.</source>
-        <translation>სისტემაში შესვლის შემდეგ Bitcoin-ის ავტომატური გაშვება.</translation>
+        <source>Automatically start MonetaryUnit after logging in to the system.</source>
+        <translation>სისტემაში შესვლის შემდეგ MonetaryUnit-ის ავტომატური გაშვება.</translation>
     </message>
     <message>
-        <source>&amp;Start Bitcoin on system login</source>
+        <source>&amp;Start MonetaryUnit on system login</source>
         <translation>&amp;სისტემაში შესვლისას გაშვება</translation>
     </message>
     <message>
@@ -915,8 +915,8 @@ Address: %4
         <translation>დაუდასტურებელი ხურდის გამოყენების აკრძალვის შემდეგ მათი გამოყენება შეუძლებელი იქნება, სანამ ტრანსაქციას არ ექნება ერთი დასტური მაინც. ეს აისახება თქვენი ნაშთის დათვლაზეც.</translation>
     </message>
     <message>
-        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>როუტერში Bitcoin-კლიენტის პორტის ავტომატური გახსნა. მუშაობს, თუ თქვენს როუტერს ჩართული აქვს UPnP.</translation>
+        <source>Automatically open the MonetaryUnit client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>როუტერში MonetaryUnit-კლიენტის პორტის ავტომატური გახსნა. მუშაობს, თუ თქვენს როუტერს ჩართული აქვს UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -963,8 +963,8 @@ Address: %4
         <translation>სამომხმარებ&amp;ლო ენა:</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitcoin.</source>
-        <translation>აქ შეგიძლიათ აირჩიოთ სამომხმარებლო ენა. ძალაში შევა Bitcoin-ის რესტარტის შემდეგ.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting MonetaryUnit.</source>
+        <translation>აქ შეგიძლიათ აირჩიოთ სამომხმარებლო ენა. ძალაში შევა MonetaryUnit-ის რესტარტის შემდეგ.</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -1022,12 +1022,12 @@ Address: %4
         <translation>ფორმა</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>ნაჩვენები ინფორმაცია შეიძლება მოძველებული იყოს. თქვენი საფულე ავტომატურად სინქრონიზდება Bitcoin-ის ქსელთან კავშირის დამყარების შემდეგ, ეს პროცესი ჯერ არ არის დასრულებული.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the MonetaryUnit network after a connection is established, but this process has not completed yet.</source>
+        <translation>ნაჩვენები ინფორმაცია შეიძლება მოძველებული იყოს. თქვენი საფულე ავტომატურად სინქრონიზდება MonetaryUnit-ის ქსელთან კავშირის დამყარების შემდეგ, ეს პროცესი ჯერ არ არის დასრულებული.</translation>
     </message>
     <message>
         <source>Available:</source>
-        <translation>ხელმისაწვდომია:</translation>
+        <translation>ხელმისაწვ���ომია:</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>
@@ -1081,8 +1081,8 @@ Address: %4
         <translation>გადახდის მოთხოვნის შეცდომა</translation>
     </message>
     <message>
-        <source>Cannot start bitcoin: click-to-pay handler</source>
-        <translation>ვერ გაიშვა bitcoin: click-to-pay</translation>
+        <source>Cannot start monetaryunit: click-to-pay handler</source>
+        <translation>ვერ გაიშვა monetaryunit: click-to-pay</translation>
     </message>
     <message>
         <source>Payment request fetch URL is invalid: %1</source>
@@ -1253,24 +1253,24 @@ Address: %4
         <translation>დახვეწის ლოგ-ფაილი</translation>
     </message>
     <message>
-        <source>Open the Bitcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>გახსენით Bitcoin-ის დახვეწის ლოგ-ფაილი მიმდინარე კატალოგიდან. დიდი ლოგ-ფაილის შემთხვევაში ამას შეიძლება რამდენიმე წამი მოუნდეს.</translation>
+        <source>Open the MonetaryUnit debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>გახსენით MonetaryUnit-ის დახვეწის ლოგ-ფაილი მიმდინარე კატალოგიდან. დიდი ლოგ-ფაილის შემთხვევაში ამას შეიძლება რამდენიმე წამი მოუნდეს.</translation>
     </message>
     <message>
         <source>Clear console</source>
         <translation>კონსოლის გასუფთავება</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>მოგესალმებათ Bitcoin-ის RPC კონსოლი.</translation>
+        <source>Welcome to the MonetaryUnit RPC console.</source>
+        <translation>მოგესალმებათ MonetaryUnit-ის RPC კონსოლი.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>კლავიშები "ზევით" და "ქვევით" - ისტორიაში მოძრაობა, &lt;b&gt;Ctrl-L&lt;/b&gt; - ეკრანის გასუფთავება.</translation>
+        <translation>კლავიშები "ზევით" და "ქვევით" - ისტორიაში მოძრაობა, &lt;b&gt;Ctrl-L&lt;/b&gt; - ე���რანის გას���ფთავება.</translation>
     </message>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>აკრიფეთ &lt;b&gt;help&lt;/b&gt; ფაშვებული ბრძანებების სანახავად.</translation>
+        <translation>აკრიფეთ &lt;b&gt;help&lt;/b&gt; ფაშვებული ბ���ძანებების სანახავად.</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1312,7 +1312,7 @@ Address: %4
         <translation>ად&amp;რე გამოყენებული მიღების მისამართის გამოყენება (არ არის რეკომენდებული)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitcoin network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the MonetaryUnit network.</source>
         <translation>არააუცილებელი მესიჯი, რომელიც ერთვის გადახდის მოთხოვნას და ნაჩვენები იქნება მოთხოვნის გახსნისას. შენიშვნა: მესიჯი არ გაყვება გადახდას ბითქოინის ქსელში.</translation>
     </message>
     <message>
@@ -1486,11 +1486,11 @@ Address: %4
     </message>
     <message>
         <source>Bytes:</source>
-        <translation>ბაიტები:</translation>
+        <translation>ბაიტე���ი:</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>თანხა:</translation>
+        <translation>თანხ���:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -1613,8 +1613,8 @@ Address: %4
         <translation>ტრანსაქცია უარყოფილია! შესაძლოა მონეტების ნაწილი თქვენი საფულიდან უკვე გამოყენებულია, რაც შეიძლება მოხდეს wallet.dat-ის ასლის გამოყენებისას, როცა მონეტები გაიგზავნა სხვა ასლიდან, აქ კი არ არის გაგზავნილად მონიშნული.</translation>
     </message>
     <message>
-        <source>Warning: Invalid Bitcoin address</source>
-        <translation>ყურადღება: არასწორია Bitcoin-მისამართი</translation>
+        <source>Warning: Invalid MonetaryUnit address</source>
+        <translation>ყურადღება: არასწორია MonetaryUnit-მისამართი</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1688,8 +1688,8 @@ Address: %4
         <translation>შეიყვანეთ ამ მისამართის ნიშნული გამოყენებული მისამართების სიაში დასამატებლად</translation>
     </message>
     <message>
-        <source>A message that was attached to the bitcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitcoin network.</source>
-        <translation>მესიჯი, რომელიც თან ერთვის მონეტებს:  URI, რომელიც შეინახება ტრანსაქციასთან ერთად თქვენთვის. შენიშვნა: მესიჯი არ გაყვება გადახდას ბითქოინის ქსელში.</translation>
+        <source>A message that was attached to the monetaryunit: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the MonetaryUnit network.</source>
+        <translation>მესიჯი, რომელიც თან ერთვის მონეტებს:  URI, რომელიც შეინახება ტრანს���ქციასთან ერთა��� თქვენთვის. შენიშვნა: მესიჯი არ გაყვებ��� გადახდას ბითქოინის ქსელში.</translation>
     </message>
     <message>
         <source>This is an unverified payment request.</source>
@@ -1707,8 +1707,8 @@ Address: %4
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Bitcoin Core is shutting down...</source>
-        <translation>Bitcoin Core იხურება...</translation>
+        <source>MonetaryUnit Core is shutting down...</source>
+        <translation>MonetaryUnit Core იხურება...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -1758,7 +1758,7 @@ Address: %4
         <translation>მიმდინარე ხელმოწერის კოპირება კლიპბორდში</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bitcoin address</source>
+        <source>Sign the message to prove you own this MonetaryUnit address</source>
         <translation>მოაწერეთ ხელი იმის დასადასტურებლად, რომ ეს მისამართი თქვენია</translation>
     </message>
     <message>
@@ -1782,8 +1782,8 @@ Address: %4
         <translation>შეიყვანეთ ხელმოწერის მისამართი, მესიჯი (დაუკვირდით, რომ ზუსტად იყოს კოპირებული სტრიქონის გადატანები, ჰარები, ტაბულაციები და სხვ) და ხელმოწერა მესიჯის ვერიფიკაციისათვის. მიაქციეთ ყურადღება, რომ რაიმე ზედმეტი არ გაგყვეთ კოპირებისას, რათა არ გახდეთ "man-in-the-middle" შეტევის ობიექტი.</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
-        <translation>შეამოწმეთ, რომ მესიჯი ხელმოწერილია მითითებული Bitcoin-მისამართით</translation>
+        <source>Verify the message to ensure it was signed with the specified MonetaryUnit address</source>
+        <translation>შეამოწმეთ, რომ მესიჯი ხელმოწერილია მითითებული MonetaryUnit-მისამართით</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1849,12 +1849,12 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core-ს ავტორები</translation>
+        <source>The MonetaryUnit Core developers</source>
+        <translation>MonetaryUnit Core-ს ავტორები</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2340,7 +2340,7 @@ Address: %4
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>ეს არის წინასწარი სატესტო ვერსია - გამოიყენეთ საკუთარი რისკით - არ გამოიყენოთ მოპოვებისა ან კომერციული მიზნებისათვის</translation>
+        <translation>ეს არის წინასწარი სატესტო ვერსია - გამოიყენეთ საკუთარი რისკით - არ გამოიყენოთ მოპოვე���ისა ან კომერციული მიზნებისათვის</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -2476,7 +2476,7 @@ Address: %4
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>ბრძანების შესრულება შესაბამისი უწყების მიღებისას ან როცა შეინიშნება საგრძნობი გახლეჩა (cmd-ში %s შეიცვლება მესიჯით)</translation>
+        <translation>ბრძანების შ���სრულება შესაბამისი უწყების მიღებისას ან როცა შეინიშნება საგრძნობი გახლეჩა (cmd-ში %s შეიც���ლება მესიჯით)</translation>
     </message>
     <message>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>

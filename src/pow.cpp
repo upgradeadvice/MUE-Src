@@ -49,11 +49,13 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 
     // Limit adjustment step
     int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
-    LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
-    if (nActualTimespan < Params().TargetTimespan()/4)
-        nActualTimespan = Params().TargetTimespan()/4;
-    if (nActualTimespan > Params().TargetTimespan()*4)
-        nActualTimespan = Params().TargetTimespan()*4;
+    LogPrintf("  nActualTimespan = %d before bounds\n", nActualTimespan);
+    int64_t LimUp = Params().TargetTimespan() * 100 / 110; // 110% up
+    int64_t LimDown = Params().TargetTimespan() * 2; // 200% down
+    if (nActualTimespan < LimUp)
+        nActualTimespan = LimUp;
+    if (nActualTimespan > LimDown)
+        nActualTimespan = LimDown;
 
     // Retarget
     uint256 bnNew;

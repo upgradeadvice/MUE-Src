@@ -88,6 +88,10 @@ private:
     QMenuBar *appMenuBar;
     QAction *overviewAction;
     QAction *historyAction;
+    QAction *miningAction;
+    QAction *blockAction;
+    QAction *chatAction;
+    QAction *exchangeAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
     QAction *usedSendingAddressesAction;
@@ -174,6 +178,14 @@ private slots:
     void gotoHistoryPage();
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
+    /** Switch to mining page */
+    void gotoMiningPage();
+    /** Switch to block browser page */
+    void gotoBlockBrowserPage();
+    /** Switch to chat page */
+    void gotoChatPage();
+    /** Switch to exchange browser page */
+    void gotoExchangeBrowserPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
 

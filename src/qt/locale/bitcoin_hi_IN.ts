@@ -164,7 +164,7 @@
         <translation>पहचान शब्द/अक्षर जो वॉलेट एनक्रिपशन के लिए इस्तेमाल किया है उसे बदलिए!</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
+        <source>MonetaryUnit</source>
         <translation>बीटकोइन</translation>
     </message>
     <message>
@@ -188,7 +188,7 @@
         <translation>टैबस टूलबार</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
+        <source>%n active connection(s) to MonetaryUnit network</source>
         <translation><numerusform>%n सक्रिया संपर्क बीटकोइन नेटवर्क से</numerusform><numerusform>%n सक्रिया संपर्क बीटकोइन नेटवर्क से</numerusform></translation>
     </message>
     <message numerus="yes">
@@ -566,7 +566,7 @@ Address: %4
     <name>TransactionDesc</name>
     <message>
         <source>Open until %1</source>
-        <translation>खुला है जबतक %1</translation>
+        <translation>खुला ह��� ���बतक %1</translation>
     </message>
     <message>
         <source>%1/unconfirmed</source>

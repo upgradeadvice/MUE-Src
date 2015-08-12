@@ -1,5 +1,5 @@
 ---
-name: "bitcoin-win-0.10"
+name: "monetaryunit-win-1.0.10.2"
 enable_cache: true
 suites:
 - "precise"
@@ -20,8 +20,8 @@ packages:
 - "zip"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/bitcoin/bitcoin.git"
-  "dir": "bitcoin"
+- "url": "https://github.com/monetaryunit/mue-src.git"
+  "dir": "mue-src"
 files: []
 script: |
   WRAP_DIR=$HOME/wrapped

@@ -60,11 +60,11 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += bitcoind
+  bin_PROGRAMS += monetaryunitd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += bitcoin-cli bitcoin-tx
+  bin_PROGRAMS += monetaryunit-cli monetaryunit-tx
 endif
 
 .PHONY: FORCE
@@ -217,8 +217,21 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/hmac_sha256.h \
   crypto/rfc6979_hmac_sha256.h \
   crypto/hmac_sha512.h \
+  crypto/hashblock.h \
   crypto/sha1.h \
-  crypto/ripemd160.h
+  crypto/ripemd160.h \
+  crypto/sha3/blake.c \
+  crypto/sha3/sph_blake.h \
+  crypto/sha3/bmw.c \
+  crypto/sha3/sph_bmw.h \
+  crypto/sha3/groestl.c \
+  crypto/sha3/sph_groestl.h \
+  crypto/sha3/jh.c \
+  crypto/sha3/sph_jh.h \
+  crypto/sha3/keccak.c \
+  crypto/sha3/sph_keccak.h \
+  crypto/sha3/skein.c \
+  crypto/sha3/sph_skein.h
 
 # univalue JSON library
 univalue_libbitcoin_univalue_a_SOURCES = \
@@ -290,8 +303,8 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitcoind binary #
-bitcoind_LDADD = \
+# monetaryunitd binary #
+monetaryunitd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -302,35 +315,35 @@ bitcoind_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_WALLET
-bitcoind_LDADD += libbitcoin_wallet.a
+monetaryunitd_LDADD += libbitcoin_wallet.a
 endif
-bitcoind_SOURCES = bitcoind.cpp
+monetaryunitd_SOURCES = bitcoind.cpp
 #
 
 if TARGET_WINDOWS
-bitcoind_SOURCES += bitcoind-res.rc
+monetaryunitd_SOURCES += bitcoind-res.rc
 endif
 
-bitcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-bitcoind_CPPFLAGS = $(BITCOIN_INCLUDES)
-bitcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+monetaryunitd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+monetaryunitd_CPPFLAGS = $(BITCOIN_INCLUDES)
+monetaryunitd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 # bitcoin-cli binary #
-bitcoin_cli_LDADD = \
+monetaryunit_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
   $(CRYPTO_LIBS)
 
-bitcoin_cli_SOURCES = \
+monetaryunit_cli_SOURCES = \
   bitcoin-cli.cpp
 
-bitcoin_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
+monetaryunit_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
 
 # bitcoin-tx binary #
-bitcoin_tx_LDADD = \
+monetaryunit_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -339,15 +352,15 @@ bitcoin_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-bitcoin_tx_SOURCES = bitcoin-tx.cpp
-bitcoin_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+monetaryunit_tx_SOURCES = bitcoin-tx.cpp
+monetaryunit_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-bitcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+monetaryunit_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitcoin_cli_SOURCES += bitcoin-cli-res.rc
+monetaryunit_cli_SOURCES += bitcoin-cli-res.rc
 endif
-bitcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+monetaryunit_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
@@ -358,6 +371,12 @@ libbitcoinconsensus_la_SOURCES = \
   crypto/sha256.cpp \
   crypto/sha512.cpp \
   crypto/ripemd160.cpp \
+  crypto/sha3/blake.c \
+  crypto/sha3/bmw.c \
+  crypto/sha3/groestl.c \
+  crypto/sha3/jh.c \
+  crypto/sha3/keccak.c \
+  crypto/sha3/skein.c \
   eccryptoverify.cpp \
   ecwrapper.cpp \
   hash.cpp \

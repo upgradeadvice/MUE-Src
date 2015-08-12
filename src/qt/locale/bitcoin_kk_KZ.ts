@@ -107,7 +107,7 @@
         <translation>Құпия сөзді өзгерту</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
+        <source>MonetaryUnit</source>
         <translation>Биткоин</translation>
     </message>
     <message>

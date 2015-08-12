@@ -31,7 +31,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-# error "Bitcoin cannot be compiled without assertions."
+# error "MonetaryUnit cannot be compiled without assertions."
 #endif
 
 /**
@@ -54,7 +54,9 @@ bool fIsBareMultisigStd = true;
 bool fCheckBlockIndex = false;
 unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
-
+static const int64_t nGenesisBlockRewardCoin = 0 * COIN;
+static const int64_t nBlockRewardStartCoin = 40 * COIN;
+static const int64_t nBlockRewardMinimumCoin = 1 * COIN;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying and mining) */
 CFeeRate minRelayTxFee = CFeeRate(1000);
 
@@ -73,7 +75,7 @@ static void CheckBlockIndex();
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Bitcoin Signed Message:\n";
+const string strMessageMagic = "Monetaryunit Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -743,7 +745,7 @@ bool IsFinalTx(const CTransaction &tx, int nBlockHeight, int64_t nBlockTime)
 /**
  * Check transaction inputs to mitigate two
  * potential denial-of-service attacks:
- * 
+ *
  * 1. scriptSigs with extra data stuffed into them,
  *    not consumed by scriptPubKey (or P2SH script)
  * 2. P2SH scripts with a crazy number of expensive
@@ -1235,15 +1237,23 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex)
 
 CAmount GetBlockValue(int nHeight, const CAmount& nFees)
 {
-    CAmount nSubsidy = 50 * COIN;
-    int halvings = nHeight / Params().SubsidyHalvingInterval();
+    if (nHeight == 0)
+    {
+        return nGenesisBlockRewardCoin;
+    }
 
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return nFees;
+    CAmount nSubsidy = nBlockRewardStartCoin;
 
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
+    if(nHeight == 1 ) {nSubsidy = 40000000 * COIN;}
+    else if(nHeight <= 40000 ) {nSubsidy = .025 * COIN;}
+    else if(nHeight <= 80000 ) {nSubsidy = 1 * COIN;}
+    else if(nHeight <= 120000 ) {nSubsidy = 2 * COIN;}
+    else if(nHeight <= 160000 ) {nSubsidy = 4 * COIN;}
+    else if(nHeight <= 200000 ) {nSubsidy = 8 * COIN;}
+    else if(nHeight <= 240000 ) {nSubsidy = 10 * COIN;}
+    else if(nHeight <= 280000 ) {nSubsidy = 20 * COIN;}
+    else if(nHeight <= 320000 ) {nSubsidy = 30 * COIN;}
+    else if(nHeight >= 320001 ) {nSubsidy = 40 * COIN;}
 
     return nSubsidy + nFees;
 }
@@ -1638,7 +1648,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("bitcoin-scriptch");
+    RenameThread("monetaryunit-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -1699,7 +1709,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     unsigned int flags = fStrictPayToScriptHash ? SCRIPT_VERIFY_P2SH : SCRIPT_VERIFY_NONE;
 
     // Start enforcing the DERSIG (BIP66) rules, for block.nVersion=3 blocks, when 75% of the network has upgraded:
-    if (block.nVersion >= 3 && CBlockIndex::IsSuperMajority(3, pindex->pprev, Params().EnforceBlockUpgradeMajority())) {
+    if (block.nVersion >= 114 && CBlockIndex::IsSuperMajority(114, pindex->pprev, Params().EnforceBlockUpgradeMajority())) {
         flags |= SCRIPT_VERIFY_DERSIG;
     }
 
@@ -1968,7 +1978,7 @@ static int64_t nTimeFlush = 0;
 static int64_t nTimeChainState = 0;
 static int64_t nTimePostConnect = 0;
 
-/** 
+/**
  * Connect a new block to chainActive. pblock is either NULL or a pointer to a CBlock
  * corresponding to pindexNew, to bypass loading it again from disk.
  */
@@ -2541,17 +2551,17 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         return state.DoS(100, error("%s : forked chain older than last checkpoint (height %d)", __func__, nHeight));
 
     // Reject block.nVersion=1 blocks when 95% (75% on testnet) of the network has upgraded:
-    if (block.nVersion < 2 && 
-        CBlockIndex::IsSuperMajority(2, pindexPrev, Params().RejectBlockOutdatedMajority()))
+    if (nHeight >=600000 && block.nVersion < 112 &&
+        CBlockIndex::IsSuperMajority(112, pindexPrev, Params().RejectBlockOutdatedMajority()))
     {
-        return state.Invalid(error("%s : rejected nVersion=1 block", __func__),
+        return state.Invalid(error("%s : rejected obsolete block", __func__),
                              REJECT_OBSOLETE, "bad-version");
     }
 
     // Reject block.nVersion=2 blocks when 95% (75% on testnet) of the network has upgraded:
-    if (block.nVersion < 3 && CBlockIndex::IsSuperMajority(3, pindexPrev, Params().RejectBlockOutdatedMajority()))
+    if (nHeight >=600000 && block.nVersion < 113 && CBlockIndex::IsSuperMajority(113, pindexPrev, Params().RejectBlockOutdatedMajority()))
     {
-        return state.Invalid(error("%s : rejected nVersion=2 block", __func__),
+        return state.Invalid(error("%s : rejected nVersion=112 block", __func__),
                              REJECT_OBSOLETE, "bad-version");
     }
 
@@ -2570,8 +2580,8 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
 
     // Enforce block.nVersion=2 rule that the coinbase starts with serialized block height
     // if 750 of the last 1,000 blocks are version 2 or greater (51/100 if testnet):
-    if (block.nVersion >= 2 && 
-        CBlockIndex::IsSuperMajority(2, pindexPrev, Params().EnforceBlockUpgradeMajority()))
+    if (block.nVersion >= 112 &&
+        CBlockIndex::IsSuperMajority(112, pindexPrev, Params().EnforceBlockUpgradeMajority()))
     {
         CScript expect = CScript() << nHeight;
         if (block.vtx[0].vin[0].scriptSig.size() < expect.size() ||
@@ -4149,8 +4159,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     // This asymmetric behavior for inbound and outbound connections was introduced
     // to prevent a fingerprinting attack: an attacker can send specific fake addresses
-    // to users' AddrMan and later request them by sending getaddr messages. 
-    // Making users (which are behind NAT and can only make outgoing connections) ignore 
+    // to users' AddrMan and later request them by sending getaddr messages.
+    // Making users (which are behind NAT and can only make outgoing connections) ignore
     // getaddr message mitigates the attack.
     else if ((strCommand == "getaddr") && (pfrom->fInbound))
     {

@@ -164,8 +164,8 @@
         <translation>Maciņš nošifrēts</translation>
     </message>
     <message>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>Bitcoin aizvērsies, lai pabeigtu šifrēšanu. Atcerieties, ka maciņa šifrēšana nevar pilnībā novērst bitkoinu zādzību, ko veic datorā ieviesušās kaitīgas programmas.</translation>
+        <source>MonetaryUnit will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
+        <translation>MonetaryUnit aizvērsies, lai pabeigtu šifrēšanu. Atcerieties, ka maciņa šifrēšana nevar pilnībā novērst bitkoinu zādzību, ko veic datorā ieviesušās kaitīgas programmas.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
@@ -271,8 +271,8 @@
         <translation>Atvērt &amp;URI...</translation>
     </message>
     <message>
-        <source>Bitcoin Core client</source>
-        <translation>Bitcoin Core klients</translation>
+        <source>MonetaryUnit Core client</source>
+        <translation>MonetaryUnit Core klients</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
@@ -283,12 +283,12 @@
         <translation>Bloku reindeksēšana no diska...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>Nosūtīt bitkoinus uz Bitcoin adresi</translation>
+        <source>Send coins to a MonetaryUnit address</source>
+        <translation>Nosūtīt bitkoinus uz MonetaryUnit adresi</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bitcoin</source>
-        <translation>Mainīt Bitcoin konfigurācijas uzstādījumus</translation>
+        <source>Modify configuration options for MonetaryUnit</source>
+        <translation>Mainīt MonetaryUnit konfigurācijas uzstādījumus</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -311,8 +311,8 @@
         <translation>&amp;Pārbaudīt ziņojumu...</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>MonetaryUnit</source>
+        <translation>MonetaryUnit</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -327,8 +327,8 @@
         <translation>&amp;Saņemt</translation>
     </message>
     <message>
-        <source>Show information about Bitcoin Core</source>
-        <translation>Parādīt informāciju par Bitcoin Core</translation>
+        <source>Show information about MonetaryUnit Core</source>
+        <translation>Parādīt informāciju par MonetaryUnit Core</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -343,12 +343,12 @@
         <translation>Šifrēt privātās atslēgas kuras pieder tavam maciņam</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
-        <translation>Parakstīt ziņojumus ar savām Bitcoin adresēm lai pierādītu ka tās pieder tev</translation>
+        <source>Sign messages with your MonetaryUnit addresses to prove you own them</source>
+        <translation>Parakstīt ziņojumus ar savām MonetaryUnit adresēm lai pierādītu ka tās pieder tev</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
-        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām Bitcoin adresēm</translation>
+        <source>Verify messages to ensure they were signed with specified MonetaryUnit addresses</source>
+        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām MonetaryUnit adresēm</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -367,19 +367,19 @@
         <translation>Ciļņu rīkjosla</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Pieprasīt maksājumus (izveido QR kodu un bitcoin: URIs)</translation>
+        <source>Request payments (generates QR codes and monetaryunit: URIs)</source>
+        <translation>Pieprasīt maksājumus (izveido QR kodu un monetaryunit: URIs)</translation>
     </message>
     <message>
-        <source>&amp;About Bitcoin Core</source>
-        <translation>Par &amp;Bitcoin Core</translation>
+        <source>&amp;About MonetaryUnit Core</source>
+        <translation>Par &amp;MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>Open a bitcoin: URI or payment request</source>
+        <source>Open a monetaryunit: URI or payment request</source>
         <translation>Atvērt bitcoin URI vai maksājuma pieprasījumu</translation>
     </message>
     <message>
@@ -387,8 +387,8 @@
         <translation>&amp;Komandrindas iespējas</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n aktīvu savienojumu ar Bitcoin tīklu</numerusform><numerusform>%n aktīvs savienojums ar Bitcoin tīklu</numerusform><numerusform>%n aktīvu savienojumu as Bitcoin tīklu</numerusform></translation>
+        <source>%n active connection(s) to MonetaryUnit network</source>
+        <translation><numerusform>%n aktīvu savienojumu ar MonetaryUnit tīklu</numerusform><numerusform>%n aktīvs savienojums ar MonetaryUnit tīklu</numerusform><numerusform>%n aktīvu savienojumu as MonetaryUnit tīklu</numerusform></translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -688,8 +688,8 @@ Adrese: %4
         <translation>Nupat ierakstītā adrese "%1" jau atrodas adrešu grāmatā.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Ierakstītā adrese "%1" nav derīga Bitcoin adrese.</translation>
+        <source>The entered address "%1" is not a valid MonetaryUnit address.</source>
+        <translation>Ierakstītā adrese "%1" nav derīga MonetaryUnit adrese.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -722,8 +722,8 @@ Adrese: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
         <source>version</source>
@@ -734,8 +734,8 @@ Adrese: %4
         <translation>(%1-biti)</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
-        <translation>Par Bitcoin Core</translation>
+        <source>About MonetaryUnit Core</source>
+        <translation>Par MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -769,8 +769,8 @@ Adrese: %4
         <translation>Sveiciens</translation>
     </message>
     <message>
-        <source>Welcome to Bitcoin Core.</source>
-        <translation>Sveicināts Bitcoin Core</translation>
+        <source>Welcome to MonetaryUnit Core.</source>
+        <translation>Sveicināts MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -781,8 +781,8 @@ Adrese: %4
         <translation>Izmantot pielāgotu datu mapi:</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -823,12 +823,12 @@ Adrese: %4
         <translation>&amp;Galvenais</translation>
     </message>
     <message>
-        <source>Automatically start Bitcoin after logging in to the system.</source>
-        <translation>Automātiski sākt Bitcoin pēc pieteikšanās sistēmā.</translation>
+        <source>Automatically start MonetaryUnit after logging in to the system.</source>
+        <translation>Automātiski sākt MonetaryUnit pēc pieteikšanās sistēmā.</translation>
     </message>
     <message>
-        <source>&amp;Start Bitcoin on system login</source>
-        <translation>&amp;Sākt Bitcoin reizē ar sistēmu</translation>
+        <source>&amp;Start MonetaryUnit on system login</source>
+        <translation>&amp;Sākt MonetaryUnit reizē ar sistēmu</translation>
     </message>
     <message>
         <source>Size of &amp;database cache</source>
@@ -883,8 +883,8 @@ Adrese: %4
         <translation>&amp;Tērēt neapstiprinātu atlikumu</translation>
     </message>
     <message>
-        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Uz rūtera automātiski atvērt Bitcoin klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
+        <source>Automatically open the MonetaryUnit client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Uz rūtera automātiski atvērt MonetaryUnit klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -931,8 +931,8 @@ Adrese: %4
         <translation>Lietotāja interfeiss un &amp;valoda:</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitcoin.</source>
-        <translation>Šeit var iestatīt lietotāja valodu. Iestatījums aktivizēsies pēc Bitcoin pārstartēšanas.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting MonetaryUnit.</source>
+        <translation>Šeit var iestatīt lietotāja valodu. Iestatījums aktivizēsies pēc MonetaryUnit pārstartēšanas.</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -944,7 +944,7 @@ Adrese: %4
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
-        <translation>Vai rādīt Bitcoin kontroles funkcijas vai nē.</translation>
+        <translation>Vai rādīt MonetaryUnit kontroles funkcijas vai nē.</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -982,8 +982,8 @@ Adrese: %4
         <translation>Forma</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar Bitcoin tīklu, taču šis process vēl nav beidzies.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the MonetaryUnit network after a connection is established, but this process has not completed yet.</source>
+        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar MonetaryUnit tīklu, taču šis process vēl nav beidzies.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1033,8 +1033,8 @@ Adrese: %4
         <translation>Maksājumu pieprasījuma kļūda</translation>
     </message>
     <message>
-        <source>Cannot start bitcoin: click-to-pay handler</source>
-        <translation>Nevar palaist Bitcoin: nospied-lai-maksātu apstrādātāju</translation>
+        <source>Cannot start monetaryunit: click-to-pay handler</source>
+        <translation>Nevar palaist MonetaryUnit: nospied-lai-maksātu apstrādātāju</translation>
     </message>
     <message>
         <source>Refund from %1</source>
@@ -1189,8 +1189,8 @@ Adrese: %4
         <translation>Notīrīt konsoli</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Laipni lūgti Bitcoin RPC konsolē.</translation>
+        <source>Welcome to the MonetaryUnit RPC console.</source>
+        <translation>Laipni lūgti MonetaryUnit RPC konsolē.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1374,7 +1374,7 @@ Adrese: %4
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Bitcoin Kontroles Funkcijas</translation>
+        <translation>MonetaryUnit Kontroles Funkcijas</translation>
     </message>
     <message>
         <source>Inputs...</source>
@@ -1517,8 +1517,8 @@ Adrese: %4
         <translation>Transakcijas izveidošana neizdevās!</translation>
     </message>
     <message>
-        <source>Warning: Invalid Bitcoin address</source>
-        <translation>Brīdinājums: Nederīga Bitcoin adrese</translation>
+        <source>Warning: Invalid MonetaryUnit address</source>
+        <translation>Brīdinājums: Nederīga MonetaryUnit adrese</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1599,8 +1599,8 @@ Adrese: %4
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Bitcoin Core is shutting down...</source>
-        <translation>Bitcoin Core tiek izslēgta...</translation>
+        <source>MonetaryUnit Core is shutting down...</source>
+        <translation>MonetaryUnit Core tiek izslēgta...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -1646,8 +1646,8 @@ Adrese: %4
         <translation>Kopēt parakstu uz sistēmas starpliktuvi</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bitcoin address</source>
-        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs Bitcoin adreses īpašnieks.</translation>
+        <source>Sign the message to prove you own this MonetaryUnit address</source>
+        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs MonetaryUnit adreses īpašnieks.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1729,12 +1729,12 @@ Adrese: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core izstrādātāji</translation>
+        <source>The MonetaryUnit Core developers</source>
+        <translation>MonetaryUnit Core izstrādātāji</translation>
     </message>
     <message>
         <source>[testnet]</source>

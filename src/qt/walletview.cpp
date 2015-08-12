@@ -13,6 +13,10 @@
 #include "overviewpage.h"
 #include "receivecoinsdialog.h"
 #include "sendcoinsdialog.h"
+#include "miningpage.h"
+#include "blockbrowser.h"
+#include "chatwindow.h"
+#include "exchangebrowser.h"
 #include "signverifymessagedialog.h"
 #include "transactiontablemodel.h"
 #include "transactionview.h"
@@ -53,11 +57,19 @@ WalletView::WalletView(QWidget *parent):
 
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
+    miningPage = new MiningPage();
+    blockBrowser = new BlockBrowser();
+    chatWindow = new ChatWindow();
+    exchangeBrowser = new ExchangeBrowser();
 
     addWidget(overviewPage);
     addWidget(transactionsPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
+    addWidget(miningPage);
+    addWidget(blockBrowser);
+    addWidget(chatWindow);
+    addWidget(exchangeBrowser);
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
@@ -72,6 +84,15 @@ WalletView::WalletView(QWidget *parent):
     connect(sendCoinsPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
     // Pass through messages from transactionView
     connect(transactionView, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+    //miningpage
+    connect(miningPage, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+    //blockbrowser
+    connect(blockBrowser, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+    //chatwindow
+    connect(chatWindow, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+    //chatwindow
+    connect(exchangeBrowser, SIGNAL(message(QString,QString,unsigned int)), this, SIGNAL(message(QString,QString,unsigned int)));
+
 }
 
 WalletView::~WalletView()
@@ -109,6 +130,8 @@ void WalletView::setWalletModel(WalletModel *walletModel)
     this->walletModel = walletModel;
 
     // Put transaction list in tabs
+    miningPage->setModel(walletModel);
+    //blockBrowser->setModel(walletModel);
     transactionView->setModel(walletModel);
     overviewPage->setWalletModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
@@ -161,6 +184,26 @@ void WalletView::gotoOverviewPage()
 void WalletView::gotoHistoryPage()
 {
     setCurrentWidget(transactionsPage);
+}
+
+void WalletView::gotoMiningPage()
+{
+    setCurrentWidget(miningPage);
+}
+
+void WalletView::gotoChatPage()
+{
+    setCurrentWidget(chatWindow);
+}
+
+void WalletView::gotoBlockBrowserPage()
+{
+    setCurrentWidget(blockBrowser);
+}
+
+void WalletView::gotoExchangeBrowserPage()
+{
+    setCurrentWidget(exchangeBrowser);
 }
 
 void WalletView::gotoReceiveCoinsPage()

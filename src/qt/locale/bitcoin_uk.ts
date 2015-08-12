@@ -66,12 +66,12 @@
         <translation>Адреси для отримання</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Це ваші Bitcoin-адреси для відправлення платежів. Перед відправленням монет завжди перевіряйте суму та адресу прийому.</translation>
+        <source>These are your MonetaryUnit addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Це ваші MonetaryUnit-адреси для відправлення платежів. Перед відправленням монет завжди перевіряйте суму та адресу прийому.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Це ваша нова Bitcoin адреса для отримування платежів. Рекомендовано використовувати нову адресу для кожної транзакції.</translation>
+        <source>These are your MonetaryUnit addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Це ваша нова MonetaryUnit адреса для отримування платежів. Рекомендовано використовувати нову адресу для кожної транзакції.</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
@@ -188,7 +188,7 @@
         <translation>Введіть нову кодову фразу для гаманця.&lt;br/&gt;Будь ласка, використовуйте кодові фрази що містять &lt;b&gt; як мінімум десять випадкових символів &lt;/b&gt; або &lt;b&gt; як мінімум вісім слів &lt;/b&gt;.</translation>
     </message>
     <message>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
+        <source>MonetaryUnit will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
         <translation>Біткоін-клієнт буде закрито для завершення процесу шифрування. Пам'ятайте, що шифрування гаманця не може повністю захистити ваші біткоіни від крадіжки, у випадку якщо ваш комп'ютер буде інфіковано шкідливими програмами.</translation>
     </message>
     <message>
@@ -295,8 +295,8 @@
         <translation>Відкрити &amp;URI</translation>
     </message>
     <message>
-        <source>Bitcoin Core client</source>
-        <translation>Клієнт «Bitcoin Core»</translation>
+        <source>MonetaryUnit Core client</source>
+        <translation>Клієнт «MonetaryUnit Core»</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
@@ -307,11 +307,11 @@
         <translation>Переіндексація блоків на диску ...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitcoin address</source>
+        <source>Send coins to a MonetaryUnit address</source>
         <translation>Відправити монети на вказану адресу</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bitcoin</source>
+        <source>Modify configuration options for MonetaryUnit</source>
         <translation>Редагувати параметри</translation>
     </message>
     <message>
@@ -335,8 +335,8 @@
         <translation>П&amp;еревірити повідомлення...</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>MonetaryUnit</source>
+        <translation>MonetaryUnit</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -351,8 +351,8 @@
         <translation>&amp;Отримати</translation>
     </message>
     <message>
-        <source>Show information about Bitcoin Core</source>
-        <translation>Показати інформацію про Bitcoin Core</translation>
+        <source>Show information about MonetaryUnit Core</source>
+        <translation>Показати інформацію про MonetaryUnit Core</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -367,12 +367,12 @@
         <translation>Шифрування закритих ключів, які належать вашому гаманці</translation>
     </message>
     <message>
-        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
-        <translation>Підтвердіть, що Ви є власником повідомлення підписавши його Вашою Bitcoin-адресою </translation>
+        <source>Sign messages with your MonetaryUnit addresses to prove you own them</source>
+        <translation>Підтвердіть, що Ви є власником повідомлення підписавши його Вашою MonetaryUnit-адресою </translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
-        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Bitcoin-адресою</translation>
+        <source>Verify messages to ensure they were signed with specified MonetaryUnit addresses</source>
+        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною MonetaryUnit-адресою</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -391,16 +391,16 @@
         <translation>Панель вкладок</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
-        <translation>Створити запит платежу (генерує QR-код та bitcoin: URI)</translation>
+        <source>Request payments (generates QR codes and monetaryunit: URIs)</source>
+        <translation>Створити запит платежу (генерує QR-код та monetaryunit: URI)</translation>
     </message>
     <message>
-        <source>&amp;About Bitcoin Core</source>
-        <translation>&amp;Про Bitcoin Core</translation>
+        <source>&amp;About MonetaryUnit Core</source>
+        <translation>&amp;Про MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -411,20 +411,20 @@
         <translation>Показати список адрес і міток, що були використані для отримання</translation>
     </message>
     <message>
-        <source>Open a bitcoin: URI or payment request</source>
-        <translation>Відкрити bitcoin: URI чи запит платежу</translation>
+        <source>Open a monetaryunit: URI or payment request</source>
+        <translation>Відкрити monetaryunit: URI чи запит платежу</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Параметри командного рядка</translation>
     </message>
     <message>
-        <source>Show the Bitcoin Core help message to get a list with possible Bitcoin command-line options</source>
-        <translation>Показати довідку Bitcoin Core для отримання переліку можливих параметрів командного рядка.</translation>
+        <source>Show the MonetaryUnit Core help message to get a list with possible MonetaryUnit command-line options</source>
+        <translation>Показати довідку MonetaryUnit Core для отримання переліку можливих параметрів командного рядка.</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n активне з'єднання з мережею</numerusform><numerusform>%n активні з'єднання з мережею</numerusform><numerusform>%n активних з'єднань з мережею Bitcoin</numerusform></translation>
+        <source>%n active connection(s) to MonetaryUnit network</source>
+        <translation><numerusform>%n активне з'єднання з мережею</numerusform><numerusform>%n активні з'єднання з мережею</numerusform><numerusform>%n ��ктивних з'єднань з мережею MonetaryUnit</numerusform></translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -714,7 +714,7 @@ Address: %4
     </message>
     <message>
         <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Це означає, що необхідно внести комісію (щонайменше %1 за КБ).</translation>
+        <translation>Це ������значає, що необхідно внести комісію (щонайменше %1 за КБ).</translation>
     </message>
     <message>
         <source>Can vary +/- 1 byte per input.</source>
@@ -788,8 +788,8 @@ Address: %4
         <translation>Введена адреса «%1» вже присутня в адресній книзі.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Введена адреса «%1» не є коректною адресою в мережі Bitcoin.</translation>
+        <source>The entered address "%1" is not a valid MonetaryUnit address.</source>
+        <translation>Введена адреса «%1» не є коректною адресою в мережі MonetaryUnit.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -826,8 +826,8 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
         <source>version</source>
@@ -838,8 +838,8 @@ Address: %4
         <translation>(%1-бітний)</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
-        <translation>Про Bitcoin Core</translation>
+        <source>About MonetaryUnit Core</source>
+        <translation>Про MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -885,16 +885,16 @@ Address: %4
         <translation>Вітання</translation>
     </message>
     <message>
-        <source>Welcome to Bitcoin Core.</source>
-        <translation>Ласкаво просимо в Bitcoin Core.</translation>
+        <source>Welcome to MonetaryUnit Core.</source>
+        <translation>Ласкаво просимо в MonetaryUnit Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Bitcoin Core will store its data.</source>
-        <translation>Оскільки це перший запуск програми, ви можете обрати де Bitcoin Core буде зберігати дані.</translation>
+        <source>As this is the first time the program is launched, you can choose where MonetaryUnit Core will store its data.</source>
+        <translation>Оскільки це перший запуск програми, ви можете обрати де MonetaryUnit Core буде зберігати дані.</translation>
     </message>
     <message>
-        <source>Bitcoin Core will download and store a copy of the Bitcoin block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Bitcoin Core завантажить та збереже копію ланцюжка блоків Bitcoin. Щонайменше %1ГБ даних буде збережено в цьому каталозі. Гаманець теж буде збережено в цьому каталозі.</translation>
+        <source>MonetaryUnit Core will download and store a copy of the MonetaryUnit block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>MonetaryUnit Core завантажить та збереже копію ланцюжка блоків MonetaryUnit. Щонайменше %1ГБ даних буде збережено в цьому каталозі. Гаманець теж буде збережено в цьому каталозі.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -905,8 +905,8 @@ Address: %4
         <translation>Використовувати свій каталог даних:</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -922,7 +922,7 @@ Address: %4
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(в той час, як необхідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform></translation>
+        <translation><numerusform>(в той час, як необ��ідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform><numerusform>(в той час, як необхідно %n ГБ)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -959,11 +959,11 @@ Address: %4
         <translation>&amp;Головні</translation>
     </message>
     <message>
-        <source>Automatically start Bitcoin after logging in to the system.</source>
+        <source>Automatically start MonetaryUnit after logging in to the system.</source>
         <translation>Автоматично запускати гаманець при вході до системи.</translation>
     </message>
     <message>
-        <source>&amp;Start Bitcoin on system login</source>
+        <source>&amp;Start MonetaryUnit on system login</source>
         <translation>&amp;Запускати гаманець при вході в систему</translation>
     </message>
     <message>
@@ -1039,7 +1039,7 @@ Address: %4
         <translation>&amp;Витрачати непідтверджену решту</translation>
     </message>
     <message>
-        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the MonetaryUnit client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Автоматично відкривати порт для клієнту біткоін на роутері. Працює лише якщо ваш роутер підтримує UPnP і ця функція увімкнена.</translation>
     </message>
     <message>
@@ -1047,8 +1047,8 @@ Address: %4
         <translation>Відображення порту через &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Bitcoin network through a SOCKS5 proxy.</source>
-        <translation>Підключення до мережі Bitcoin через SOCKS5 проксі.</translation>
+        <source>Connect to the MonetaryUnit network through a SOCKS5 proxy.</source>
+        <translation>Підключення до мережі MonetaryUnit через SOCKS5 проксі.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1095,8 +1095,8 @@ Address: %4
         <translation>Мов&amp;а інтерфейсу користувача:</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitcoin.</source>
-        <translation>Встановлює мову інтерфейсу. Зміни набудуть чинності після перезапуску Bitcoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting MonetaryUnit.</source>
+        <translation>Встановлює мову інтерфейсу. Зміни набудуть чинності після перезапуску MonetaryUnit.</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -1154,8 +1154,8 @@ Address: %4
         <translation>Форма</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Показана інформація вже може бути застарілою. Ваш гаманець буде автоматично синхронізовано з мережею Bitcoin після встановлення підключення, але цей процес ще не завершено.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the MonetaryUnit network after a connection is established, but this process has not completed yet.</source>
+        <translation>Показана інформація вже може бути застарілою. Ваш гаманець буде автоматично синхронізовано з мережею MonetaryUnit після встановлення підключення, але цей процес ще не завершено.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1261,16 +1261,16 @@ Address: %4
         <translation>Помилка запиту платежу</translation>
     </message>
     <message>
-        <source>Cannot start bitcoin: click-to-pay handler</source>
-        <translation>Неможливо запустити bitcoin: обробник click-to-pay</translation>
+        <source>Cannot start monetaryunit: click-to-pay handler</source>
+        <translation>Неможливо запустити monetaryunit: обробник click-to-pay</translation>
     </message>
     <message>
         <source>Payment request fetch URL is invalid: %1</source>
         <translation>URL запиту платежу є некоректним: %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Bitcoin address or malformed URI parameters.</source>
-        <translation>Неможливо обробити URI! Причиною цього може бути некоректна Bitcoin-адреса або неправильні параметри URI.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid MonetaryUnit address or malformed URI parameters.</source>
+        <translation>Неможливо обробити URI! Причиною цього може бути некоректна MonetaryUnit-адреса або неправильні параметри URI.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1335,8 +1335,8 @@ Address: %4
         <translation>Кількість</translation>
     </message>
     <message>
-        <source>Enter a Bitcoin address (e.g. %1)</source>
-        <translation>Введіть адресу Bitcoin (наприклад %1)</translation>
+        <source>Enter a MonetaryUnit address (e.g. %1)</source>
+        <translation>Введіть адресу MonetaryUnit (наприклад %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1561,16 +1561,16 @@ Address: %4
         <translation>Файл звіту зневадження</translation>
     </message>
     <message>
-        <source>Open the Bitcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Відкрийте файл журналу налагодження Bitcoin з поточного каталогу даних. Це може зайняти кілька секунд для великих файлів журналів.</translation>
+        <source>Open the MonetaryUnit debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Відкрийте файл журналу налагодження MonetaryUnit з поточного каталогу даних. Це може зайняти кілька секунд для великих файлів журналів.</translation>
     </message>
     <message>
         <source>Clear console</source>
         <translation>Очистити консоль</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Вітаємо у консолі Bitcoin RPC.</translation>
+        <source>Welcome to the MonetaryUnit RPC console.</source>
+        <translation>Вітаємо у консолі MonetaryUnit RPC.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1641,11 +1641,11 @@ Address: %4
     </message>
     <message>
         <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>По&amp;вторно використати адресу для отримання (не рекомендується)</translation>
+        <translation>По&amp;вторно використати адресу дл�� отримання (не рекомендуєтьс��)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Bitcoin network.</source>
-        <translation>Необов'язкове повідомлення на додаток до запиту платежу, котре буде показане під час відкриття запиту. Примітка: Це повідомлення не буде відправлено з платежем через мережу Bitcoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the MonetaryUnit network.</source>
+        <translation>Необов'язкове повідомлення на додаток до запиту платежу, котре буде показане під час відкриття запиту. Примітка: Це повідомлення не буде відправлено з платежем через мережу MonetaryUnit.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1874,15 +1874,15 @@ Address: %4
     </message>
     <message>
         <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then "per kilobyte" only pays 250 satoshis in fee, while "total at least" pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Якщо оплата користувача встановлюється в 1000 Satoshi і розмір передачі всього 250 байт, то "за кілобайт" платить тільки 250 Satoshi, в той час як "всього щонайменше" платить 1000 satoshis. Для передач більших, ніж кілобайт обоє платять за кілобайт.</translation>
+        <translation>Якщо оплата користувача встановлюється в 1000 Satoshi і розмір передачі всього 250 байт, то "за кілобайт" платить тільки 250 Satoshi, в той час як "всього щонайменше" пла��ить 1000 satoshis. Для передач більших, ніж кілобайт обоє платять за кілобайт.</translation>
     </message>
     <message>
         <source>total at least</source>
-        <translation>всього щонайменше</translation>
+        <translation>всього щ��н��йменше</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for bitcoin transactions than the network can process.</source>
-        <translation>Оплата тільки мінімальних зборів є прийнятною до тих пір, як обсяг транзакцій там є меншим аніж простору в блоках. Але майте на увазі, що це може анулювати транзакцію, якщо попит на Bitcoin транзакції стане значно більшим, ніж мережа зможе обробити.</translation>
+        <translation>Оплата тільки мінімальних зборів є прийнятною до тих пір, як обсяг транзакцій там є меншим аніж простору в блоках. Але майте на увазі, що це може анулювати транзакцію, якщо попит на MonetaryUnit транзакції стане значно більшим, ніж мережа зможе обробити.</translation>
     </message>
     <message>
         <source>(read the tooltip)</source>
@@ -2037,8 +2037,8 @@ Address: %4
         <translation>Розрахунковий початок підтвердження протягом %1 блоку(ів).</translation>
     </message>
     <message>
-        <source>Warning: Invalid Bitcoin address</source>
-        <translation>Увага: Неправильна Bitcoin-адреса</translation>
+        <source>Warning: Invalid MonetaryUnit address</source>
+        <translation>Увага: Неправильна MonetaryUnit-адреса</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -2088,8 +2088,8 @@ Address: %4
         <translation>Це звичайний платіж.</translation>
     </message>
     <message>
-        <source>The Bitcoin address to send the payment to</source>
-        <translation>Адреса Bitcoin для відправлення платежу</translation>
+        <source>The MonetaryUnit address to send the payment to</source>
+        <translation>Адреса MonetaryUnit для відправлення платежу</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2120,8 +2120,8 @@ Address: %4
         <translation>Введіть мітку для цієї адреси для додавання її в список використаних адрес</translation>
     </message>
     <message>
-        <source>A message that was attached to the bitcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Bitcoin network.</source>
-        <translation>Повідомлення, що було додане до bitcoin:URI та буде збережено разом з транзакцією для довідки. Примітка: Це повідомлення не буде відправлено в мережу Bitcoin.</translation>
+        <source>A message that was attached to the monetaryunit: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the MonetaryUnit network.</source>
+        <translation>Повідомлення, що було додане до monetaryunit:URI та буде збережено разом з транзакцією для довідки. Примітка: Це повідомлення не буде відправлено в мережу MonetaryUnit.</translation>
     </message>
     <message>
         <source>This is an unverified payment request.</source>
@@ -2139,8 +2139,8 @@ Address: %4
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Bitcoin Core is shutting down...</source>
-        <translation>Bitcoin Core вимикається...</translation>
+        <source>MonetaryUnit Core is shutting down...</source>
+        <translation>MonetaryUnit Core вимикається...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2162,8 +2162,8 @@ Address: %4
         <translation>Ви можете підписувати повідомлення зі своїми адресами, щоб довести, що ви є їх власником. Остерігайтеся підписувати будь-що незрозуміле, так як за допомогою фішинг-атаки вас можуть спробувати обдурити для отримання вашого підпису під чужими словами. Підписуйте тільки ті повідомлення, з якими ви повністю згодні.</translation>
     </message>
     <message>
-        <source>The Bitcoin address to sign the message with</source>
-        <translation>Адреса Bitcoin для підпису цього повідомлення</translation>
+        <source>The MonetaryUnit address to sign the message with</source>
+        <translation>Адреса MonetaryUnit для підпису цього повідомлення</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2194,7 +2194,7 @@ Address: %4
         <translation>Копіювати поточну сигнатуру до системного буферу обміну</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bitcoin address</source>
+        <source>Sign the message to prove you own this MonetaryUnit address</source>
         <translation>Підпишіть повідомлення щоб довести, що ви є власником цієї адреси</translation>
     </message>
     <message>
@@ -2218,12 +2218,12 @@ Address: %4
         <translation>Введіть нижче адресу підпису, повідомлення (впевніться, що ви точно скопіювали символи завершення рядку, табуляцію, пробіли тощо) та підпис для перевірки повідомлення. Впевніться, що в підпис не було додано зайвих символів: це допоможе уникнути атак типу «людина посередині».</translation>
     </message>
     <message>
-        <source>The Bitcoin address the message was signed with</source>
-        <translation>Адреса Bitcoin, якою було підписано це повідомлення</translation>
+        <source>The MonetaryUnit address the message was signed with</source>
+        <translation>Адреса MonetaryUnit, якою було підписано це повідомлення</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
-        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Bitcoin-адресою</translation>
+        <source>Verify the message to ensure it was signed with the specified MonetaryUnit address</source>
+        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною MonetaryUnit-адресою</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2279,7 +2279,7 @@ Address: %4
     </message>
     <message>
         <source>Message verification failed.</source>
-        <translation>Не вдалося перевірити повідомлення.</translation>
+        <translation>Не вдалос�� перевірити повідомлення.</translation>
     </message>
     <message>
         <source>Message verified.</source>
@@ -2289,12 +2289,12 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>MonetaryUnit Core</source>
+        <translation>MonetaryUnit Core</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Розробники Bitcoin Core</translation>
+        <source>The MonetaryUnit Core developers</source>
+        <translation>Розробники MonetaryUnit Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2530,7 +2530,7 @@ Address: %4
     </message>
     <message>
         <source>Received from</source>
-        <translation>Отримано від</translation>
+        <translation>Отриман�� від</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -2800,7 +2800,7 @@ Address: %4
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
-        <translation>Запустити в фоновому режимі (як демон) та приймати команди</translation>
+        <translation>Запустити в фоновому режимі (як демон) та приймат�� ком��нди</translation>
     </message>
     <message>
         <source>Use the test network</source>
@@ -2808,7 +2808,7 @@ Address: %4
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Приймати підключення ззовні (типово: 1 за відсутності -proxy чи -connect)</translation>
+        <translation>Приймати підключення ззовні (типово: 1 за відсутнос��і -proxy чи -connect)</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
@@ -2843,8 +2843,8 @@ Address: %4
         <translation>Це тестова збірка пре-релізної версії - використовуйте на свій страх і ризик - не застосовувати для добування монет або торгівлі</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. Bitcoin Core is probably already running.</source>
-        <translation>Неможливо прив'язатися до %s на цьому комп'ютері. Можливо, Bitcoin Core вже запущено.</translation>
+        <source>Unable to bind to %s on this computer. MonetaryUnit Core is probably already running.</source>
+        <translation>Неможливо прив'язатися до %s на цьому комп'ютері. Можливо, MonetaryUnit Core вже запущено.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -3031,8 +3031,8 @@ Address: %4
         <translation>Прив'язатися до даної адреси для прослуховування JSON-RPC підключень. Використовуйте запис виду [хост]:порт для IPv6. Цей параметр можна вказувати декілька разів (типово: прив'язуватися до всіх інтерфейсів)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. Bitcoin Core is probably already running.</source>
-        <translation>Не вдалося встановити блокування на каталог даних %s. Bitcoin Core, ймовірно, вже запущений.</translation>
+        <source>Cannot obtain a lock on data directory %s. MonetaryUnit Core is probably already running.</source>
+        <translation>Не вдалося встановити блокування на каталог даних %s. MonetaryUnit Core, ймовірно, вже запущений.</translation>
     </message>
     <message>
         <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:%u)</source>
@@ -3068,11 +3068,11 @@ Address: %4
     </message>
     <message>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
-        <translation>Максимальний розмір даних в транзакціях носіїв даних, що ми передаємо і добуваємо (за замовчуванням: %u)</translation>
+        <translation>Максимальний розмір даних в транзакціях носіїв даних, що ми перед��ємо і добуває��о (за замовчуванням: %u)</translation>
     </message>
     <message>
         <source>Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)</source>
-        <translation>Максимальна загальна плата для використання в одній транзакції, установка занадто низької може перервати великі транзакції(стандартно: %s)</translation>
+        <translation>Максимальна загальна плата для використання в одній транзакції, установка занадто низької може перервати вел��кі транзакції(стандартно: %s)</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
@@ -3091,7 +3091,7 @@ Address: %4
         <translation>Цей продукт включає в себе програмне забезпечення, розроблене в рамках проекту OpenSSL &lt;https://www.openssl.org/&gt;, криптографічне програмне забезпечення, написане Еріком Янгом, та функції для роботи з UPnP, написані Томасом Бернардом.</translation>
     </message>
     <message>
-        <source>To use bitcoind, or the -server option to bitcoin-qt, you must set an rpcpassword in the configuration file:
+        <source>To use monetaryunitd, or the -server option to monetaryunit-qt, you must set an rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
 rpcuser=bitcoinrpc
@@ -3100,9 +3100,9 @@ rpcpassword=%s
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s "Bitcoin Alert" admin@foo.com
+for example: alertnotify=echo %%s | mail -s "MonetaryUnit Alert" admin@foo.com
 </source>
-        <translation>Для використання bitcoind, або bitcoin-qt з параметром -server, ви повинні встановити rpcpassword в файлі конфігурації:
+        <translation>Для використання monetaryunitd, або monetaryunit-qt з параметром -server, ви повинні встановити rpcpassword в файлі конфігурації:
 %s
 Рекомендується використати такий випадковий пароль:
 rpcuser=bitcoinrpc
@@ -3111,7 +3111,7 @@ rpcpassword=%s
 Ім'я користувача та пароль ПОВИННІ бути різними.
 Якщо файлу не існує, створіть його, обмеживши доступ правом читання для власника.
 Також рекомендується використовувати alertnotify для того, щоб отримувати сповіщення про проблеми;
-наприклад: alertnotify=echo %%s | mail -s "Сповіщення Bitcoin" admin@foo.com
+наприклад: alertnotify=echo %%s | mail -s "Сповіщення MonetaryUnit" admin@foo.com
 </translation>
     </message>
     <message>
@@ -3119,8 +3119,8 @@ rpcpassword=%s
         <translation>Увага: установлено дуже велике значення -maxtxfee! Такі великі комісії можуть бути сплачені в окремій транзакції.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Bitcoin Core will not work properly.</source>
-        <translation>Увага: будь ласка, перевірте дату і час на своєму комп'ютері! Якщо ваш годинник йде неправильно, Bitcoin Core може працювати некоректно.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong MonetaryUnit Core will not work properly.</source>
+        <translation>Увага: будь ласка, перевірте дату і час на своєму комп'ютері! Якщо ваш годинник йде неправильно, MonetaryUnit Core може працювати некоректно.</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
@@ -3139,16 +3139,16 @@ rpcpassword=%s
         <translation>Підключитись через SOCKS5-проксі</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>(C) 2009-%i Розробники Bitcoin Core</translation>
+        <source>Copyright (C) 2009-%i The MonetaryUnit Core Developers</source>
+        <translation>(C) 2009-%i Розробники MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Could not parse -rpcbind value %s as network address</source>
         <translation>Неможливо розпізнати мережеву адресу для параметру -rpcbind (%s)</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitcoin Core</source>
-        <translation>Помилка при завантаженні wallet.dat: Гаманець потребує новішої версії Bitcoin Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of MonetaryUnit Core</source>
+        <translation>Помилка при завантаженні wallet.dat: Гаманець потребує новішої версії MonetaryUnit Core</translation>
     </message>
     <message>
         <source>Error: Unsupported argument -tor found, use -onion.</source>
@@ -3163,8 +3163,8 @@ rpcpassword=%s
         <translation>Інформація</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. Bitcoin Core is shutting down.</source>
-        <translation>Не вдалося пройти базові перевірки під час ініціалізації. Bitcoin Core буде вимкнено.</translation>
+        <source>Initialization sanity check failed. MonetaryUnit Core is shutting down.</source>
+        <translation>Не вдалося пройти базові перевірки під час ініціалізації. MonetaryUnit Core буде вимкнено.</translation>
     </message>
     <message>
         <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s'</source>
@@ -3199,8 +3199,8 @@ rpcpassword=%s
         <translation>Параметри вузла ретрансляції:</translation>
     </message>
     <message>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Параметри RPC SSL: (див. Bitcoin Wiki для налаштування SSL)</translation>
+        <source>RPC SSL options: (see the MonetaryUnit Wiki for SSL setup instructions)</source>
+        <translation>Параметри RPC SSL: (див. MonetaryUnit Wiki для налаштування SSL)</translation>
     </message>
     <message>
         <source>RPC server options:</source>
@@ -3267,8 +3267,8 @@ rpcpassword=%s
         <translation>Ім'я користувача для JSON-RPC-з'єднань</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart Bitcoin Core to complete</source>
-        <translation>Потрібно перезаписати гаманець: перезапустіть Bitcoin Core для завершення</translation>
+        <source>Wallet needed to be rewritten: restart MonetaryUnit Core to complete</source>
+        <translation>Потрібно перезаписати гаманець: перезапустіть MonetaryUnit Core для завершення</translation>
     </message>
     <message>
         <source>Warning</source>

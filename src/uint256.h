@@ -283,7 +283,10 @@ public:
     {
         s.read((char*)pn, sizeof(pn));
     }
+
+    friend class uint512;
 };
+typedef base_uint<512> base_uint512;
 
 /** 160-bit unsigned big integer. */
 class uint160 : public base_uint<160> {
@@ -328,6 +331,30 @@ public:
     uint32_t GetCompact(bool fNegative = false) const;
 
     uint64_t GetHash(const uint256& salt) const;
+};
+
+/** 512-bit unsigned big integer. */
+class uint512 : public base_uint<512> {
+public:
+    uint512() {}
+    uint512(const base_uint<512>& b) : base_uint<512>(b) {}
+    uint512(uint64_t b) : base_uint<512>(b) {}
+    explicit uint512(const std::string& str) : base_uint<512>(str) {}
+    explicit uint512(const std::vector<unsigned char>& vch) : base_uint<512>(vch) {}
+
+    uint512& SetCompact(uint32_t nCompact, bool *pfNegative = NULL, bool *pfOverflow = NULL);
+    uint32_t GetCompact(bool fNegative = false) const;
+
+    uint64_t GetHash(const uint512& salt) const;
+
+    uint256 trim256() const
+    {
+        uint256 ret;
+        for (unsigned int i = 0; i < uint256::WIDTH; i++){
+            ret.pn[i] = pn[i];
+        }
+        return ret;
+    }
 };
 
 #endif // BITCOIN_UINT256_H

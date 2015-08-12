@@ -1,12 +1,12 @@
 *.tar.gz
 
 *.exe
-src/bitcoin
-src/bitcoind
-src/bitcoin-cli
-src/bitcoin-tx
-src/test/test_bitcoin
-src/qt/test/test_bitcoin-qt
+src/monetaryunit
+src/monetaryunitd
+src/monetaryunit-cli
+src/monetaryunit-tx
+src/test/test_monetaryunit
+src/qt/test/test_monetaryunit-qt
 
 # autoreconf
 Makefile.in
@@ -55,7 +55,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.bitcoin
+.monetaryunit
 *.a
 *.pb.cc
 *.pb.h
@@ -74,12 +74,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-bitcoin-qt
-Bitcoin-Qt.app
+monetaryunit-qt
+monetaryunit-Qt.app
 
 # Unit-tests
 Makefile.test
-bitcoin-qt_test
+monetaryunit-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -95,7 +95,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_bitcoin.coverage/
+test_monetaryunit.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -108,6 +108,8 @@ qa/pull-tester/tests-config.sh
 qa/pull-tester/cache/*
 qa/pull-tester/test.*/*
 
+depends/x86_64-unknown-linux-gnu
+monetaryunit-x86_64-unknown-linux-gnu
 !src/leveldb*/Makefile
 
 /doc/doxygen/
