@@ -58,7 +58,7 @@ static const int64_t nGenesisBlockRewardCoin = 0 * COIN;
 static const int64_t nBlockRewardStartCoin = 40 * COIN;
 static const int64_t nBlockRewardMinimumCoin = 1 * COIN;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying and mining) */
-CFeeRate minRelayTxFee = CFeeRate(1000);
+CFeeRate minRelayTxFee = CFeeRate(10);
 
 CTxMemPool mempool(::minRelayTxFee);
 
