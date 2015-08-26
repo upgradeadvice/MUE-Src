@@ -1,6 +1,6 @@
 [Protocol]
-exec=bitcoin-qt '%u'
-protocol=bitcoin
+exec=monetaryunit-qt '%u'
+protocol=monetaryunit
 input=none
 output=none
 helper=true
