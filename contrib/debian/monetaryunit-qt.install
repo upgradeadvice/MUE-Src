@@ -1,6 +1,6 @@
 usr/local/bin/monetaryunit-qt usr/bin
-share/pixmaps/bitcoin.xpm usr/share/pixmaps
-share/pixmaps/bitcoin16.xpm usr/share/pixmaps
-share/pixmaps/bitcoin128.png usr/share/pixmaps
+share/pixmaps/monetaryunit32.xpm usr/share/pixmaps
+share/pixmaps/monetaryunit16.xpm usr/share/pixmaps
+share/pixmaps/monetaryunit128.png usr/share/pixmaps
 debian/monetaryunit-qt.desktop usr/share/applications
 debian/monetaryunit-qt.protocol usr/share/kde4/services/
