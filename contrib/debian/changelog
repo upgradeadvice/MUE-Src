@@ -1,3 +1,9 @@
+monetaryunit (1.0.10.3) trusty; urgency=low
+
+  * https://github.com/MonetaryUnit/MUE-Src/commits/0.10
+
+ -- upgradeadvice <upgradeadvice@gmail.com>  Wed, 26 Aug 2015 12:51:00 -0600
+
 monetaryunit (1.0.10.2) trusty; urgency=low
 
   * https://github.com/MonetaryUnit/MUE-Src/commits/0.10

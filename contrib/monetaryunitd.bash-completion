@@ -1,6 +1,5 @@
 # bash programmable completion for monetaryunitd(1) and monetaryunit-cli(1)
 # Copyright (c) 2012,2014 Christian von Roques <roques@mti.ag>
-# Copyright (c) 2014-2015 MonetaryUnit Developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,6 +39,10 @@ _monetaryunitd() {
 
     if ((cword > 4)); then
         case ${words[cword-4]} in
+            listtransactions)
+                COMPREPLY=( $( compgen -W "true false" -- "$cur" ) )
+                return 0
+                ;;
             signrawtransaction)
                 COMPREPLY=( $( compgen -W "ALL NONE SINGLE ALL|ANYONECANPAY NONE|ANYONECANPAY SINGLE|ANYONECANPAY" -- "$cur" ) )
                 return 0
@@ -53,7 +56,7 @@ _monetaryunitd() {
                 _monetaryunit_accounts
                 return 0
                 ;;
-            gettxout|importprivkey)
+            getbalance|gettxout|importaddress|importprivkey|listreceivedbyaccount|listreceivedbyaddress|listsinceblock)
                 COMPREPLY=( $( compgen -W "true false" -- "$cur" ) )
                 return 0
                 ;;
@@ -66,7 +69,7 @@ _monetaryunitd() {
                 COMPREPLY=( $( compgen -W "add remove onetry" -- "$cur" ) )
                 return 0
                 ;;
-            getblock|getrawtransaction|listreceivedbyaccount|listreceivedbyaddress|sendrawtransaction)
+            getblock|getrawtransaction|gettransaction|listaccounts|listreceivedbyaccount|listreceivedbyaddress|sendrawtransaction)
                 COMPREPLY=( $( compgen -W "true false" -- "$cur" ) )
                 return 0
                 ;;
@@ -116,7 +119,7 @@ _monetaryunitd() {
 
             # only parse help if senseful
             if [[ -z "$cur" || "$cur" =~ ^[a-z] ]]; then
-                commands=$(_monetaryunit_rpc help 2>/dev/null | awk '{ print $1; }')
+                commands=$(_monetaryunit_rpc help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
             fi
 
             COMPREPLY=( $( compgen -W "$helpopts $commands" -- "$cur" ) )
