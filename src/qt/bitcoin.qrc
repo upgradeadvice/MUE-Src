@@ -56,6 +56,31 @@
     </qresource>
     <qresource prefix="/style">
         <file alias="qss">res/style/monetaryunit.qss</file>
+        <file alias="up_arrow_disabled">res/style/up_arrow_disabled.png</file>
+        <file alias="Hmovetoolbar">res/style/Hmovetoolbar.png</file>
+        <file alias="stylesheet-branch-end">res/style/stylesheet-branch-end.png</file>
+        <file alias="branch_closed-on">res/style/branch_closed-on.png</file>
+        <file alias="stylesheet-vline">res/style/stylesheet-vline.png</file>
+        <file alias="branch_closed">res/style/branch_closed.png</file>
+        <file alias="branch_open-on">res/style/branch_open-on.png</file>
+        <file alias="transparent">res/style/transparent.png</file>
+        <file alias="right_arrow_disabled">res/style/right_arrow_disabled.png</file>
+        <file alias="sizegrip">res/style/sizegrip.png</file>
+        <file alias="close">res/style/close.png</file>
+        <file alias="down_arrow">res/style/down_arrow.png</file>
+        <file alias="Vmovetoolbar">res/style/Vmovetoolbar.png</file>
+        <file alias="left_arrow">res/style/left_arrow.png</file>
+        <file alias="stylesheet-branch-more">res/style/stylesheet-branch-more.png</file>
+        <file alias="up_arrow">res/style/up_arrow.png</file>
+        <file alias="right_arrow">res/style/right_arrow.png</file>
+        <file alias="left_arrow_disabled">res/style/left_arrow_disabled.png</file>
+        <file alias="Hsepartoolbar">res/style/Hsepartoolbar.png</file>
+        <file alias="checkbox">res/style/checkbox.png</file>
+        <file alias="checkbox_indeterminate">res/style/checkbox_indeterminate.png</file>
+        <file alias="branch_open">res/style/branch_open.png</file>
+        <file alias="Vsepartoolbar">res/style/Vsepartoolbar.png</file>
+        <file alias="down_arrow_disabled">res/style/down_arrow_disabled.png</file>
+        <file alias="undock">res/style/undock.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>
