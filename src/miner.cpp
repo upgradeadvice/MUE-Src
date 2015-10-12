@@ -26,7 +26,7 @@ using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// BitcoinMiner
+// MonetaryUnitMiner
 //
 
 //
@@ -373,31 +373,33 @@ int64_t nHPSTimerStart = 0;
 // nonce is 0xffff0000 or above, the block is rebuilt and nNonce starts over at
 // zero.
 //
-bool static ScanHash(const CBlockHeader *pblock, uint32_t& nNonce, uint256 *phash)
+bool static ScanHash(CBlockHeader *pblock, uint32_t& nNonce, uint256 *phash)
 {
     // Write the first 76 bytes of the block header to a double-SHA256 state.
-    CHash256 hasher;
+    //CHash256 hasher;
     CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
     ss << *pblock;
+    //printf("size: %i\n", ss.size());
     assert(ss.size() == 80);
-    hasher.Write((unsigned char*)&ss[0], 76);
+    //hasher.Write((unsigned char*)&ss[0], BLOCK_HEADER_SIZE-4); //todo fix to use extranonce value
 
     while (true) {
         nNonce++;
-
+        pblock->nNonce=nNonce;
         // Write the last 4 bytes of the block header (the nonce) to a copy of
         // the double-SHA256 state, and compute the result.
-        CHash256(hasher).Write((unsigned char*)&nNonce, 4).Finalize((unsigned char*)phash);
+        *phash=pblock->GetHash();
+        //CHash256(hasher).Write((unsigned char*)&nNonce, 4).Finalize((unsigned char*)phash);
 
         // Return the nonce if the hash has at least some zero bits,
         // caller will check if it has enough to reach the target
-        if (((uint16_t*)phash)[15] == 0)
+        if (((uint8_t*)phash)[31] == 0)
             return true;
 
         // If nothing found after trying for a while, return -1
-        if ((nNonce & 0xffff) == 0)
-            return false;
         if ((nNonce & 0xfff) == 0)
+            return false;
+        if ((nNonce & 0xff) == 0)
             boost::this_thread::interruption_point();
     }
 }
@@ -421,7 +423,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("BitcoinMiner : generated block is stale");
+            return error("MonetaryUnitMiner : generated block is stale");
     }
 
     // Remove key from key pool
@@ -436,16 +438,16 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     // Process this block the same as if we had received it from another node
     CValidationState state;
     if (!ProcessNewBlock(state, NULL, pblock))
-        return error("BitcoinMiner : ProcessNewBlock, block not accepted");
+        return error("MonetaryUnitMiner : ProcessNewBlock, block not accepted");
 
     return true;
 }
 
 void static BitcoinMiner(CWallet *pwallet)
 {
-    LogPrintf("BitcoinMiner started\n");
+    LogPrintf("MonetaryUnitMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("bitcoin-miner");
+    RenameThread("MonetaryUnit-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);
@@ -456,16 +458,8 @@ void static BitcoinMiner(CWallet *pwallet)
             if (Params().MiningRequiresPeers()) {
                 // Busy-wait for the network to come online so we don't waste time mining
                 // on an obsolete chain. In regtest mode we expect to fly solo.
-                do {
-                    bool fvNodesEmpty;
-                    {
-                        LOCK(cs_vNodes);
-                        fvNodesEmpty = vNodes.empty();
-                    }
-                    if (!fvNodesEmpty && !IsInitialBlockDownload())
-                        break;
+                while (vNodes.empty())
                     MilliSleep(1000);
-                } while (true);
             }
 
             //
@@ -477,13 +471,13 @@ void static BitcoinMiner(CWallet *pwallet)
             auto_ptr<CBlockTemplate> pblocktemplate(CreateNewBlockWithKey(reservekey));
             if (!pblocktemplate.get())
             {
-                LogPrintf("Error in BitcoinMiner: Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("Error in MonetaryUnitMiner: Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("Running BitcoinMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("Running MonetaryUnitMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -509,7 +503,7 @@ void static BitcoinMiner(CWallet *pwallet)
                         assert(hash == pblock->GetHash());
 
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("BitcoinMiner:\n");
+                        LogPrintf("MonetaryUnitMiner:\n");
                         LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, *pwallet, reservekey);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
@@ -575,13 +569,8 @@ void static BitcoinMiner(CWallet *pwallet)
     }
     catch (boost::thread_interrupted)
     {
-        LogPrintf("BitcoinMiner terminated\n");
+        LogPrintf("MonetaryUnitMiner terminated\n");
         throw;
-    }
-    catch (const std::runtime_error &e)
-    {
-        LogPrintf("BitcoinMiner runtime error: %s\n", e.what());
-        return;
     }
 }
 

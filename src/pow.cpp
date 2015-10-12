@@ -11,70 +11,150 @@
 #include "uint256.h"
 #include "util.h"
 
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
-{
-    unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
+#include <math.h>
 
-    // Genesis block
-    if (pindexLast == NULL)
-        return nProofOfWorkLimit;
+unsigned int static DarkGravityWave(const CBlockIndex* pindexLast) {
+    /* current difficulty formula, MUE - DarkGravity v3, written by Evan Duffield - evan@dashpay.io */
+    const CBlockIndex *BlockLastSolved = pindexLast;
+    const CBlockIndex *BlockReading = pindexLast;
+    int64_t nActualTimespan = 0;
+    int64_t LastBlockTime = 0;
+    int64_t PastBlocksMin = 24;
+    int64_t PastBlocksMax = 24;
+    int64_t CountBlocks = 0;
+    uint256 PastDifficultyAverage;
+    uint256 PastDifficultyAveragePrev;
 
-    // Only change once per interval
-    if ((pindexLast->nHeight+1) % Params().Interval() != 0)
-    {
-        if (Params().AllowMinDifficultyBlocks())
-        {
-            // Special difficulty rule for testnet:
-            // If the new block's timestamp is more than 2* 10 minutes
-            // then allow mining of a min-difficulty block.
-            if (pblock->GetBlockTime() > pindexLast->GetBlockTime() + Params().TargetSpacing()*2)
-                return nProofOfWorkLimit;
-            else
-            {
-                // Return the last non-special-min-difficulty-rules-block
-                const CBlockIndex* pindex = pindexLast;
-                while (pindex->pprev && pindex->nHeight % Params().Interval() != 0 && pindex->nBits == nProofOfWorkLimit)
-                    pindex = pindex->pprev;
-                return pindex->nBits;
-            }
-        }
-        return pindexLast->nBits;
+    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < PastBlocksMin) {
+        return Params().ProofOfWorkLimit().GetCompact();
     }
 
-    // Go back by what we want to be 14 days worth of blocks
-    const CBlockIndex* pindexFirst = pindexLast;
-    for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
-        pindexFirst = pindexFirst->pprev;
-    assert(pindexFirst);
+    for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
+        if (PastBlocksMax > 0 && i > PastBlocksMax) { break; }
+        CountBlocks++;
 
-    // Limit adjustment step
-    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
-    LogPrintf("  nActualTimespan = %d before bounds\n", nActualTimespan);
-    int64_t LimUp = Params().TargetTimespan() * 100 / 110; // 110% up
-    int64_t LimDown = Params().TargetTimespan() * 2; // 200% down
-    if (nActualTimespan < LimUp)
-        nActualTimespan = LimUp;
-    if (nActualTimespan > LimDown)
-        nActualTimespan = LimDown;
+        if(CountBlocks <= PastBlocksMin) {
+            if (CountBlocks == 1) { PastDifficultyAverage.SetCompact(BlockReading->nBits); }
+            else { PastDifficultyAverage = ((PastDifficultyAveragePrev * CountBlocks) + (uint256().SetCompact(BlockReading->nBits))) / (CountBlocks + 1); }
+            PastDifficultyAveragePrev = PastDifficultyAverage;
+        }
+
+        if(LastBlockTime > 0){
+            int64_t Diff = (LastBlockTime - BlockReading->GetBlockTime());
+            nActualTimespan += Diff;
+        }
+        LastBlockTime = BlockReading->GetBlockTime();
+
+        if (BlockReading->pprev == NULL) { assert(BlockReading); break; }
+        BlockReading = BlockReading->pprev;
+    }
+
+    uint256 bnNew(PastDifficultyAverage);
+
+    int64_t _nTargetTimespan = CountBlocks * Params().TargetSpacing();
+
+    if (nActualTimespan < _nTargetTimespan/3)
+        nActualTimespan = _nTargetTimespan/3;
+    if (nActualTimespan > _nTargetTimespan*3)
+        nActualTimespan = _nTargetTimespan*3;
 
     // Retarget
-    uint256 bnNew;
-    uint256 bnOld;
-    bnNew.SetCompact(pindexLast->nBits);
-    bnOld = bnNew;
     bnNew *= nActualTimespan;
-    bnNew /= Params().TargetTimespan();
+    bnNew /= _nTargetTimespan;
 
-    if (bnNew > Params().ProofOfWorkLimit())
+    if (bnNew > Params().ProofOfWorkLimit()){
         bnNew = Params().ProofOfWorkLimit();
-
-    /// debug print
-    LogPrintf("GetNextWorkRequired RETARGET\n");
-    LogPrintf("Params().TargetTimespan() = %d    nActualTimespan = %d\n", Params().TargetTimespan(), nActualTimespan);
-    LogPrintf("Before: %08x  %s\n", pindexLast->nBits, bnOld.ToString());
-    LogPrintf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.ToString());
+    }
 
     return bnNew.GetCompact();
+}
+
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
+{
+    unsigned int retarget = DIFF_DGW;
+
+    if (Params().NetworkID() != CBaseChainParams::TESTNET) {
+        if (pindexLast->nHeight + 1 >= 1100000) retarget = DIFF_DGW;
+        else retarget = DIFF_BTC;
+    } else {
+        if (pindexLast->nHeight + 1 >= 1) retarget = DIFF_DGW;
+        else retarget = DIFF_BTC;
+    }
+
+    // Old style retargeting
+    if (retarget == DIFF_BTC)
+    {
+        unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
+
+        // Genesis block
+        if (pindexLast == NULL)
+            return nProofOfWorkLimit;
+
+        // Only change once per interval
+        if ((pindexLast->nHeight+1) % Params().Interval() != 0)
+        {
+            if (Params().AllowMinDifficultyBlocks())
+            {
+                // Special difficulty rule for testnet:
+                // If the new block's timestamp is more than 2* 10 minutes
+                // then allow mining of a min-difficulty block.
+                if (pblock->GetBlockTime() > pindexLast->GetBlockTime() + Params().TargetSpacing()*2)
+                    return nProofOfWorkLimit;
+                else
+                {
+                    // Return the last non-special-min-difficulty-rules-block
+                    const CBlockIndex* pindex = pindexLast;
+                    while (pindex->pprev && pindex->nHeight % Params().Interval() != 0 && pindex->nBits == nProofOfWorkLimit)
+                        pindex = pindex->pprev;
+                    return pindex->nBits;
+                }
+            }
+            return pindexLast->nBits;
+        }
+
+        // Go back by what we want to be 14 days worth of blocks
+        const CBlockIndex* pindexFirst = pindexLast;
+        for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
+            pindexFirst = pindexFirst->pprev;
+        assert(pindexFirst);
+
+        // Limit adjustment step
+        int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+        LogPrintf("  nActualTimespan = %d before bounds\n", nActualTimespan);
+        int64_t LimUp = Params().TargetTimespan() * 100 / 110; // 110% up
+        int64_t LimDown = Params().TargetTimespan() * 2; // 200% down
+        if (nActualTimespan < LimUp)
+            nActualTimespan = LimUp;
+        if (nActualTimespan > LimDown)
+            nActualTimespan = LimDown;
+
+        // Retarget
+        uint256 bnNew;
+        uint256 bnOld;
+        bnNew.SetCompact(pindexLast->nBits);
+        bnOld = bnNew;
+        bnNew *= nActualTimespan;
+        bnNew /= Params().TargetTimespan();
+
+        if (bnNew > Params().ProofOfWorkLimit())
+            bnNew = Params().ProofOfWorkLimit();
+
+        /// debug print
+        LogPrintf("GetNextWorkRequired RETARGET\n");
+        LogPrintf("Params().TargetTimespan() = %d    nActualTimespan = %d\n", Params().TargetTimespan(), nActualTimespan);
+        LogPrintf("Before: %08x  %s\n", pindexLast->nBits, bnOld.ToString());
+        LogPrintf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.ToString());
+
+        return bnNew.GetCompact();
+    }
+
+    // Retarget using Dark Gravity Wave 3
+    else if (retarget == DIFF_DGW)
+    {
+        return DarkGravityWave(pindexLast);
+    }
+
+    return DarkGravityWave(pindexLast);
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)

@@ -12,6 +12,7 @@
 #include <assert.h>
 
 #include <boost/assign/list_of.hpp>
+#include <cstdio>
 
 using namespace std;
 using namespace boost::assign;
@@ -96,18 +97,18 @@ static const Checkpoints::CCheckpointData data = {
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
      boost::assign::map_list_of
-     ( 0, uint256("0x0000070e6b650e7a6f20e015031b74c1f7e2b25ed4e419d8825ab9cc7eccfa92"))
+     ( 0, uint256("0x00000a3258cb9730d5c38f88885967b680be6eddc2d9fb1111cc6b5d2926ab72"))
      ;
 static const Checkpoints::CCheckpointData dataTestnet = {
      &mapCheckpointsTestnet,
-     1373481000,
+     1444779876,
      0,
      2880.0
  };
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
      boost::assign::map_list_of
-     ( 0, uint256("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206"))
+     ( 0, uint256("0x61147f8533435c8e0c895bdddabf1ffa88de3579478c21b62d134f727c4cdf17"))
      ;
 static const Checkpoints::CCheckpointData dataRegtest = {
      &mapCheckpointsRegtest,
@@ -115,6 +116,51 @@ static const Checkpoints::CCheckpointData dataRegtest = {
      0,
      0
  };
+
+void CChainParams::MineNewGenesisBlock()
+ {
+     genesis.nTime=time(NULL);
+     genesis.nNonce=0;
+     uint256 thash;
+     while(1)
+     {
+         thash=genesis.GetHash();
+         if (this->CheckProofOfWork(thash, genesis.nBits))
+             break;
+         if ((genesis.nNonce & 0xFF) == 0)
+         {
+             printf("nonce %08X: hash = %s\n",genesis.nNonce, thash.ToString().c_str());
+         }
+         ++genesis.nNonce;
+         if (genesis.nNonce == 0)
+         {
+             printf("NONCE WRAPPED, incrementing time\n");
+             ++genesis.nTime;
+         }
+     }
+     printf("genesis.nTime = %u;\n",genesis.nTime);
+     printf("genesis.nNonce = %u;\n",genesis.nNonce);
+     printf("assert(genesis.hashMerkleRoot == uint256(\"0x%s\"));\n",genesis.hashMerkleRoot.ToString().c_str());
+     printf("//genesis hash: 0x%s\n", genesis.GetHash().ToString().c_str());
+     printf("//genesis hash: 0x%s\n", genesis.GetHash().ToString().c_str());
+     exit(1);
+};
+
+//need a different implementation here that doesn't use error() and that doesn't use Params() since it isn't yet usable
+bool CChainParams::CheckProofOfWork(uint256 hash, unsigned int nBits)
+{
+   bool fNegative;
+   bool fOverflow;
+   uint256 bnTarget;
+
+   bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
+
+   // Check proof of work matches claimed amount
+   if (hash > bnTarget)
+       return false;
+
+   return true;
+};
 
 class CMainParams : public CChainParams {
 public:
@@ -170,8 +216,7 @@ public:
         assert(hashGenesisBlock == hashMainGenesisBlock);
         assert(genesis.hashMerkleRoot == uint256("0xa2cc3c1d8ab6e50e80464693199eefdd172d45c4129998394e636e47b5621364"));
 
-        vSeeds.push_back(CDNSSeedData("dnsseed.monetaryunit.tk", "dns.monetaryunit.tk"));
-        vSeeds.push_back(CDNSSeedData("dnsseed2.monetaryunit.tk", "dns.monetaryunit.tk"));
+        vSeeds.push_back(CDNSSeedData("dnsseed.exapool.com", "dnsseed.exapool.com"));
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of(15);
         base58Prefixes[SCRIPT_ADDRESS] = list_of(9);
@@ -220,11 +265,13 @@ public:
         nTargetTimespan = 400;
         nTargetSpacing = 40;
 
-        //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1404668200 + 5;
-        genesis.nNonce = 139785;
+        genesis.nTime = 1444779876;
+        genesis.nNonce = 4428938;
+        assert(genesis.hashMerkleRoot == uint256("0xa2cc3c1d8ab6e50e80464693199eefdd172d45c4129998394e636e47b5621364"));
+
+        //MineNewGenesisBlock();
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000070e6b650e7a6f20e015031b74c1f7e2b25ed4e419d8825ab9cc7eccfa92"));
+        assert(hashGenesisBlock == uint256("0x00000a3258cb9730d5c38f88885967b680be6eddc2d9fb1111cc6b5d2926ab72"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -272,12 +319,15 @@ public:
         nTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
         nTargetSpacing = 2.5 * 60; // 2.5 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1296688602;
-        genesis.nBits = 0x207fffff;
+        genesis.nBits    = bnProofOfWorkLimit.GetCompact();
+        genesis.nTime = 1444777777;
         genesis.nNonce = 0;
+        assert(genesis.hashMerkleRoot == uint256("0xa2cc3c1d8ab6e50e80464693199eefdd172d45c4129998394e636e47b5621364"));
+
+        //MineNewGenesisBlock();
         hashGenesisBlock = genesis.GetHash();
+        assert(hashGenesisBlock == uint256("0x61147f8533435c8e0c895bdddabf1ffa88de3579478c21b62d134f727c4cdf17"));
         nDefaultPort = 39948;
-        //assert(hashGenesisBlock == uint256("0x530827f38f93b43ed12af0b3ad25a288dc02ed74d6d7857862df51fc56c416f9"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.

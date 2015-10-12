@@ -238,19 +238,19 @@ void ExchangeBrowser::bittrexMarketSummary(QNetworkReply* response)
     updateLabel(ui->lblBittrexHighBtc,
                 _bittrexMarketSummary->getHighCurrent(double()),
                 _bittrexMarketSummary->getHighPrev(double()),
-                QString("B"),
+                QString("M"),
                 8);
 
     updateLabel(ui->lblBittrexLowBtc,
                 _bittrexMarketSummary->getLowCurrent(double()),
                 _bittrexMarketSummary->getLowPrev(double()),
-                QString("B"),
+                QString("M"),
                 8);
 
     updateLabel(ui->lblBittrexCloseBtc,
                 _bittrexMarketSummary->getPrevDayCurrent(double()),
                 _bittrexMarketSummary->getPrevDayPrev(double()),
-                QString("B"),
+                QString("M"),
                 8);
 
     double changeCurrent = (_bittrexMarketSummary->getLastCurrent(double()) - _bittrexMarketSummary->getPrevDayCurrent(double())) / _bittrexMarketSummary->getPrevDayCurrent(double()) * 100;
