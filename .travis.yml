@@ -6,6 +6,7 @@
 
 os: linux
 language: cpp
+compiler: gcc
 notifications:
   slack:
     secure: mb2bj3QwJf+WOOI/gcFeQIGtzbrSlFqFzOIcht6bdQDG3c5hkiGjSx3HufYjKAh91nAu4AyBjI0d6R6fCfJVclU4UpRumpNhaui3/dTyV+7/IjIOKlgF72/4O04j47wBc+y7YA7N+6JxcWl1gdBwPOptVO1moSSEm/WlOTRRuAo=
@@ -43,6 +44,8 @@ matrix:
       env: HOST=i686-pc-linux-gnu PACKAGES="g++-multilib bc" RUN_TESTS=false GOAL="install" MONETARYUNIT_CONFIG="--enable-glibc-back-compat --enable-reduce-exports LDFLAGS=-static-libstdc++" USE_SHELL="/bin/dash"
     - compiler: ": Cross-Mac"
       env: DEPLOYFILE="$TRAVIS_BUILD_DIR/monetaryunit-x86_64-apple-darwin11/MonetaryUnit-Qt.dmg" HOST=x86_64-apple-darwin11 PACKAGES="cmake libcap-dev libz-dev libbz2-dev" BITCOIN_CONFIG="--enable-reduce-exports" OSX_SDK=10.9 GOAL="deploy"
+  exclude:
+    - compiler: gcc
 install:
     - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get update; fi
     - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES; fi
