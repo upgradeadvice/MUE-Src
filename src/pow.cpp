@@ -74,7 +74,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     unsigned int retarget = DIFF_DGW;
 
     if (Params().NetworkID() != CBaseChainParams::TESTNET) {
-        if (pindexLast->nHeight + 1 >= 1100000) retarget = DIFF_DGW;
+        if (pindexLast->nHeight + 1 >= 1130000) retarget = DIFF_DGW;
         else retarget = DIFF_BTC;
     } else {
         if (pindexLast->nHeight + 1 >= 1) retarget = DIFF_DGW;
