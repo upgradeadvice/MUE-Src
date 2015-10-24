@@ -2565,6 +2565,13 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
                              REJECT_OBSOLETE, "bad-version");
     }
 
+    // Reject block.nVersion < 115 blocks when 95% (75% on testnet) of the network has upgraded:
+    if (nHeight >=1130000 && block.nVersion < 115 && CBlockIndex::IsSuperMajority(115, pindexPrev, Params().RejectBlockOutdatedMajority()))
+    {
+        return state.Invalid(error("%s : rejected nVersion < 115 block", __func__),
+                             REJECT_OBSOLETE, "bad-version");
+    }
+
     return true;
 }
 
