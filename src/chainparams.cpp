@@ -186,6 +186,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 10 * 40;
         nTargetSpacing = 40;
+        nMaxTipAge = 24 * 60 * 60;
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -264,6 +265,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 400;
         nTargetSpacing = 40;
+        nMaxTipAge = 0x7fffffff;
 
         genesis.nTime = 1444779876;
         genesis.nNonce = 4428938;
@@ -319,6 +321,7 @@ public:
         nTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
         nTargetSpacing = 2.5 * 60; // 2.5 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
+        nMaxTipAge = 24 * 60 * 60;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nTime = 1444777777;
         genesis.nNonce = 0;
