@@ -2,8 +2,8 @@
 #
 # linearize-data.py: Construct a linear, no-fork version of the chain.
 #
-# Copyright (c) 2013-2014 The Bitcoin developers
-# Distributed under the MIT/X11 software license, see the accompanying
+# Copyright (c) 2013-2014 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
 
@@ -12,10 +12,12 @@ import json
 import struct
 import re
 import os
+import os.path
 import base64
 import httplib
 import sys
 import hashlib
+import quark_hash
 import datetime
 import time
 from collections import namedtuple
@@ -54,8 +56,16 @@ def calc_hdr_hash(blk_hdr):
 
 	return hash2_o
 
-def calc_hash_str(blk_hdr):
-	hash = calc_hdr_hash(blk_hdr)
+# def calc_hash_str(blk_hdr):
+# 	hash = calc_hdr_hash(blk_hdr)
+# 	hash = bufreverse(hash)
+# 	hash = wordreverse(hash)
+# 	hash_str = hash.encode('hex')
+# 	return hash_str
+
+
+def calc_quark_hash_str(blk_hdr):
+	hash = quark_hash.getPoWHash(blk_hdr)
 	hash = bufreverse(hash)
 	hash = wordreverse(hash)
 	hash_str = hash.encode('hex')
@@ -104,7 +114,7 @@ class BlockDataCopier:
 		self.blkCountOut = 0
 
 		self.lastDate = datetime.datetime(2000, 1, 1)
-		self.highTS = 1408893517 - 315360000
+		self.highTS = 1449897050
 		self.timestampSplit = False
 		self.fileOutput = True
 		self.setFileTime = False
@@ -115,19 +125,20 @@ class BlockDataCopier:
 			self.setFileTime = True
 		if settings['split_timestamp'] != 0:
 			self.timestampSplit = True
-        # Extents and cache for out-of-order blocks
+		# Extents and cache for out-of-order blocks
 		self.blockExtents = {}
 		self.outOfOrderData = {}
 		self.outOfOrderSize = 0 # running total size for items in outOfOrderData
 
 	def writeBlock(self, inhdr, blk_hdr, rawblock):
-		if not self.fileOutput and ((self.outsz + self.inLen) > self.maxOutSz):
+		blockSizeOnDisk = len(inhdr) + len(blk_hdr) + len(rawblock)
+		if not self.fileOutput and ((self.outsz + blockSizeOnDisk) > self.maxOutSz):
 			self.outF.close()
 			if self.setFileTime:
 				os.utime(outFname, (int(time.time()), highTS))
 			self.outF = None
 			self.outFname = None
-			self.outFn = outFn + 1
+			self.outFn = self.outFn + 1
 			self.outsz = 0
 
 		(blkDate, blkTS) = get_blk_dt(blk_hdr)
@@ -147,8 +158,8 @@ class BlockDataCopier:
 			if self.fileOutput:
 				outFname = self.settings['output_file']
 			else:
-				outFname = "%s/blk%05d.dat" % (self.settings['output'], outFn)
-			print("Output file" + outFname)
+				outFname = os.path.join(self.settings['output'], "blk%05d.dat" % self.outFn)
+			print("Output file " + outFname)
 			self.outF = open(outFname, "wb")
 
 		self.outF.write(inhdr)
@@ -161,11 +172,11 @@ class BlockDataCopier:
 			self.highTS = blkTS
 
 		if (self.blkCountOut % 1000) == 0:
-			print('%i blocks scanned, %i blocks written (of %i, %.1f%% complete)' % 
+			print('%i blocks scanned, %i blocks written (of %i, %.1f%% complete)' %
 					(self.blkCountIn, self.blkCountOut, len(self.blkindex), 100.0 * self.blkCountOut / len(self.blkindex)))
 
 	def inFileName(self, fn):
-		return "%s/blk%05d.dat" % (self.settings['input'], fn)
+		return os.path.join(self.settings['input'], "blk%05d.dat" % fn)
 
 	def fetchBlock(self, extent):
 		'''Fetch block contents from disk given extents'''
@@ -186,10 +197,10 @@ class BlockDataCopier:
 		self.writeBlock(extent.inhdr, extent.blkhdr, rawblock)
 
 	def run(self):
-		while self.blkCountOut < len(self.blkindex):
+		while self.blkCountOut + 1 < len(self.blkindex):
 			if not self.inF:
 				fname = self.inFileName(self.inFn)
-				print("Input file" + fname)
+				print("Input file " + fname)
 				try:
 					self.inF = open(fname, "rb")
 				except IOError:
@@ -205,7 +216,7 @@ class BlockDataCopier:
 
 			inMagic = inhdr[:4]
 			if (inMagic != self.settings['netmagic']):
-				print("Invalid magic:" + inMagic)
+				print("Invalid magic: " + inMagic.encode('hex'))
 				return
 			inLenLE = inhdr[4:]
 			su = struct.unpack("<I", inLenLE)
@@ -213,7 +224,7 @@ class BlockDataCopier:
 			blk_hdr = self.inF.read(80)
 			inExtent = BlockExtent(self.inFn, self.inF.tell(), inhdr, blk_hdr, inLen)
 
-			hash_str = calc_hash_str(blk_hdr)
+			hash_str = calc_quark_hash_str(blk_hdr)
 			if not hash_str in blkmap:
 				print("Skipping unknown block " + hash_str)
 				self.inF.seek(inLen, os.SEEK_CUR)
@@ -264,7 +275,9 @@ if __name__ == '__main__':
 	f.close()
 
 	if 'netmagic' not in settings:
-		settings['netmagic'] = 'f9beb4d9'
+		settings['netmagic'] = '04050504'
+	if 'genesis' not in settings:
+		settings['genesis'] = '0000070e6b650e7a6f20e015031b74c1f7e2b25ed4e419d8825ab9cc7eccfa92'
 	if 'input' not in settings:
 		settings['input'] = 'input'
 	if 'hashlist' not in settings:
@@ -291,9 +304,7 @@ if __name__ == '__main__':
 	blkindex = get_block_hashes(settings)
 	blkmap = mkblockmap(blkindex)
 
-	if not "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f" in blkmap:
-		print("not found")
+	if not settings['genesis'] in blkmap:
+		print("Genesis block not found in hashlist")
 	else:
 		BlockDataCopier(settings, blkindex, blkmap).run()
-
-
