@@ -21,6 +21,7 @@ env:
     - SDK_URL=https://dev.monetaryunit.tk/depends-sources/sdks
     - PYTHON_DEBUG=1
     - WINEDEBUG=fixme-all
+    - PKGVER=1.0.10.7
 cache:
   apt: true
   directories:
@@ -31,11 +32,11 @@ matrix:
   fast_finish: true
   include:
     - compiler: ": ARM"
-      env: HOST=arm-linux-gnueabihf PACKAGES="g++-arm-linux-gnueabihf" DEP_OPTS="NO_QT=1" GOAL="install" MONETARYUNIT_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
+      env: HOST=arm-linux-gnueabihf PACKAGES="g++-arm-linux-gnueabihf" DEP_OPTS="NO_QT=1" GOAL="install" MONETARYUNIT_CONFIG="--enable-glibc-back-compat --enable-reduce-exports" TARIT="true" DEPLOYFILE="$TRAVIS_BUILD_DIR/monetaryunit-$PKGVER-$HOST.tar.xz"
     - compiler: ": Win32"
-      env: DEPLOYFILE="$TRAVIS_BUILD_DIR/monetaryunit-i686-w64-mingw32/monetaryunit-1.0.10.6-win32-setup.exe" HOST=i686-w64-mingw32 PACKAGES="nsis gcc-mingw-w64-i686 g++-mingw-w64-i686 binutils-mingw-w64-i686 mingw-w64-dev wine bc" RUN_TESTS=false GOAL="deploy" MONETARYUNIT_CONFIG="--enable-gui --enable-reduce-exports" MAKEJOBS="-j2"
+      env: DEPLOYFILE="$TRAVIS_BUILD_DIR/monetaryunit-i686-w64-mingw32/monetaryunit-$PKGVER-win32-setup.exe" HOST=i686-w64-mingw32 PACKAGES="nsis gcc-mingw-w64-i686 g++-mingw-w64-i686 binutils-mingw-w64-i686 mingw-w64-dev wine bc" RUN_TESTS=false GOAL="deploy" MONETARYUNIT_CONFIG="--enable-gui --enable-reduce-exports" MAKEJOBS="-j2"
     - compiler: ": Win64"
-      env: DEPLOYFILE="$TRAVIS_BUILD_DIR/monetaryunit-x86_64-w64-mingw32/monetaryunit-1.0.10.6-win64-setup.exe" HOST=x86_64-w64-mingw32 PACKAGES="nsis gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 binutils-mingw-w64-x86-64 mingw-w64-dev wine bc" RUN_TESTS=false GOAL="deploy" MONETARYUNIT_CONFIG="--enable-gui --enable-reduce-exports" MAKEJOBS="-j2"
+      env: DEPLOYFILE="$TRAVIS_BUILD_DIR/monetaryunit-x86_64-w64-mingw32/monetaryunit-$PKGVER-win64-setup.exe" HOST=x86_64-w64-mingw32 PACKAGES="nsis gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 binutils-mingw-w64-x86-64 mingw-w64-dev wine bc" RUN_TESTS=false GOAL="deploy" MONETARYUNIT_CONFIG="--enable-gui --enable-reduce-exports" MAKEJOBS="-j2"
     - compiler: ": monetaryunitd"
       env: HOST=x86_64-unknown-linux-gnu PACKAGES="bc" DEP_OPTS="NO_QT=1 NO_UPNP=1 DEBUG=1" RUN_TESTS=false GOAL="install" MONETARYUNIT_CONFIG="--enable-glibc-back-compat --enable-reduce-exports CPPFLAGS=-DDEBUG_LOCKORDER"
     - compiler: ": No wallet"
@@ -68,6 +69,7 @@ script:
     - ./configure --cache-file=../config.cache $MONETARYUNIT_CONFIG_ALL $MONETARYUNIT_CONFIG || ( cat config.log && false)
     - make $MAKEJOBS $GOAL || ( echo "Build failure. Verbose build follows." && make $GOAL V=1 ; false )
     - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib
+    - if [ "$TARIT" = "true" ]; then tar -cJf $TRAVIS_BUILD_DIR/monetaryunit-$PKGVER-$HOST.tar.xz $TRAVIS_BUILD_DIR/95.1-arm-linux-gnueabihf/bin $TRAVIS_BUILD_DIR/95.1-arm-linux-gnueabihf/lib; fi
     - if [ "$RUN_TESTS" = "true" ]; then make check; fi
     - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.sh; fi
 deploy:
