@@ -69,7 +69,7 @@ script:
     - ./configure --cache-file=../config.cache $MONETARYUNIT_CONFIG_ALL $MONETARYUNIT_CONFIG || ( cat config.log && false)
     - make $MAKEJOBS $GOAL || ( echo "Build failure. Verbose build follows." && make $GOAL V=1 ; false )
     - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib
-    - if [ "$TARIT" = "true" ]; then tar -cJf $TRAVIS_BUILD_DIR/monetaryunit-$PKGVER-$HOST.tar.xz $TRAVIS_BUILD_DIR/95.1-arm-linux-gnueabihf/bin $TRAVIS_BUILD_DIR/95.1-arm-linux-gnueabihf/lib; fi
+    - if [ "$TARIT" = "true" ]; then tar -cJf $TRAVIS_BUILD_DIR/monetaryunit-$PKGVER-$HOST.tar.xz $OUTDIR/bin $OUTDIR/lib; fi
     - if [ "$RUN_TESTS" = "true" ]; then make check; fi
     - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.sh; fi
 deploy:
