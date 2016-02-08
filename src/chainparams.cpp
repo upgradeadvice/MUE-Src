@@ -91,6 +91,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
      (1050000, uint256("0x000000004012b493615e64f2350ea80f565f123808620390410db57154e20d29"))
      (1100000, uint256("0x0000000002e262f10fbfb4a77267585cdd47c149df8a297f19334fa4cde5c557"))
      (1150000, uint256("0x00000000d2c8ff71189060a1d97f2672f4a38dcc0bd97826afdb6de39401804f"))
+     (1200000, uint256("0x0000000011a0228ba4fbd7db486ec9c05dad9357cc93e6ffc2205870ef036dfd"))
      ;
 static const Checkpoints::CCheckpointData data = {
      &mapCheckpoints,
@@ -223,6 +224,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256("0xa2cc3c1d8ab6e50e80464693199eefdd172d45c4129998394e636e47b5621364"));
 
         vSeeds.push_back(CDNSSeedData("dnsseed.exapool.com", "dnsseed.exapool.com"));
+        vSeeds.push_back(CDNSSeedData("dnsseed.muewallet.com", "dnsseed.muewallet.com"));
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of(15);
         base58Prefixes[SCRIPT_ADDRESS] = list_of(9);
