@@ -482,6 +482,7 @@ static void MutateTx(CMutableTransaction& tx, const string& command,
     else if (command == "sign") {
         if (!ecc) { ecc.reset(new Secp256k1Init()); }
         MutateTxSign(tx, commandVal);
+    }
 
     else if (command == "load")
         RegisterLoad(commandVal);
