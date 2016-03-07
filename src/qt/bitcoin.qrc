@@ -48,6 +48,7 @@
         <file alias="blexp">res/icons/blexp.png</file>
         <file alias="chat">res/icons/chat.png</file>
         <file alias="markets">res/icons/markets.png</file>
+        <file alias="purchase">res/icons/purchase.png</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>

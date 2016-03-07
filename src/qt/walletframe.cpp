@@ -161,6 +161,13 @@ void WalletFrame::gotoExchangeBrowserPage()
         i.value()->gotoExchangeBrowserPage();
 }
 
+void WalletFrame::gotoPurchaseMuePage()
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotoPurchaseMuePage();
+}
+
 void WalletFrame::gotoSignMessageTab(QString addr)
 {
     WalletView *walletView = currentWalletView();
@@ -221,4 +228,3 @@ WalletView *WalletFrame::currentWalletView()
 {
     return qobject_cast<WalletView*>(walletStack->currentWidget());
 }
-

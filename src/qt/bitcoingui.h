@@ -92,6 +92,7 @@ private:
     QAction *blockAction;
     QAction *chatAction;
     QAction *exchangeAction;
+    QAction *purchasemueAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
     QAction *usedSendingAddressesAction;
@@ -186,6 +187,8 @@ private slots:
     void gotoChatPage();
     /** Switch to exchange browser page */
     void gotoExchangeBrowserPage();
+    /** Switch to purchase page */
+    void gotoPurchaseMuePage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
 

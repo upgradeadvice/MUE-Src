@@ -307,6 +307,12 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     exchangeAction->setCheckable(true);
     tabGroup->addAction(exchangeAction);
 
+    purchasemueAction = new QAction(QIcon(":/icons/purchase"), tr("&Purchase"), this);
+    purchasemueAction->setStatusTip(tr("Purchase MUE"));
+    purchasemueAction->setToolTip(tr("Purchase MUE"));
+    purchasemueAction->setCheckable(true);
+    tabGroup->addAction(purchasemueAction);
+
 #ifdef ENABLE_WALLET
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
@@ -326,6 +332,8 @@ void BitcoinGUI::createActions(const NetworkStyle *networkStyle)
     connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
     connect(exchangeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(exchangeAction, SIGNAL(triggered()), this, SLOT(gotoExchangeBrowserPage()));
+    connect(purchasemueAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(purchasemueAction, SIGNAL(triggered()), this, SLOT(gotoPurchaseMuePage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -470,6 +478,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(blockAction);
         toolbar->addAction(chatAction);
         toolbar->addAction(exchangeAction);
+        toolbar->addAction(purchasemueAction);
         toolbar->addWidget(makeToolBarSpacer());
         overviewAction->setChecked(true);
         //toolbar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -724,6 +733,12 @@ void BitcoinGUI::gotoExchangeBrowserPage()
 {
     exchangeAction->setChecked(true);
     if (walletFrame) walletFrame->gotoExchangeBrowserPage();
+}
+
+void BitcoinGUI::gotoPurchaseMuePage()
+{
+    purchasemueAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoPurchaseMuePage();
 }
 
 #endif // ENABLE_WALLET

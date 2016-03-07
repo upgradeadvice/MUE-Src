@@ -20,6 +20,8 @@ class MiningPage;
 class BlockBrowser;
 class ChatWindow;
 class ExchangeBrowser;
+class PurchaseMue;
+
 class WalletModel;
 
 QT_BEGIN_NAMESPACE
@@ -68,6 +70,7 @@ private:
     BlockBrowser *blockBrowser;
     ChatWindow *chatWindow;
     ExchangeBrowser *exchangeBrowser;
+    PurchaseMue *purchaseMue;
 
     TransactionView *transactionView;
 
@@ -90,7 +93,8 @@ public slots:
     void gotoChatPage();
     /** Switch to exchange browser page */
     void gotoExchangeBrowserPage();
-
+    /** Switch to purchase page */
+    void gotoPurchaseMuePage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */

@@ -7,7 +7,7 @@ MonetaryUnit Core integration/staging tree
 http://www.monetaryunit.org
 
 Copyright (c) 2009-2015 Bitcoin Developers
-Copyright (c) 2014-2015 MonetaryUnit Developers
+Copyright (c) 2014-2016 MonetaryUnit Developers
 
 What is MonetaryUnit?
 ----------------

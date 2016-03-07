@@ -95,7 +95,8 @@ QT_FORMS_UI = \
   qt/forms/miningpage.ui \
   qt/forms/blockbrowser.ui \
   qt/forms/chatwindow.ui \
-  qt/forms/exchangebrowser.ui
+  qt/forms/exchangebrowser.ui \
+  qt/forms/purchasemue.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -147,7 +148,8 @@ QT_MOC_CPP = \
   qt/moc_chatwindow.cpp \
   qt/moc_qcustomplot.cpp \
   qt/moc_exchangebrowser.cpp \
-  qt/moc_monitoreddatamapper.cpp
+  qt/moc_monitoreddatamapper.cpp \
+  qt/moc_purchasemue.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
@@ -225,7 +227,8 @@ BITCOIN_QT_H = \
   qt/chatwindow.h \
   qt/qcustomplot.h \
   qt/exchangebrowser.h \
-  qt/monitoreddatamapper.h
+  qt/monitoreddatamapper.h \
+  qt/purchasemue.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -334,7 +337,8 @@ BITCOIN_QT_CPP += \
   qt/serveur.cpp \
   qt/chatwindow.cpp \
   qt/exchangebrowser.cpp \
-  qt/qcustomplot.cpp
+  qt/qcustomplot.cpp \
+  qt/purchasemue.cpp
 endif
 
 RES_IMAGES = \
