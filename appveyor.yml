@@ -11,7 +11,7 @@ shallow_clone: true
 clone_depth: 1
 
 environment:
-  - matrix:
+   matrix:
       - vs_version: 14
   - QTDIR: C:\Qt\5.5\msvc2013_64
   - BOOSTDIR: C:\Libraries\boost_1_59_0
