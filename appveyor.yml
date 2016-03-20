@@ -1,5 +1,5 @@
 # version format
-version: 1.10.0.8-msvc-{build}
+# version: 1.10.0.8-msvc-{build}
 
 # branches to build
 branches:
