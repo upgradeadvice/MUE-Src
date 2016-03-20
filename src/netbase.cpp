@@ -26,6 +26,12 @@
 #include <fcntl.h>
 #endif
 
+#ifdef WIN32
+# include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+typedef SIZE_T size_t;
+#endif  // _WIN32
+
 #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
 #include <boost/thread.hpp>
