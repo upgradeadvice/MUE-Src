@@ -35,7 +35,7 @@ install:
 
 build:
     #project: contrib\msvc\bitcoin.sln
-    project: contrib\msvc\leveldb.vcxproj
+    project: contrib\msvc\secp256k1.vcxproj
 
 # artifacts:
 #   - path: packages
@@ -43,5 +43,5 @@ build:
 #     type: zip
 test: off
 deploy: off
-cache:
-  - build
+# cache:
+#   - build
