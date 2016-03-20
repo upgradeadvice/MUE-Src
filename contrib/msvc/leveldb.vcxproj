@@ -35,7 +35,7 @@
     <ClCompile Include="..\..\src\leveldb\db\version_set.cc" />
     <ClCompile Include="..\..\src\leveldb\db\write_batch.cc" />
     <ClCompile Include="..\..\src\leveldb\helpers\memenv\memenv.cc" />
-    <ClCompile Include="..\..\src\leveldb\port\port_win.cc" />
+    <!-- <ClCompile Include="..\..\src\leveldb\port\port_win.cc" /> -->
     <ClCompile Include="..\..\src\leveldb\table\block.cc" />
     <ClCompile Include="..\..\src\leveldb\table\block_builder.cc" />
     <ClCompile Include="..\..\src\leveldb\table\filter_block.cc" />
@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\leveldb\port\win\stdint.h" />
-    <ClInclude Include="..\..\src\leveldb\port\port.h" />
-    <ClInclude Include="..\..\src\leveldb\port\port_win.h" />
+    <!-- <ClInclude Include="..\..\src\leveldb\port\port.h" /> -->
+    <!-- <ClInclude Include="..\..\src\leveldb\port\port_win.h" /> -->
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{002cc16a-b4ef-4737-b751-dad3a8d14133}</ProjectGuid>
