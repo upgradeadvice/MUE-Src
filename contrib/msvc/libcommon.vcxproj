@@ -78,7 +78,6 @@
     <ClInclude Include="..\..\src\net.h" />
     <ClInclude Include="..\..\src\netbase.h" />
     <ClInclude Include="..\..\src\noui.h" />
-    <ClInclude Include="..\..\src\policy\fees.h" />
     <ClInclude Include="..\..\src\pow.h" />
     <ClInclude Include="..\..\src\primitives\block.h" />
     <ClInclude Include="..\..\src\primitives\transaction.h" />
@@ -88,7 +87,6 @@
     <ClInclude Include="..\..\src\rpcclient.h" />
     <ClInclude Include="..\..\src\rpcprotocol.h" />
     <ClInclude Include="..\..\src\rpcserver.h" />
-    <ClInclude Include="..\..\src\scheduler.h" />
     <ClInclude Include="..\..\src\script\bitcoinconsensus.h" />
     <ClInclude Include="..\..\src\script\interpreter.h" />
     <ClInclude Include="..\..\src\script\script.h" />
@@ -115,11 +113,11 @@
     <ClInclude Include="..\..\src\utiltime.h" />
     <ClInclude Include="..\..\src\validationinterface.h" />
     <ClInclude Include="..\..\src\version.h" />
-    <ClInclude Include="..\..\src\wallet\crypter.h" />
-    <ClInclude Include="..\..\src\wallet\db.h" />
-    <ClInclude Include="..\..\src\wallet\wallet.h" />
-    <ClInclude Include="..\..\src\wallet\walletdb.h" />
-    <ClInclude Include="..\..\src\wallet\wallet_ismine.h" />
+    <ClInclude Include="..\..\src\crypter.h" />
+    <ClInclude Include="..\..\src\db.h" />
+    <ClInclude Include="..\..\src\wallet.h" />
+    <ClInclude Include="..\..\src\walletdb.h" />
+    <ClInclude Include="..\..\src\wallet_ismine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\addrman.cpp" />
@@ -168,7 +166,6 @@
     <ClCompile Include="..\..\src\net.cpp" />
     <ClCompile Include="..\..\src\netbase.cpp" />
     <ClCompile Include="..\..\src\noui.cpp" />
-    <ClCompile Include="..\..\src\policy\fees.cpp" />
     <ClCompile Include="..\..\src\pow.cpp" />
     <ClCompile Include="..\..\src\primitives\block.cpp" />
     <ClCompile Include="..\..\src\primitives\transaction.cpp" />
@@ -184,7 +181,6 @@
     <ClCompile Include="..\..\src\rpcprotocol.cpp" />
     <ClCompile Include="..\..\src\rpcrawtransaction.cpp" />
     <ClCompile Include="..\..\src\rpcserver.cpp" />
-    <ClCompile Include="..\..\src\scheduler.cpp" />
     <ClCompile Include="..\..\src\script\bitcoinconsensus.cpp" />
     <ClCompile Include="..\..\src\script\interpreter.cpp" />
     <ClCompile Include="..\..\src\script\script.cpp" />
@@ -206,13 +202,13 @@
     <ClCompile Include="..\..\src\utilstrencodings.cpp" />
     <ClCompile Include="..\..\src\utiltime.cpp" />
     <ClCompile Include="..\..\src\validationinterface.cpp" />
-    <ClCompile Include="..\..\src\wallet\crypter.cpp" />
-    <ClCompile Include="..\..\src\wallet\db.cpp" />
-    <ClCompile Include="..\..\src\wallet\rpcdump.cpp" />
-    <ClCompile Include="..\..\src\wallet\rpcwallet.cpp" />
-    <ClCompile Include="..\..\src\wallet\wallet.cpp" />
-    <ClCompile Include="..\..\src\wallet\walletdb.cpp" />
-    <ClCompile Include="..\..\src\wallet\wallet_ismine.cpp" />
+    <ClCompile Include="..\..\src\crypter.cpp" />
+    <ClCompile Include="..\..\src\db.cpp" />
+    <ClCompile Include="..\..\src\rpcdump.cpp" />
+    <ClCompile Include="..\..\src\rpcwallet.cpp" />
+    <ClCompile Include="..\..\src\wallet.cpp" />
+    <ClCompile Include="..\..\src\walletdb.cpp" />
+    <ClCompile Include="..\..\src\wallet_ismine.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3703B138-B8DA-460E-9DD1-41BDC7588E80}</ProjectGuid>
@@ -266,20 +262,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)lib\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)lib\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)lib\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)\lib\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)lib\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)_int\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -287,7 +283,7 @@
       <WarningLevel>Level1</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>MINIUPNP_STATICLIB;STATICLIB;USE_UPNP;_CRT_SECURE_NO_WARNINGS;UNICODE;WIN32;_SCL_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0501;HAVE_WORKING_BOOST_SLEEP_FOR;NOMINMAX;USE_LEVELDB;USE_IPV6=1;BOOST_SPIRIT_THREADSAFE;__STDC_FORMAT_MACROS;ENABLE_WALLET=1;__func__=__FUNCTION__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\external;$(ProjectDir)\..\external\boost;$(ProjectDir)\..\external\openssl\include;$(ProjectDir)\..\external\berkeleydb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EXTERNALDEPS);$(BOOSTDIR);$(OPENSSLDIR)\include;$(EXTERNALDEPS)\bdb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -305,7 +301,7 @@
       <WarningLevel>Level1</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>MINIUPNP_STATICLIB;STATICLIB;USE_UPNP;_CRT_SECURE_NO_WARNINGS;UNICODE;WIN32;_SCL_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0501;HAVE_WORKING_BOOST_SLEEP_FOR;NOMINMAX;USE_LEVELDB;USE_IPV6=1;BOOST_SPIRIT_THREADSAFE;__STDC_FORMAT_MACROS;ENABLE_WALLET=1;__func__=__FUNCTION__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\external;$(ProjectDir)\..\external\boost;$(ProjectDir)\..\external\openssl\include;$(ProjectDir)\..\external\berkeleydb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EXTERNALDEPS);$(BOOSTDIR);$(OPENSSLDIR)\include;$(EXTERNALDEPS)\bdb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -328,7 +324,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>MINIUPNP_STATICLIB;STATICLIB;USE_UPNP;_CRT_SECURE_NO_WARNINGS;UNICODE;WIN32;_SCL_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0501;HAVE_WORKING_BOOST_SLEEP_FOR;NOMINMAX;USE_LEVELDB;USE_IPV6=1;BOOST_SPIRIT_THREADSAFE;__STDC_FORMAT_MACROS;ENABLE_WALLET=1;__func__=__FUNCTION__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\external;$(ProjectDir)\..\external\boost;$(ProjectDir)\..\external\openssl\include;$(ProjectDir)\..\external\berkeleydb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EXTERNALDEPS);$(BOOSTDIR);$(OPENSSLDIR)\include;$(EXTERNALDEPS)\bdb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -349,7 +345,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>MINIUPNP_STATICLIB;STATICLIB;USE_UPNP;_CRT_SECURE_NO_WARNINGS;UNICODE;WIN32;_SCL_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0501;HAVE_WORKING_BOOST_SLEEP_FOR;NOMINMAX;USE_LEVELDB;USE_IPV6=1;BOOST_SPIRIT_THREADSAFE;__STDC_FORMAT_MACROS;ENABLE_WALLET=1;__func__=__FUNCTION__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\external;$(ProjectDir)\..\external\boost;$(ProjectDir)\..\external\openssl\include;$(ProjectDir)\..\external\berkeleydb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EXTERNALDEPS);$(BOOSTDIR);$(OPENSSLDIR)\include;$(EXTERNALDEPS)\bdb\build_windows;..\..\src\leveldb\helpers\memenv;..\..\src\leveldb\helpers;..\..\src\leveldb\include;..\..\src\;..\..\src\secp256k1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <WholeProgramOptimization>false</WholeProgramOptimization>
