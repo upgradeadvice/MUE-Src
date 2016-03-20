@@ -1,0 +1,46 @@
+# version format
+version: 1.10.0.8-msvc-{build}
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+
+shallow_clone: true
+clone_depth: 1
+
+environment:
+  - matrix:
+      - vs_version: 14
+  - QTDIR: C:\Qt\5.5\msvc2013_64
+  - BOOSTDIR: C:\Libraries\boost_1_59_0
+  - OPENSSLDIR: C:\OpenSSL-Win64
+  - EXTERNALDEPS: C:\projects\mue-win-deps
+
+platform: x64
+os: Visual Studio 2015
+configuration: Release
+
+matrix:
+  fast_finish: true
+
+clone_folder: C:\projects\mue-src
+
+install:
+  - set PATH=C:\Program Files\Git\usr\bin;%PATH%
+  - curl -s -S -f -O -L -k --retry 3 https://ci.appveyor.com/api/projects/upgradeadvice/mue-win-deps/artifacts/packages.zip
+  - md %EXTERNALDEPS%
+  - 7z e packages.zip -o%EXTERNALDEPS%
+
+build:
+    project: contrib\msvc\bitcoin.sln
+
+# artifacts:
+#   - path: packages
+#     name: packages
+#     type: zip
+test: off
+deploy: off
+cache:
+  - build

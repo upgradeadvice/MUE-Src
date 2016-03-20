@@ -1,28 +1,26 @@
-FORMS += \
-    ../src/qt/forms/aboutdialog.ui \
-    ../src/qt/forms/addressbookpage.ui \
-    ../src/qt/forms/askpassphrasedialog.ui \
-    ../src/qt/forms/coincontroldialog.ui \
-    ../src/qt/forms/editaddressdialog.ui \
-    ../src/qt/forms/helpmessagedialog.ui \
-    ../src/qt/forms/intro.ui \
-    ../src/qt/forms/openuridialog.ui \
-    ../src/qt/forms/optionsdialog.ui \
-    ../src/qt/forms/overviewpage.ui \
-    ../src/qt/forms/receivecoinsdialog.ui \
-    ../src/qt/forms/receiverequestdialog.ui \
-    ../src/qt/forms/rpcconsole.ui \
-    ../src/qt/forms/sendcoinsdialog.ui \
-    ../src/qt/forms/sendcoinsentry.ui \
-    ../src/qt/forms/signverifymessagedialog.ui \
-    ../src/qt/forms/transactiondescdialog.ui \
-    ../src/qt/forms/miningpage.ui \
-    ../src/qt/forms/exchangebrowser.ui \
-    ../src/qt/forms/chatwindow.ui \
-    ../src/qt/forms/blockbrowser.ui \
-    ../src/qt/forms/Header.ui \
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-03-19T01:16:11
+#
+#-------------------------------------------------
+
+QT       += core gui network webkit
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport webkitwidgets
+
+TARGET = MonetaryUnit
+TEMPLATE = app
+
+
+SOURCES += ../src/*.cpp \
+        ../src/qt/*.cpp \
+        ../src/script/*.cpp \
+        ../src/json/*.cpp \
+
+HEADERS  += ../src/*.h \
+         ../src/qt/*.h
+
+FORMS += ../src/qt/forms/*.ui
 
 RESOURCES += \
-    ../src/qt/monetaryunit.qrc \
-    ../src/qt/themes.qrc \
-    ../src/qt/themes.qrc
+    ../src/qt/bitcoin.qrc
