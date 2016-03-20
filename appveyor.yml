@@ -34,7 +34,8 @@ install:
   - 7z e packages.zip -o%EXTERNALDEPS% -aoa
 
 build:
-    project: contrib\msvc\bitcoin.sln
+    #project: contrib\msvc\bitcoin.sln
+    project: contrib\msvc\leveldb.vcxproj
 
 # artifacts:
 #   - path: packages

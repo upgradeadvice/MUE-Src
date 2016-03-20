@@ -137,7 +137,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level1</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;LEVELDB_PLATFORM_WINDOWS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OS_WINDOWS;WIN32;_DEBUG;_LIB;LEVELDB_PLATFORM_WINDOWS</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\src\leveldb\include;..\..\src\leveldb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -154,7 +154,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level1</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;LEVELDB_PLATFORM_WINDOWS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OS_WINDOWS;WIN32;_DEBUG;_LIB;LEVELDB_PLATFORM_WINDOWS</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\src\leveldb\include;..\..\src\leveldb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -173,7 +173,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;LEVELDB_PLATFORM_WINDOWS;_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OS_WINDOWS;WIN32;LEVELDB_PLATFORM_WINDOWS;_LIB</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\src\leveldb\include;..\..\src\leveldb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -196,7 +196,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;LEVELDB_PLATFORM_WINDOWS;_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OS_WINDOWS;WIN32;LEVELDB_PLATFORM_WINDOWS;_LIB</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\src\leveldb\include;..\..\src\leveldb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WholeProgramOptimization>false</WholeProgramOptimization>
