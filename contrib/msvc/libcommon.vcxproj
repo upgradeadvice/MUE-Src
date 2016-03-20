@@ -111,7 +111,6 @@
     <ClInclude Include="..\..\src\utilmoneystr.h" />
     <ClInclude Include="..\..\src\utilstrencodings.h" />
     <ClInclude Include="..\..\src\utiltime.h" />
-    <ClInclude Include="..\..\src\validationinterface.h" />
     <ClInclude Include="..\..\src\version.h" />
     <ClInclude Include="..\..\src\crypter.h" />
     <ClInclude Include="..\..\src\db.h" />
@@ -201,7 +200,6 @@
     <ClCompile Include="..\..\src\utilmoneystr.cpp" />
     <ClCompile Include="..\..\src\utilstrencodings.cpp" />
     <ClCompile Include="..\..\src\utiltime.cpp" />
-    <ClCompile Include="..\..\src\validationinterface.cpp" />
     <ClCompile Include="..\..\src\crypter.cpp" />
     <ClCompile Include="..\..\src\db.cpp" />
     <ClCompile Include="..\..\src\rpcdump.cpp" />
